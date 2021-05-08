@@ -7,3 +7,5 @@
 @yield('content')
 
 @include('layouts.footer')
+
+@yield('customJs')
