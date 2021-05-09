@@ -14,4 +14,12 @@ class PeopleController extends Controller
     public function destroy($id){
         return People::deleteGeneric($id);
     }
+
+    public function update(Request $request, $id){
+        return People::updateGeneric($request, $id);
+    }
+
+    public function store(Request $request){
+        return People::storeGeneric($request);
+    }
 }

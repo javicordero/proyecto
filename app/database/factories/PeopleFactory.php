@@ -24,7 +24,8 @@ class PeopleFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'surname' => $this->faker->word(),
-            'phone' => $this->faker->phoneNumber()
+            'phone' => $this->faker->phoneNumber(),
+            'type' => rand(1,2)
         ];
     }
 }

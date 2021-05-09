@@ -18,7 +18,7 @@ class CreatePeopleTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('phone');
-            //$table->enum('type',[1,2,3]);
+            $table->enum('type',[1,2]);
             $table->timestamps();
         });
     }

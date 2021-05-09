@@ -15,4 +15,12 @@ class AttributeController extends Controller
     public function destroy($id){
         return Attribute::deleteGeneric($id);
     }
+
+    public function update(Request $request, $id){
+        return Attribute::updateGeneric($request, $id);
+    }
+
+    public function store(Request $request){
+        return Attribute::storeGeneric($request);
+    }
 }

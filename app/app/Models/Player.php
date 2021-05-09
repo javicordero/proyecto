@@ -5,9 +5,10 @@ namespace App\Models;
 use App\Traits\GenericTable;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
+use App\Http\Controllers\GenericTableController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class People extends Model
+class Player extends People
 {
     use HasFactory;
 
@@ -15,17 +16,18 @@ class People extends Model
 
     use GenericTable;
 
-    public static $title = 'Personas';
+    protected $table = "people";
 
+    public static $title = 'Jugadores';
 
-    public function getTypeNameAttribute(){
-        return $this->type == 1 ? 'Jugador' : 'Entrenador';
+    public static function getAll(){
+        return People::where('type',1)->get();
     }
 
     public static function getSelectOptions(){
-        return [
-            '1' => 'Jugador',
-            '2' => 'Entrenador'
-        ];
+        return People::getSelectOptions();
     }
+
+
+
 }

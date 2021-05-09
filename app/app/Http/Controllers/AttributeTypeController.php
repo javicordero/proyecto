@@ -15,4 +15,12 @@ class AttributeTypeController extends Controller
     public function destroy($id){
         return AttributeType::deleteGeneric($id);
     }
+
+    public function update(Request $request, $id){
+        return AttributeType::updateGeneric($request, $id);
+    }
+
+    public function store(Request $request){
+        return AttributeType::storeGeneric($request);
+    }
 }

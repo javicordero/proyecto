@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-
 use App\Traits\GenericTable;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AttributeType extends Model
+class Coach extends People
 {
     use HasFactory;
 
@@ -16,14 +15,15 @@ class AttributeType extends Model
 
     use GenericTable;
 
-    public static $title = 'Tipos de atributo';
+    protected $table = "people";
 
+    public static $title = 'Entrenadores';
 
-    public function attributes(){
-        return $this->hasMany(Attribute::class);
+    public static function getAll(){
+        return People::where('type',2)->get();
     }
 
-
-
-
+    public static function getSelectOptions(){
+        return People::getSelectOptions();
+    }
 }
