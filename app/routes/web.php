@@ -39,4 +39,11 @@ Route::get('people', [PeopleController::class, 'index'])->name('people.index');
 Route::post('people/store', [PeopleController::class, 'store'])->name('people.store');
 
 Route::get('players', [PlayerController::class, 'index'])->name('players.index');
+Route::put('players/{id}/update', [PlayerController::class, 'update'])->name('players.update');
+Route::delete('players/{id}',[PlayerController::class, 'destroy'])->name('players.destroy');
+Route::post('players/store', [PlayerController::class, 'store'])->name('players.store');
+
 Route::get('coaches', [CoachController::class, 'index'])->name('coaches.index');
+Route::put('coaches/{id}/update', [CoachController::class, 'update'])->name('coaches.update');
+Route::delete('coaches/{id}',[CoachController::class, 'destroy'])->name('coaches.destroy');
+Route::post('coaches/store', [CoachController::class, 'store'])->name('coaches.store');

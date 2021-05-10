@@ -17,15 +17,22 @@ class People extends Model
 
     public static $title = 'Personas';
 
-
-    public function getTypeNameAttribute(){
-        return $this->type == 1 ? 'Jugador' : 'Entrenador';
+    //Relacion polimórfica con Player y Coach
+    public function personable(){
+        return $this->morphTo();
     }
 
-    public static function getSelectOptions(){
-        return [
-            '1' => 'Jugador',
-            '2' => 'Entrenador'
-        ];
+    //Atributo personable_type_name
+    public function getPersonableTypeNameAttribute(){
+        return $this->personable_type == Player::class ? 'Jugador' : 'Entrenador';
     }
+
+    //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
+    public static function getColumnsForShow(){
+        $columns = self::getColumnsWithoutTimeStamps();
+        array_pop($columns);
+        array_pop($columns);
+        array_push($columns, 'personable_type_name');
+        return $columns;
+     }
 }

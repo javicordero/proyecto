@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\People;
-use App\Models\Player;
+use App\Models\Coach;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PeopleFactory extends Factory
+class CoachFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = People::class;
+    protected $model = Coach::class;
 
     /**
      * Define the model's default state.
@@ -22,12 +21,8 @@ class PeopleFactory extends Factory
      */
     public function definition()
     {
-        $players = Player::all();
         return [
-            'name' => $this->faker->name(),
-            'surname' => $this->faker->word(),
-            'phone' => $this->faker->phoneNumber(),
-
+            'license' => $this->faker->word(),
         ];
     }
 }

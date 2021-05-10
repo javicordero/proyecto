@@ -11,12 +11,11 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>{{ $data['title'] }} <small><button class="btn btn-success modal_id table-btn" data-toggle="modal" data-target="#create" type="button">Crear</button></small></h2>
+                      <h2>{{ $data['title'] }} <small></small></h2>
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
-                        @include('generic_table.create')
                     </p>
                       <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead>
@@ -54,16 +53,9 @@
                                             @method('DELETE')
                                             <button class="btn btn-danger del_id table-btn" type="submit" data-attrId="{{ $attribute->id }}">Borrar</button>
                                         </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary pull-right modal_id table-btn" data-toggle="modal" data-target="#edit{{ $attribute->id }}" type="button">
-                                                Editar
-                                            </button>
-                                        </div>
+
                                     </form>
                                 </td>
-
-                                @include('generic_table.edit')
-
                             </tr>
                           @endforeach
                         </tbody>

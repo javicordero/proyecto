@@ -1,7 +1,7 @@
 <div class="modal fade edit" id="edit{{ $attribute->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form  data-parsley-validate class="form-horizontal form-label-left" action="{{ route($data['tableName'].'.update', $attribute) }}" method="POST">
+            <form  data-parsley-validate class="form-horizontal form-label-left" action="{{ route($data['tableName'].'.update', $attribute->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-header">
