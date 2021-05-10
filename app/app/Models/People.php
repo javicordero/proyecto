@@ -17,6 +17,8 @@ class People extends Model
 
     public static $title = 'Personas';
 
+    public static $titleSingular = 'Persona';
+
     //Relacion polimórfica con Player y Coach
     public function personable(){
         return $this->morphTo();

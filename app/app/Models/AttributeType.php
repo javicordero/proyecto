@@ -18,6 +18,8 @@ class AttributeType extends Model
 
     public static $title = 'Tipos de atributo';
 
+    public static $titleSingular = 'Tipo de atributo';
+
     //Relacion 1:N con AttributeType (1: AttributeType || N: Attribute)
     public function attributes(){
         return $this->hasMany(Attribute::class);

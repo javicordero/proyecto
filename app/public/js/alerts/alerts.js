@@ -11,11 +11,6 @@ $(".del_id").on('click', function (e) {
         cancelButtonText: 'Cancelar'
         }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-            '¡Eliminado!!',
-            'El objeto se ha borrado',
-            'success'
-            )
             $("#del_event"+$(this).attr('data-attrId')).submit();
         }
     })

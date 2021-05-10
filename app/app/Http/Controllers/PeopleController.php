@@ -17,7 +17,8 @@ class PeopleController extends Controller
         $person->personable->delete();
         $person->delete();
 
-        return back();
+        $tipoPersona = $person->personable_type_name;
+        return back()->with('status', $tipoPersona.' eliminado');
     }
 
     public static function update($request, $id){
@@ -26,7 +27,9 @@ class PeopleController extends Controller
         $person->surname = $request->surname;
         $person->phone = $request->phone;
         $person->save();
-        return back();
+
+        $tipoPersona = $person->personable_type_name;
+        return back()->with('status', $tipoPersona.' actualizado');
     }
 
     public static function store($request, $playerOrCoach){
@@ -37,6 +40,7 @@ class PeopleController extends Controller
 
         $playerOrCoach->person()->save($person);
 
-        return back();
+        $tipoPersona = $person->personable_type_name;
+        return back()->with('status', $tipoPersona.' guardado');
     }
 }

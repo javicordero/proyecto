@@ -21,6 +21,8 @@ class Player extends Model
 
     public static $title = 'Jugadores';
 
+    public static $titleSingular = 'Jugador';
+
     //Relacion polimórfica con People
     public function person(){
         return $this->morphOne(People::class, 'personable');

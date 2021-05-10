@@ -21,7 +21,8 @@ trait GenericTable
         $columns = self::getColumnsForShow();
         $selectOptions = self::getSelectOptions();
         $all = self::getAll();
-        return compact('tableName', 'class', 'title', 'columns', 'selectOptions', 'all');
+        $titleSingular = self::$titleSingular;
+        return compact('tableName', 'class', 'title', 'columns', 'selectOptions', 'all', 'titleSingular');
     }
 
     //Devuelve todos los datos de la tabla
@@ -67,7 +68,7 @@ trait GenericTable
         $data['id'] = $id;
         $attribute = $data['class']::find($data['id']);
         $attribute->delete();
-        return back();
+        return back()->with('status', $data['titleSingular'].' eliminado');
     }
 
      //Guarda el campo de la tabla correspondiente
@@ -82,7 +83,7 @@ trait GenericTable
         }
         $table->save();
 
-        return back()->with('status', 'Post Eliminado');
+        return back()->with('status', $data['titleSingular'].' guardado');
     }
 
     //Actualiza el campo de la tabla correspondiente
@@ -97,7 +98,7 @@ trait GenericTable
         }
         $table->save();
 
-        return back()->with('status', 'Post Eliminado');
+        return back()->with('status', $data['titleSingular'].' actualizado');
     }
 
 }

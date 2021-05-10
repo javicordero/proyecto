@@ -73,5 +73,22 @@
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>  <!-- Alerts -->
+
+<!-- Muestra alerta de la operacion recibida -->
+@if (session('status'))
+<script>
+    $(document).ready(function () {
+        message = @json(session('status'));
+        console.log(message);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+            })
+        });
+</script>
+@endif
 </body>
 </html>

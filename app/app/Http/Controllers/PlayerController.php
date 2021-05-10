@@ -20,7 +20,7 @@ class PlayerController extends Controller
         $player->delete();
         $player->person->delete();
 
-        return back();
+        return back()->with('status', 'Jugador eliminado');
     }
 
     public function update(Request $request, $id){

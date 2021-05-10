@@ -15,7 +15,7 @@ class PlayerSeeder extends Seeder
      */
     public function run()
     {
-        Player::factory()->count(5)->create();
+        Player::factory()->count(100)->create();
 
         $players = Player::all();
         foreach($players as $player){

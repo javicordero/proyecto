@@ -79,6 +79,4 @@
 
 @section('customJs')
 
-
-
 @endsection

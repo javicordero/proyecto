@@ -18,6 +18,8 @@ class Coach extends Model
 
     public static $title = 'Entrenadores';
 
+    public static $titleSingular = 'Entrenador';
+
     //Relacion polimórfica con People
     public function person(){
         return $this->morphOne(People::class, 'personable');

@@ -17,7 +17,7 @@ class CoachController extends Controller
         $coach->delete();
         $coach->person->delete();
 
-        return back();
+        return back()->with('status', 'Entrenador eliminado');
     }
 
     public static function update(Request $request, $id){

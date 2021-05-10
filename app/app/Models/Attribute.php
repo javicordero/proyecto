@@ -18,6 +18,8 @@ class Attribute extends Model
 
     public static $title = 'Atributos';
 
+    public static $titleSingular = 'Atributo';
+
     //Relacion 1:N con AttributeType (1: AttributeType || N: Attribute)
     public function attribute_type(){
         return $this->belongsTo(Attribute::class);
