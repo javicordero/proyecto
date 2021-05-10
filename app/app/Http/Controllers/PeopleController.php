@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 class PeopleController extends Controller
 {
     public function index(){
-        $data = People::getData();
-        return view('people.index', compact('data'));
+        return People::index();
     }
 
     public function destroy($id){

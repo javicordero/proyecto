@@ -28,6 +28,11 @@ class Player extends Model
         return $this->morphOne(People::class, 'personable');
     }
 
+    //Relacion N:M con Attribute
+    public function attributes(){
+        return $this->belongsToMany(Attribute::class)->withPivot('value', 'date');
+    }
+
     //Sobreescribe el método getAll de la Tabla Genérica y devuelve todos los datos para mostrarlos
     public static function getAll(){
         return DB::table('People')->where('personable_type', Player::class)->join('players', 'players.id', 'people.personable_id')->get();

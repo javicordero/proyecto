@@ -25,6 +25,11 @@ class Attribute extends Model
         return $this->belongsTo(Attribute::class);
     }
 
+    //Relacion N:M con People
+    public function players(){
+        return $this->belongsToMany(Player::class)->withPivot('value', 'date');
+    }
+
     //Atributo attribute_type_name
     public function getAttributeTypeNameAttribute(){
         $buscar = $this->attribute_type_id;
@@ -38,6 +43,17 @@ class Attribute extends Model
         return AttributeType::pluck('name', 'id')->all();
     }
 
+
+    //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => true,
+            'delete' => true,
+            'edit' => true,
+            'show' => false
+        ];
+       return $buttonList;
+    }
 
 
 

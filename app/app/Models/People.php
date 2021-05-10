@@ -36,5 +36,16 @@ class People extends Model
         array_pop($columns);
         array_push($columns, 'personable_type_name');
         return $columns;
-     }
+    }
+
+    //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => false,
+            'delete' => true,
+            'edit' => false,
+            'show' => false
+        ];
+       return $buttonList;
+    }
 }

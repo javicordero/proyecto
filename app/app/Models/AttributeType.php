@@ -25,4 +25,14 @@ class AttributeType extends Model
         return $this->hasMany(Attribute::class);
     }
 
+    //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => true,
+            'delete' => true,
+            'edit' => true,
+            'show' => false
+        ];
+       return $buttonList;
+    }
 }

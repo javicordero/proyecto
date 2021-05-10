@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\AttributeType;
 use App\Models\People;
 use App\Models\Player;
 use App\Traits\GenericTable;
@@ -38,6 +38,19 @@ class PlayerController extends Controller
         $player->save();
 
         return PeopleController::store($request, $player);
+    }
+
+    public function show($id){
+        $player = Player::find($id);
+        //return $player->attributes;
+        $attributes = $player->attributes;
+        $attribute_types = AttributeType::all();
+        //return $player;
+        //return $player->attributes;
+
+        $data = compact('attributes', 'attribute_types', 'player');
+
+        return view('players.profile', compact('data'));
     }
 
 

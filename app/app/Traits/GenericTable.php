@@ -22,7 +22,8 @@ trait GenericTable
         $selectOptions = self::getSelectOptions();
         $all = self::getAll();
         $titleSingular = self::$titleSingular;
-        return compact('tableName', 'class', 'title', 'columns', 'selectOptions', 'all', 'titleSingular');
+        $buttonList = self::getButtonList();
+        return compact('tableName', 'class', 'title', 'columns', 'selectOptions', 'all', 'titleSingular', 'buttonList');
     }
 
     //Devuelve todos los datos de la tabla
@@ -99,6 +100,17 @@ trait GenericTable
         $table->save();
 
         return back()->with('status', $data['titleSingular'].' actualizado');
+    }
+
+    //Devuelve la lista de botones disponible en la vista
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => true,
+            'delete' => true,
+            'edit' => true,
+            'show' => true
+        ];
+        return $buttonList;
     }
 
 }
