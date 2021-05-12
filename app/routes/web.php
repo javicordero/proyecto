@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\AttributeController;
-use App\Http\Controllers\AttributeTypeController;
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\PlayerController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\AttributeTypeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GenericTableController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +64,19 @@ Route::get('coaches', [CoachController::class, 'index'])->name('coaches.index');
 Route::put('coaches/{id}/update', [CoachController::class, 'update'])->name('coaches.update');
 Route::delete('coaches/{id}',[CoachController::class, 'destroy'])->name('coaches.destroy');
 Route::post('coaches/store', [CoachController::class, 'store'])->name('coaches.store');
+
+//TEAMS
+Route::get('teams', [TeamController::class, 'index'])->name('teams.index');
+Route::put('teams/{id}/update', [TeamController::class, 'update'])->name('teams.update');
+Route::post('teams/store', [TeamController::class, 'store'])->name('teams.store');
+Route::delete('teams/{id}',[TeamController::class, 'destroy'])->name('teams.destroy');
+
+//CATEGORIES
+Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::put('categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
+Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
+Route::delete('categories/{id}',[CategoryController::class, 'destroy'])->name('categories.destroy');
+
+//GENERIC TABLE
+Route::post('/table/getDataForEditModal', [GenericTableController::class, 'edit'])->name('genericTable.edit');
+Route::post('/table/getDataForCreateModal', [GenericTableController::class, 'create'])->name('genericTable.create');

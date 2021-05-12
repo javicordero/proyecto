@@ -39,5 +39,6 @@
     "personable_type_name": "Tipo de persona",
     "attribute_type_name": "Tipo de atributo",
     "license": "Licencia",
-    "size": "Altura"
+    "size": "Altura",
+    "category_name": "Categoría"
 }

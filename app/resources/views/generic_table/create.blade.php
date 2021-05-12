@@ -1,4 +1,4 @@
-<div class="modal fade edit" id="create">
+<div class="modal fade create" id="create">
     <div class="modal-dialog">
         <div class="modal-content">
             <form  data-parsley-validate class="form-horizontal form-label-left" action="{{ route($data['tableName'].'.store') }}"  method="POST">
@@ -19,6 +19,7 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">{{ __($columnValue) }}</label>
                                         <div class="col-md-6 col-sm-6 col-xs-1">
                                           <select class="form-control" name="{{ $columnKey }}">
+                                            <option value="" disabled selected>Selecciona una valor</option>
                                             @foreach ($data['selectOptions'] as $selectKey => $selectValue)
                                                 <option value="{{ $selectKey }}"
                                                     @if ($selectKey == 2 && Route::current()->getName() == 'coaches.index')selected @endif

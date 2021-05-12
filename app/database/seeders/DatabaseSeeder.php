@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AttributeTypeSeeder::class,
             PlayerSeeder::class,
-            CoachSeeder::class
+            CoachSeeder::class,
+            CategorySeeder::class
         ]);
 
 

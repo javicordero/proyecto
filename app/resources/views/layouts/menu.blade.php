@@ -30,15 +30,23 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li><a href="{{ route('attributes.index') }}"><i class="fa fa-bar-chart"></i>
-                                        Atributos</a></li>
+                                        Atributos</a>
+                                </li>
                                 <li><a href="{{ route('attribute_types.index') }}"><i class="fa fa-arrows"></i> Tipos
-                                        de atributos</a></li>
+                                        de atributos</a>
+                                </li>
                                 <li><a><i class="fa fa-users"></i> Personas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ route('people.index') }}">Todos</a></li>
                                         <li><a href="{{ route('players.index') }}">Jugadores</a></li>
                                         <li><a href="{{ route('coaches.index') }}">Entrenadores</a></li>
                                     </ul>
+                                </li>
+                                <li><a href="{{ route('teams.index') }}"><i class="fa fa-bar-chart"></i>
+                                        Equipos</a>
+                                </li>
+                                <li><a href="{{ route('categories.index') }}"><i class="fa fa-bar-chart"></i>
+                                        Categorías</a>
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">

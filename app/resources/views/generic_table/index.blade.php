@@ -13,23 +13,32 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>{{ $data['title'] }}
-                                <small>
+                                <span>
+                                    <!-- Botón crear para todas las tablas -->
                                     @if ($data['buttonList']['create'])
-                                        <button class="btn btn-success modal_id table-btn" data-toggle="modal"
-                                            data-target="#create" type="button">Crear</button>
+                                        <button class="btn btn-success modal_id table-btn" id="create-modal" type="button"
+                                            data-class="{{ $data['class'] }}" data-csrf="{{ csrf_token() }}"
+                                            type="button">
+                                            Crear
+                                        </button>
                                     @endif
 
-                                </small>
+                                    <!-- Botón crear para tabla personas -->
+                                    @if ($data['class'] == 'App\Models\People')
+                                        <button class="btn btn-success table-btn" id="create-person"
+                                            data-csrf="{{ csrf_token() }}" type="button">
+                                            Crear
+                                        </button>
+                                    @endif
+                                </span>
                             </h2>
                             <div class="clearfix"></div>
                         </div>
-@endsection
-
-
+                    @endsection
                     @section('content')
                         <div class="x_content">
                             <p class="text-muted font-13 m-b-30">
-                                @include('generic_table.create')
+
                             </p>
                             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap"
                                 cellspacing="0" width="100%">
@@ -73,9 +82,11 @@
                                                     @endif
                                                     @if ($data['buttonList']['edit'])
                                                         <div class="form-group">
-                                                            <button class="btn btn-primary pull-right modal_id table-btn"
-                                                                data-toggle="modal"
-                                                                data-target="#edit{{ $attribute->id }}" type="button">
+                                                            <button
+                                                                class="btn btn-primary pull-right modal_id table-btn edit-modal"
+                                                                data-class="{{ $data['class'] }}"
+                                                                data-attrId="{{ $attribute->id }}"
+                                                                data-csrf="{{ csrf_token() }}" type="button">
                                                                 Editar
                                                             </button>
                                                         </div>
@@ -90,9 +101,11 @@
                                                     @endif
                                                 </form>
                                             </td>
-                                            @include('generic_table.edit')
                                         </tr>
                                     @endforeach
+                                    <div id="divModal">
+
+                                    </div>
                                 </tbody>
                             </table>
                         </div>
@@ -100,7 +113,7 @@
 
 
 
-        @section('contentCerrarDivs')
+                    @section('contentCerrarDivs')
                     </div>
                 </div>
             </div>
@@ -111,25 +124,23 @@
 
 @section('customJs')
 
-  <!-- Muestra alerta de la operacion recibida -->
-  @if (session('status'))
-      <script>
-          $(document).ready(function() {
-              message = @json(session('status'));
-              console.log(message);
-              Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: message,
-                  showConfirmButton: false,
-                  timer: 1500
-              })
-          });
+    <!-- Muestra alerta de la operacion recibida -->
+    @if (session('status'))
+        <script>
+            $(document).ready(function() {
+                message = @json(session('status'));
+                console.log(message);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            });
 
-      </script>
-  @endif
+        </script>
+    @endif
 
-  <script>
-
-  </script>
+    <script src="{{ asset('js/modal/modal.js') }}"></script>
 @endsection
