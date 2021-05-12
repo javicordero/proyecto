@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AttributeType;
 use App\Models\People;
 use App\Models\Player;
+use App\Models\Attribute;
 use App\Traits\GenericTable;
 use Illuminate\Http\Request;
+use App\Models\AttributeType;
 use Illuminate\Support\Facades\DB;
 
 class PlayerController extends Controller
@@ -37,21 +38,48 @@ class PlayerController extends Controller
         $player->size = $request->size;
         $player->save();
 
+        $attributes = Attribute::all();
+        foreach($attributes as $attribute){
+            $player->attributes()->attach($attribute);
+        }
+
         return PeopleController::store($request, $player);
     }
 
     public function show($id){
+
+        $attribute = Attribute::find(1);
+
+        //return $attribute->getPlayerValuesOfAttribute(4);
+
+
+
         $player = Player::find($id);
-        //return $player->attributes;
-        $attributes = $player->attributes;
+        $person = $player->person;
+
         $attribute_types = AttributeType::all();
-        //return $player;
-        //return $player->attributes;
 
-        $data = compact('attributes', 'attribute_types', 'player');
+        $data = compact('attribute_types', 'person', 'player');
 
-        return view('players.profile', compact('data'));
+        return view('people.profile', compact('data'));
     }
 
+
+
+    public function getPlayerValuesOfAttribute(Request $request){
+
+        $attribute = Attribute::find($request->attributeId);
+        $player = Player::find($request->playerId);
+
+        foreach($attribute->getPlayerValuesOfAttribute($player->id) as $at){
+            $values [] = [
+                'value' => $at->pivot->value,
+                'date' => $at->pivot->date
+            ];
+        }
+
+        $data = compact('attribute', 'player', 'values');
+        return $data;
+    }
 
 }

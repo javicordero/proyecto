@@ -111,4 +111,25 @@
 
 @section('customJs')
 
+  <!-- Muestra alerta de la operacion recibida -->
+  @if (session('status'))
+      <script>
+          $(document).ready(function() {
+              message = @json(session('status'));
+              console.log(message);
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: message,
+                  showConfirmButton: false,
+                  timer: 1500
+              })
+          });
+
+      </script>
+  @endif
+
+  <script>
+
+  </script>
 @endsection

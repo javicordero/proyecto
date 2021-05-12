@@ -27,7 +27,7 @@ class PeopleFactory extends Factory
             'name' => $this->faker->name(),
             'surname' => $this->faker->word(),
             'phone' => $this->faker->phoneNumber(),
-
+            'image' => $this->faker->imageUrl(350, 350) // 'http://lorempixel.com/640/480/'// 'http://lorempixel.com/640/480/'
         ];
     }
 }

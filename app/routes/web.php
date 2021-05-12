@@ -43,7 +43,7 @@ Route::delete('people/{id}',[PeopleController::class, 'destroy'])->name('people.
 Route::put('people/{id}/update', [PeopleController::class, 'update'])->name('people.update');
 Route::get('people', [PeopleController::class, 'index'])->name('people.index');
 Route::post('people/store', [PeopleController::class, 'store'])->name('people.store');
-
+Route::post('people/update-image', [PeopleController::class, 'updateImage'])->name('people.uptade_image');
 
 //PLAYERS
 Route::get('players/{id}', [PlayerController::class, 'show'])->name('players.show');
@@ -51,6 +51,8 @@ Route::put('players/{id}/update', [PlayerController::class, 'update'])->name('pl
 Route::delete('players/{id}',[PlayerController::class, 'destroy'])->name('players.destroy');
 Route::post('players/store', [PlayerController::class, 'store'])->name('players.store');
 Route::get('players', [PlayerController::class, 'index'])->name('players.index');
+Route::post('players/getPlayerValuesOfAttribute', [PlayerController::class, 'getPlayerValuesOfAttribute'])->name('players.getPlayerValuesOfAttribute');
+
 
 //COACHES
 Route::get('coaches/{id}', [CoachController::class, 'show'])->name('coaches.show');

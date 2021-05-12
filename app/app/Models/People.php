@@ -34,6 +34,7 @@ class People extends Model
         $columns = self::getColumnsWithoutTimeStamps();
         array_pop($columns);
         array_pop($columns);
+        array_pop($columns);
         array_push($columns, 'personable_type_name');
         return $columns;
     }
@@ -47,5 +48,15 @@ class People extends Model
             'show' => false
         ];
        return $buttonList;
+    }
+
+    public function getImagePathAttribute(){
+        if($this->image){
+            return '/images/people/'.$this->image;
+            return $this->image; //De momento para las imagenes del faker
+        }
+        else{
+            return '/images/people/default.jpg';
+        }
     }
 }

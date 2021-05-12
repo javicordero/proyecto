@@ -25,7 +25,8 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/modal/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alerts/alerts.css') }}">
+
 
     <!-- Datatables -->
     <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.css') }}" rel="stylesheet">

@@ -18,9 +18,9 @@
   <!-- NProgress -->
   <script src="{{ asset('vendors/nprogress/nprogress.js') }}"></script>
   <!-- Chart.js')}} -->
-  <script src="{{ asset('vendors/Chart.js') }}/dist/Chart.min.js')}}"></script>
+
   <!-- gauge.js')}} -->
-  <script src="{{ asset('vendors/gauge.js') }}/dist/gauge.min.js')}}"></script>
+  <script src="{{ asset('vendors/gauge.js') }}"></script>
   <!-- bootstrap-progressbar -->
   <script src="{{ asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
   <!-- iCheck -->
@@ -69,28 +69,13 @@
 
   <script src="{{ asset('js/app.js') }}"></script>
 
-
-
+  <!-- Line Chart -->
+  <script src="{{ asset('vendors/raphael/raphael.min.js') }} "></script>
+  <script src="{{ asset('vendors/morris.js/morris.min.js') }}"></script>
+  <script src="{{ asset('js/charts/charts.js') }}"></script>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Alerts -->
 
-  <!-- Muestra alerta de la operacion recibida -->
-  @if (session('status'))
-      <script>
-          $(document).ready(function() {
-              message = @json(session('status'));
-              console.log(message);
-              Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: message,
-                  showConfirmButton: false,
-                  timer: 1500
-              })
-          });
-
-      </script>
-  @endif
   </body>
 
   </html>

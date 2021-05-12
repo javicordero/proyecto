@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Coach;
 use App\Models\People;
+use App\Models\Player;
 use Illuminate\Http\Request;
+use App\Models\AttributeType;
 
 class CoachController extends Controller
 {
@@ -35,5 +37,13 @@ class CoachController extends Controller
         $coach->save();
 
         return PeopleController::store($request, $coach);
+    }
+
+    public function show($id){
+        $coach = Coach::find($id);
+        $person = $coach->person;
+        $data = compact('person');
+
+        return view('people.profile', compact('data'));
     }
 }

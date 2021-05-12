@@ -56,5 +56,19 @@ class Attribute extends Model
     }
 
 
+    public function getPlayerValuesOfAttribute($playerId){
+        $attribute =  $this->players()->wherePivot('player_id', $playerId)->get();
+        return $attribute;
+    }
+
+
+    //Devuelve el valor actual del atributo y el jugador pasandole el player id
+    public function getPlayerCurrentValue($playerId){
+        $attribute =  $this->players()->wherePivot('player_id', $playerId)->latest('date')->first();
+        return $attribute->pivot->value;
+    }
+
+
+
 
 }
