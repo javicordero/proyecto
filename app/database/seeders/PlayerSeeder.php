@@ -2,37 +2,59 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
+use Faker\Generator;
 use App\Models\People;
 use App\Models\Player;
 use App\Models\Attribute;
 use Illuminate\Database\Seeder;
+use Illuminate\Container\Container;
 
 class PlayerSeeder extends Seeder
 {
+     /**
+     * The current Faker instance.
+     *
+     * @var \Faker\Generator
+     */
+    protected $faker;
+
     /**
-     * Run the database seeds.
+     * Create a new seeder instance.
      *
      * @return void
      */
+    public function __construct(){
+        $this->faker = $this->withFaker();
+    }
+
+    /**
+     * Get a new Faker instance.
+     *
+     * @return \Faker\Generator
+     */
+    protected function withFaker(){
+        return Container::getInstance()->make(Generator::class);
+    }
+
     public function run()
     {
-        Player::factory()->count(1)->create();
+        Player::factory()->count(10)->create();
 
         $players = Player::all();
         foreach($players as $player){
             $person = People::factory()->create();
             $player->person()->save($person);
         }
-
-        //Crea
+        //Asigna valores random a los atributos del jugador en fechas distintas
         $attributes = Attribute::all();
         foreach($players as $player){
-            foreach($attributes as $attribute){
-                $player->attributes()->attach($attribute, ['value' => rand(1,20)]);
+            for($i = 0; $i < 8; $i++){
+                foreach($attributes as $attribute){
+                    $player->attributes()->attach($attribute, ['value' => rand(1,20), 'date' => $this->faker->date()]);
+                }
             }
-
         }
-
 
     }
 }

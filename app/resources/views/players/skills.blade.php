@@ -4,23 +4,18 @@
          <div class="col-md-3 col-xs-3">
              <h4>{{ $attribute_type->name }}</h4>
              @foreach ($attribute_type->attributes as $attribute)
-                 @if ($attribute->attribute_type_id == $attribute_type->id)
-                     <ul class="list-unstyled user_data">
-                         <li>
-                             <p>{{ $attribute->name }}</p>
-
-                             <div class="progress progress_sm">
-                                 <div class="progress-bar" role="progressbar"
-                                     data-transitiongoal="{{ $attribute->getPlayerCurrentValue($data['player']->id) * 5 }}"
-                                     data-attributeId="{{ $attribute->id }}"
-                                     data-playerId="{{ $data['player']->id }}"
-                                     data-csrf="{{ csrf_token() }}"
-                                     >
-                                 </div>
+                 <ul class="list-unstyled user_data">
+                     <li>
+                         <p>{{ $attribute->name }}</p>
+                         <div class="progress progress_sm">
+                             <div class="progress-bar" role="progressbar"
+                                 data-transitiongoal="{{ $attribute->getPlayerCurrentValue($data['player']->id) * 5 }}"
+                                 data-attributeId="{{ $attribute->id }}" data-playerId="{{ $data['player']->id }}"
+                                 data-csrf="{{ csrf_token() }}">
                              </div>
-                         </li>
-                     </ul>
-                 @endif
+                         </div>
+                     </li>
+                 </ul>
              @endforeach
          </div>
      @endforeach
@@ -42,4 +37,3 @@
      </div>
      <!-- /line graph -->
  </div>
-
