@@ -6,7 +6,9 @@ use App\Models\People;
 use App\Traits\GenericTable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Response;
 use App\Traits\CanGetTableNameStatically;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Controllers\GenericTableController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

@@ -6,6 +6,7 @@ use App\Traits\GenericTable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Coach extends Model
@@ -15,6 +16,8 @@ class Coach extends Model
     use CanGetTableNameStatically;
 
     use GenericTable;
+
+
 
     public static $title = 'Entrenadores';
 

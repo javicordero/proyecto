@@ -1,7 +1,7 @@
 $(".progress_sm").each(function () {
     $(this).click(function (e) {
 
-        $("#graph_line").children().remove();
+        $("#graph_line").children().remove(); //Borra la grafica anterior si la hubiera
         $('#panel-line-chart').css('display', 'block');
         let attributeId = $(this).children().attr('data-attributeId');
         let playerId = $(this).children().attr('data-playerId');

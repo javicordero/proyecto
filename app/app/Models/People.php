@@ -6,6 +6,7 @@ use App\Traits\GenericTable;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class People extends Model
 {
@@ -14,6 +15,7 @@ class People extends Model
     use CanGetTableNameStatically;
 
     use GenericTable;
+
 
     public static $title = 'Personas';
 
@@ -42,10 +44,10 @@ class People extends Model
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
     public static function getButtonList(){
         $buttonList = [
-            'create' => false,
+            'create' => true,
             'delete' => true,
-            'edit' => false,
-            'show' => false
+            'edit' => true,
+            'show' => true
         ];
        return $buttonList;
     }

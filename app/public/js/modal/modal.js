@@ -39,7 +39,7 @@ $("#create-modal").click(function () {
         processData: false,
         contentType: false,
         success: function (response) {
-            console.log(response);
+            //console.log(response);
             $("#divModal").html(response);
             $("#create").modal("show");
         },
@@ -75,7 +75,6 @@ $("#create-person").click(function (e) {
             } else if (result.isDenied) {
                 clase = "App\\Models\\Coach";
             }
-            console.log(clase);
             var formData = new FormData();
             formData.append("clase", clase);
             formData.append("_token", csrf);

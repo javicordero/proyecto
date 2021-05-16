@@ -36,14 +36,16 @@ class PlayerController extends Controller
     public function store(Request $request){
         $player = new Player();
         $player->size = $request->size;
-        $player->save();
+        //$player->save();
 
-        $attributes = Attribute::all();
+       /* $attributes = Attribute::all();
         foreach($attributes as $attribute){
             $player->attributes()->attach($attribute);
-        }
+        }*/
 
-        return PeopleController::store($request, $player);
+
+        //PeopleController::store($request, $player);
+        return back()->with(['status' => 'player-created']);
     }
 
     public function show($id){
@@ -80,6 +82,11 @@ class PlayerController extends Controller
 
         $data = compact('attribute', 'player', 'values');
         return $data;
+    }
+
+    public function getDataForPlayersCreateAttributes(){
+        $attribute_types = AttributeType::all();
+        return view('players.create-attributes', compact('attribute_types'));
     }
 
 }

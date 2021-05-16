@@ -4,7 +4,7 @@
 @section('contentHeader')
     <!-- page content -->
     <div class="right_col" role="main">
-        <div class="">
+        <div class="" id="csrf" data-csrf="{{ csrf_token() }}">
 
             <div class="clearfix"></div>
 
@@ -14,22 +14,20 @@
                         <div class="x_title">
                             <h2>{{ $data['title'] }}
                                 <span>
-                                    <!-- Botón crear para todas las tablas -->
                                     @if ($data['buttonList']['create'])
-                                        <button class="btn btn-success modal_id table-btn" id="create-modal" type="button"
+                                        <button class="btn btn-success modal_id table-btn"
+                                        @if ($data['tableName'] == 'people')
+                                        id="create-person"{{-- Id para crear los diferentes tipos de persona --}}
+                                        @else
+                                        id="create-modal" {{-- Para el resto de tablas --}}
+                                        @endif
+                                         type="button"
                                             data-class="{{ $data['class'] }}" data-csrf="{{ csrf_token() }}"
                                             type="button">
                                             Crear
                                         </button>
                                     @endif
 
-                                    <!-- Botón crear para tabla personas -->
-                                    @if ($data['class'] == 'App\Models\People')
-                                        <button class="btn btn-success table-btn" id="create-person"
-                                            data-csrf="{{ csrf_token() }}" type="button">
-                                            Crear
-                                        </button>
-                                    @endif
                                 </span>
                             </h2>
                             <div class="clearfix"></div>
@@ -38,7 +36,6 @@
                     @section('content')
                         <div class="x_content">
                             <p class="text-muted font-13 m-b-30">
-
                             </p>
                             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap"
                                 cellspacing="0" width="100%">
@@ -84,16 +81,27 @@
                                                         <div class="form-group">
                                                             <button
                                                                 class="btn btn-primary pull-right modal_id table-btn edit-modal"
-                                                                data-class="{{ $data['class'] }}"
-                                                                data-attrId="{{ $attribute->id }}"
-                                                                data-csrf="{{ csrf_token() }}" type="button">
+                                                                @if ($data['class'] == 'App\Models\People')
+                                                                    data-class="{{ $attribute->personable_type }}"
+                                                                    data-attrId="{{ $attribute->personable->id }}"
+                                                                @else
+                                                                    data-class="{{ $data['class'] }}"
+                                                                    data-attrId="{{ $attribute->id }}"
+                                                                @endif
+                                                                    data-csrf="{{ csrf_token() }}"
+                                                                type="button">
                                                                 Editar
                                                             </button>
                                                         </div>
                                                     @endif
                                                     @if ($data['buttonList']['show'])
                                                         <div class="form-group">
+                                                            @if($data['tableName'] == 'people')
+                                                            <a href="{{ route($attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}" {{-- Enlace para tabla desde People llegar al tipo de persona correcto  --}}
+                                                            @else
                                                             <a href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
+                                                            @endif
+
                                                                 class="btn btn-success pull-right modal_id table-btn">
                                                                 Ver
                                                             </a>
@@ -124,6 +132,7 @@
 
 @section('customJs')
 
+    <script src="{{ asset('js/modal/modal.js') }}"></script>
     <!-- Muestra alerta de la operacion recibida -->
     @if (session('status'))
         <script>
@@ -142,5 +151,28 @@
         </script>
     @endif
 
-    <script src="{{ asset('js/modal/modal.js') }}"></script>
+
+    @if (session('status'))
+        <script>
+            if(@json(session('status') == 'player-created')){
+                let csrf = $('#csrf').attr('data-csrf');
+                var formData = new FormData();
+                formData.append("_token", csrf);
+                $.ajax({
+                type: "post",
+                url: "/players/getDataForPlayersCreateAttributes",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                   // console.log(response);
+                    $("#divModal").html(response);
+                    $("#players-create-attributes").modal("show");
+                },
+            });
+            }
+        </script>
+    @endif
+
+
 @endsection

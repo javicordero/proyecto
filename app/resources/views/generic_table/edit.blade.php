@@ -43,7 +43,12 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="{{ $column }}" required="required"
                                                 class="form-control col-md-7 col-xs-12" @if ($column == 'id') readonly @endif
-                                                value="{{ $data['attribute']->$column }}">
+                                                @if($data['attribute']->$column != '')
+                                                value="{{  $data['attribute']->$column  }}"
+                                                @else
+                                                value="{{ $data['attribute']->person->$column }}" {{-- Rellena los datos para tipos de persona (Coaches || Players)  --}}
+                                                @endif
+                                                >
                                         </div>
                                     </div>
                                 </div>
