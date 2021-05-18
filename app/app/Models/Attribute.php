@@ -25,7 +25,7 @@ class Attribute extends Model
         return $this->belongsTo(Attribute::class);
     }
 
-    //Relacion N:M con People
+    //Relacion N:M con Player
     public function players(){
         return $this->belongsToMany(Player::class)->withPivot('value', 'date');
     }

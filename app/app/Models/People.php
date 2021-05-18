@@ -26,6 +26,16 @@ class People extends Model
         return $this->morphTo();
     }
 
+    //Relacion N:M con People
+    public function contracts(){
+        return $this->belongsToMany(Contract::class)->orderBy('contracts.date_start', 'desc');
+    }
+
+    //Devuelve el equipo actual de la persona
+    public function getCurrentTeamAttribute(){
+        return $this->contracts()->latest('date_start')->first()->team;
+    }
+
     //Atributo personable_type_name
     public function getPersonableTypeNameAttribute(){
         return $this->personable_type == Player::class ? 'Jugador' : 'Entrenador';
@@ -54,7 +64,7 @@ class People extends Model
 
     public function getImagePathAttribute(){
         if($this->image){
-            return '/images/people/'.$this->image;
+            //return '/images/people/'.$this->image;
             return $this->image; //De momento para las imagenes del faker
         }
         else{

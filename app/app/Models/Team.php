@@ -24,6 +24,12 @@ class Team extends Model
         return $this->belongsTo(Category::class);
     }
 
+
+    //Relacion 1:N con Tean (1: Team || N: Conctract)
+    public function contracts(){
+        return $this->hasMany(Contract::class);
+    }
+
     //Atributo attribute_type_name
     public function getCategoryNameAttribute(){
         $buscar = $this->category_id;

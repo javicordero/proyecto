@@ -7,6 +7,7 @@ use Faker\Generator;
 use App\Models\People;
 use App\Models\Player;
 use App\Models\Attribute;
+use App\Models\Contract;
 use Illuminate\Database\Seeder;
 use Illuminate\Container\Container;
 
@@ -39,13 +40,17 @@ class PlayerSeeder extends Seeder
 
     public function run()
     {
-        Player::factory()->count(10)->create();
+        Player::factory()->count(45)->create();
 
         $players = Player::all();
+        //Guarda una persona para cada jugador
         foreach($players as $player){
             $person = People::factory()->create();
             $player->person()->save($person);
+
+
         }
+
         //Asigna valores random a los atributos del jugador en fechas distintas
         $attributes = Attribute::all();
         foreach($players as $player){

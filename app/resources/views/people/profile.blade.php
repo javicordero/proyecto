@@ -8,7 +8,9 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Perfil de {{ $data['person']->personable_type_name }}<small></small></h2>
+                            <h2>Perfil de
+                                {{ $data['person']->personable_type_name }}<small>{{ $data['person']->currentTeam->name }}
+                                    (Nombre del equipo)</small></h2>
                             <div class="clearfix"></div>
                         </div>
                     @endsection
@@ -47,16 +49,18 @@
                                         <h2>User Activity Report</h2>
                                     </div>
                                     <div class="col-md-6">
-
                                     </div>
                                 </div>
                                 @if ($data['person']->personable_type_name == 'Jugador')
                                     @include('players.skills')
                                 @endif
+                                @include('people.historial')
+                                @if ($data['person']->personable_type_name == 'Jugador')
+                                    @include('players.skills-graph')
+                                @endif
                             </div>
                         </div>
                     @endsection
-
 
                     @section('contentCerrarDivs')
                     </div>

@@ -22,18 +22,4 @@
  </div>
  <!-- end of skills -->
 
- <div class="row">
-     <!-- line graph -->
-     <div class="col-md-10 col-sm-10 col-xs-12">
-         <div class="x_panel" id="panel-line-chart">
-             <div class="x_title">
-                 <h2 id="attributeName"><small id=""></small></h2>
-                 <div class="clearfix"></div>
-             </div>
-             <div class="x_content2">
-                 <div id="graph_line" style="width:100%; height:300px;"></div>
-             </div>
-         </div>
-     </div>
-     <!-- /line graph -->
- </div>
+

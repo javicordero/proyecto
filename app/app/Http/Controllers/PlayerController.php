@@ -52,8 +52,6 @@ class PlayerController extends Controller
 
         $attribute = Attribute::find(1);
 
-        //return $attribute->getPlayerValuesOfAttribute(4);
-
 
 
         $player = Player::find($id);
