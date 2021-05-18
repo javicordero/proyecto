@@ -26,9 +26,9 @@ class People extends Model
         return $this->morphTo();
     }
 
-    //Relacion N:M con People
+    //Relacion 1:N con Contract (1: People || N: Conctract)
     public function contracts(){
-        return $this->belongsToMany(Contract::class)->orderBy('contracts.date_start', 'desc');
+        return $this->hasMany(Contract::class)->latest('date_start');
     }
 
     //Devuelve el equipo actual de la persona

@@ -44,25 +44,28 @@ class PeopleSeeder extends Seeder
         foreach($people as $person){
         $contract1 = new Contract();
         $contract1->team_id = rand(1,5);
+        $contract1->person_id = $person->id;
         $contract1->date_start = $this->faker->dateTimeThisDecade();
         $contract1->date_end = $this->faker->dateTimeBetween($contract1->date_start, now());
         $contract1->save();
 
         $contract2 = new Contract();
         $contract2->team_id = rand(1,5);
+        $contract2->person_id = $person->id;
         $contract2->date_start = $contract1->date_end;
         $contract2->date_end = $this->faker->dateTimeBetween($contract2->date_start, now());
         $contract2->save();
 
         $contract3 = new Contract();
         $contract3->team_id = rand(1,5);
+        $contract3->person_id = $person->id;
         $contract3->date_start = $contract2->date_end;
-        $contract3->date_end = $this->faker->dateTimeBetween($contract3->date_start, now());
+        //$contract3->date_end = $this->faker->dateTimeBetween($contract3->date_start, now());
         $contract3->save();
 
-        $person->contracts()->attach($contract1);
-        $person->contracts()->attach($contract2);
-        $person->contracts()->attach($contract3);
+        //$person->contracts()->associate($contract1);
+        //$person->contracts()->associate($contract2);
+        //$person->contracts()->associate($contract3);
         }
     }
 }

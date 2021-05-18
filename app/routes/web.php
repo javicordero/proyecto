@@ -71,6 +71,7 @@ Route::get('coaches', [CoachController::class, 'index'])->name('coaches.index');
 Route::put('teams/{id}/update', [TeamController::class, 'update'])->name('teams.update');
 Route::delete('teams/{id}',[TeamController::class, 'destroy'])->name('teams.destroy');
 Route::post('teams/store', [TeamController::class, 'store'])->name('teams.store');
+Route::get('teams/{id}', [TeamController::class, 'show'])->name('teams.show');
 Route::get('teams', [TeamController::class, 'index'])->name('teams.index');
 
 //CATEGORIES

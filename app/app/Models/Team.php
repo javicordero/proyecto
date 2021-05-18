@@ -38,13 +38,21 @@ class Team extends Model
         return $name;
     }
 
+
+    //Devuelve los contratos que estan actualmente en el equipo
+    public function getCurrentContracts(){
+        $contracts =  $this->contracts()->where('date_end', null)->get();
+        return $contracts;
+    }
+
+
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
     public static function getButtonList(){
         $buttonList = [
             'create' => true,
             'delete' => true,
             'edit' => true,
-            'show' => false
+            'show' => true
         ];
        return $buttonList;
     }

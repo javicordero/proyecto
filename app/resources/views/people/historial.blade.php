@@ -20,7 +20,7 @@
                             <tr>
                                 <td>{{ $contract->team->name }}</td>
                                 <td>{{ $contract->date_start->format('d-m-Y') }}</td>
-                                <td>{{ $contract->date_end->format('d-m-Y') }}</td>
+                                <td>{{ $contract->date_end ? $contract->date_end->format('d-m-Y') : 'Actual' }}</td>
                             </tr>
                         @endforeach
                     </tbody>

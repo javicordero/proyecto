@@ -23,4 +23,10 @@ class TeamController extends Controller
         return Team::storeGeneric($request);
     }
 
+    public function show($id){
+        $team = Team::find($id);
+        $contracts = $team->getCurrentContracts();
+        $data = compact('team', 'contracts');
+        return view('teams.show', compact('data'));
+    }
 }
