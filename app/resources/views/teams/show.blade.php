@@ -10,6 +10,9 @@
                         <div class="x_title">
                             <h2>{{ $data['team']->name }}</h2>
                             <div class="clearfix"></div>
+                            <button class="btn btn-success table-btn" id="btn-modal-practices"
+                            data-teamId="{{ $data['team']->id }}" data-csrf="{{ csrf_token() }}"
+                            >Calendario entrenamientos</button>
                         </div>
                     @endsection
 
@@ -36,7 +39,9 @@
                             </table>
                         </div>
                     @endsection
+                    <div id="divModal">
 
+                    </div>
                     @section('contentCerrarDivs')
                     </div>
                 </div>
@@ -44,4 +49,9 @@
         </div>
     </div>
     <!-- /page content -->
+@endsection
+
+
+@section('customJs')
+    <script src="{{ asset('js/modal/modal.js') }}"></script>
 @endsection

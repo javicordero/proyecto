@@ -13,4 +13,7 @@
 
 @include('layouts.footer')
 
+@include('layouts.jsIncludes')
+
 @yield('customJs')
+

@@ -92,3 +92,28 @@ $("#create-person").click(function (e) {
             });
         });
 });
+
+
+
+//Modal practices
+$("#btn-modal-practices").click(function () {
+    let teamId = $(this).attr("data-teamId");
+    let csrf = $(this).attr("data-csrf");
+
+    var formData = new FormData();
+    formData.append("teamId", teamId);
+    formData.append("_token", csrf);
+    //alert(attrId);
+    $.ajax({
+        type: "post",
+        url: "/team/getViewForPracticesModal",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            //console.log(response);
+            $("#divModal").html(response);
+            $("#practices-modal").modal("show");
+        },
+    });
+});

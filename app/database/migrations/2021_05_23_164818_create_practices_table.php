@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContractsTable extends Migration
+class CreatePracticesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('practices', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('people_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->date('date_start')->default(now());
-            $table->date('date_end')->nullable();
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('practices');
     }
 }

@@ -26,6 +26,6 @@ class Contract extends Model
 
    //Relacion 1:N con People (1: People || N: Conctract)
     public function person(){
-        return $this->belongsTo(People::class, 'person_id');
+        return $this->belongsTo(People::class);
     }
 }

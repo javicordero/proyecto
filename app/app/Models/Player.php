@@ -35,6 +35,11 @@ class Player extends Model
         return $this->belongsToMany(Attribute::class)->withPivot('value', 'date');
     }
 
+    //Relacion N:M con Practice
+     public function practices(){
+        return $this->belongsToMany(Practice::class)->withPivot('presence');
+    }
+
     //Sobreescribe el método getAll de la Tabla Genérica y devuelve todos los datos para mostrarlos
     public static function getAll(){
         return DB::table('People')->where('personable_type', Player::class)->join('players', 'players.id', 'people.personable_id')->get();

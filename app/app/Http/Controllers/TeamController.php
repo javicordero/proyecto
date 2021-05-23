@@ -29,4 +29,8 @@ class TeamController extends Controller
         $data = compact('team', 'contracts');
         return view('teams.show', compact('data'));
     }
+
+    public function practicesView(Request $request){
+        return view('teams.practices');
+    }
 }

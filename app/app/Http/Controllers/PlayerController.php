@@ -36,7 +36,7 @@ class PlayerController extends Controller
     public function store(Request $request){
         $player = new Player();
         $player->size = $request->size;
-        //$player->save();
+        $player->save();
 
        /* $attributes = Attribute::all();
         foreach($attributes as $attribute){
@@ -44,8 +44,8 @@ class PlayerController extends Controller
         }*/
 
 
-        //PeopleController::store($request, $player);
-        return back()->with(['status' => 'player-created']);
+        return PeopleController::store($request, $player);
+       // return back()->with(['status' => 'player-created']);
     }
 
     public function show($id){
@@ -61,6 +61,8 @@ class PlayerController extends Controller
 
         $data = compact('attribute_types', 'person', 'player');
 
+        //return $person->contracts;
+
         return view('people.profile', compact('data'));
     }
 
@@ -68,17 +70,18 @@ class PlayerController extends Controller
 
     public function getPlayerValuesOfAttribute(Request $request){
 
-        $attribute = Attribute::find($request->attributeId);
         $player = Player::find($request->playerId);
 
-        foreach($attribute->getPlayerValuesOfAttribute($player->id) as $at){
-            $values [] = [
+        foreach($player->attributes as $at){
+            $attributes [] = [
+                'id' => $at->id,
+                'name' => $at->name,
                 'value' => $at->pivot->value,
                 'date' => $at->pivot->date
             ];
         }
 
-        $data = compact('attribute', 'player', 'values');
+        $data = compact('attributes', 'player');
         return $data;
     }
 

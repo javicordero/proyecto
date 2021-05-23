@@ -25,9 +25,14 @@ class Team extends Model
     }
 
 
-    //Relacion 1:N con Tean (1: Team || N: Conctract)
+    //Relacion 1:N con Contract (1: Team || N: Conctract)
     public function contracts(){
         return $this->hasMany(Contract::class);
+    }
+
+    //Relacion 1:N con Practice (1: Team || N: Practice)
+    public function practices(){
+        return $this->hasMany(Practice::class);
     }
 
     //Atributo attribute_type_name

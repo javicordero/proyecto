@@ -44,7 +44,7 @@
                                 <br />
                             </div>
                             <div class="col-md-10 col-sm-10 col-xs-12">
-                                <div class="profile_title">
+                                <div class="profile_title mb-2">
                                     <div class="col-md-6">
                                         <h2>User Activity Report</h2>
                                     </div>
@@ -53,10 +53,11 @@
                                 </div>
                                 @if ($data['person']->personable_type_name == 'Jugador')
                                     @include('players.skills')
+
                                 @endif
                                 @include('people.historial')
                                 @if ($data['person']->personable_type_name == 'Jugador')
-                                    @include('players.skills-graph')
+
                                 @endif
                             </div>
                         </div>

@@ -1,24 +1,16 @@
-$(".progress_sm").each(function () {
-    $(this).click(function (e) {
+$(document).ready(function () {
 
-        $("#graph_line").children().remove(); //Borra la grafica anterior si la hubiera
-        $('#panel-line-chart').css('display', 'block');
-        let attributeId = $(this).children().attr('data-attributeId');
-        let playerId = $(this).children().attr('data-playerId');
-        let csrf = $(this).children().attr('data-csrf');
-        recogerValores(attributeId, playerId, csrf);
+        //$('#panel-line-chart').show();
+        let csrf = $('.progress-bar').attr('data-csrf');
+        let playerId = 1;
+        console.log(csrf);
 
-    });
-    $(this).hover(function () {
-        $(this).css("cursor", "pointer"); //Cambia el cursor al hover
-    });
+            recogerValores(playerId, csrf)
 });
 
-
 //Realiza una petición ajax que devuelve los valores del atributo y el jugador enviados
-function recogerValores(attributeId, playerId, csrf) {
+function recogerValores(playerId, csrf) {
     var formData = new FormData();
-    formData.append('attributeId', attributeId);
     formData.append('playerId', playerId)
     formData.append('_token', csrf);
     $.ajax({
@@ -31,6 +23,7 @@ function recogerValores(attributeId, playerId, csrf) {
         processData: false,
         contentType: false,
         success: function(resp) {
+            console.log(resp);
             pintarGrafica(resp);
             //console.log(resp);
 
@@ -45,7 +38,7 @@ function recogerValores(attributeId, playerId, csrf) {
     })
 }
 
-function pintarGrafica(data) {
+/*function pintarGrafica(data) {
     console.log(data);
     Morris.Line({
         element: "graph_line",
@@ -60,9 +53,53 @@ function pintarGrafica(data) {
 
     $('#attributeName').html(data.attribute.name);
     //$('#attributeTypeName').html('Aa');
+}*/
+
+
+function pintarGrafica(data) {
+    console.log(data.attributes);
+
+    var ctx = document.getElementById("lineChart");
+    let datasetValue = [];
+    let i = 0;
+    data.attributes.forEach(element => {
+        console.log(element.name);
+        datasetValue[i] = {
+            label: element.name,
+        }
+        i ++;
+    });
+
+
+
+    var lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.attributes.map(item => item.date),
+        datasets: [
+        {
+          label: datasetValue,
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [31, 74, 6, 39, 20, 85, 7]
+        },
+    ]
+      },
+    });
+
+    //$('#attributeName').html(data.attribute.name);
+    //$('#attributeTypeName').html('Aa');
 }
 
 
 $(document).ready(function () {
-   $('#panel-line-chart').css('display', 'none');
+
 });
+
+
+

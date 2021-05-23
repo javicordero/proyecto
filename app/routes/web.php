@@ -73,6 +73,7 @@ Route::delete('teams/{id}',[TeamController::class, 'destroy'])->name('teams.dest
 Route::post('teams/store', [TeamController::class, 'store'])->name('teams.store');
 Route::get('teams/{id}', [TeamController::class, 'show'])->name('teams.show');
 Route::get('teams', [TeamController::class, 'index'])->name('teams.index');
+Route::post('team/getViewForPracticesModal', [TeamController::class, 'practicesView'])->name('teams.practicesView');
 
 //CATEGORIES
 Route::put('categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');

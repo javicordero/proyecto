@@ -11,26 +11,23 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title">
-                            <h2>{{ $data['title'] }}
-                                <span>
-                                    @if ($data['buttonList']['create'])
-                                        <button class="btn btn-success modal_id table-btn"
-                                        @if ($data['tableName'] == 'people')
-                                        id="create-person"{{-- Id para crear los diferentes tipos de persona --}}
-                                        @else
-                                        id="create-modal" {{-- Para el resto de tablas --}}
-                                        @endif
-                                         type="button"
-                                            data-class="{{ $data['class'] }}" data-csrf="{{ csrf_token() }}"
-                                            type="button">
-                                            Crear
-                                        </button>
-                                    @endif
-
-                                </span>
-                            </h2>
-                            <div class="clearfix"></div>
+                        <div class="x_title index-title">
+                            <div class="index-title-title">
+                                <h2>{{ $data['title'] }}
+                                </h2>
+                            </div>
+                            <div class="index-title-button">
+                                @if ($data['buttonList']['create'])
+                                    <button class="btn btn-success modal_id " @if ($data['tableName'] == 'people') id="create-person"
+                                    @else
+                                                    id="create-modal" {{-- Para el resto de tablas --}} @endif
+                                        type="button" data-class="{{ $data['class'] }}" data-csrf="{{ csrf_token() }}"
+                                        type="button">
+                                        Nuevo
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                @endif
+                            </div>
                         </div>
                     @endsection
                     @section('content')
@@ -73,38 +70,37 @@
                                                         <div class="form-group">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn btn-danger del_id table-btn" type="submit"
-                                                                data-attrId="{{ $attribute->id }}">Borrar</button>
+                                                            <button class=" del_id table-btn table-btn-danger" type="submit"
+                                                                data-attrId="{{ $attribute->id }}"><i
+                                                                    class="fa fa-trash"></i></button>
                                                         </div>
                                                     @endif
                                                     @if ($data['buttonList']['edit'])
                                                         <div class="form-group">
                                                             <button
-                                                                class="btn btn-primary pull-right modal_id table-btn edit-modal"
-                                                                @if ($data['class'] == 'App\Models\People')
-                                                                    data-class="{{ $attribute->personable_type }}"
-                                                                    data-attrId="{{ $attribute->personable->id }}"
+                                                                class="pull-right modal_id table-btn edit-modal table-btn-warning"
+                                                                @if ($data['class'] == 'App\Models\People') data-class="{{ $attribute->personable_type }}"
+                                                                                        data-attrId="{{ $attribute->personable->id }}"
                                                                 @else
-                                                                    data-class="{{ $data['class'] }}"
-                                                                    data-attrId="{{ $attribute->id }}"
-                                                                @endif
-                                                                    data-csrf="{{ csrf_token() }}"
-                                                                type="button">
-                                                                Editar
+                                                                                        data-class="{{ $data['class'] }}"
+                                                                                        data-attrId="{{ $attribute->id }}" @endif
+                                                                data-csrf="{{ csrf_token() }}" type="button">
+                                                                <i class="fa fa-pencil"></i>
                                                             </button>
                                                         </div>
                                                     @endif
                                                     @if ($data['buttonList']['show'])
                                                         <div class="form-group">
-                                                            @if($data['tableName'] == 'people')
-                                                            <a href="{{ route($attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}" {{-- Enlace para tabla desde People llegar al tipo de persona correcto  --}}
-                                                            @else
-                                                            <a href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
-                                                            @endif
+                                                            @if ($data['tableName'] == 'people')
+                                                                <a href="{{ route($attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}"
+                                                                {{-- Enlace para tabla desde People llegar al tipo de persona correcto --}} @else <a
+                                                                    href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
+                                                                    @endif
 
-                                                                class="btn btn-success pull-right modal_id table-btn">
-                                                                Ver
-                                                            </a>
+                                                                    class="pull-right modal_id table-btn table-btn-success">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+
                                                         </div>
                                                     @endif
                                                 </form>
@@ -154,23 +150,24 @@
 
     @if (session('status'))
         <script>
-            if(@json(session('status') == 'player-created')){
+            if (@json(session('status') == 'player-created')) {
                 let csrf = $('#csrf').attr('data-csrf');
                 var formData = new FormData();
                 formData.append("_token", csrf);
                 $.ajax({
-                type: "post",
-                url: "/players/getDataForPlayersCreateAttributes",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                   // console.log(response);
-                    $("#divModal").html(response);
-                    $("#players-create-attributes").modal("show");
-                },
-            });
+                    type: "post",
+                    url: "/players/getDataForPlayersCreateAttributes",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // console.log(response);
+                        $("#divModal").html(response);
+                        $("#players-create-attributes").modal("show");
+                    },
+                });
             }
+
         </script>
     @endif
 
