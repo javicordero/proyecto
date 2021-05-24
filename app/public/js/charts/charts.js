@@ -23,7 +23,7 @@ function recogerValores(playerId, csrf) {
         processData: false,
         contentType: false,
         success: function(resp) {
-            console.log(resp);
+            //console.log(resp);
             pintarGrafica(resp);
             //console.log(resp);
 
@@ -57,49 +57,62 @@ function recogerValores(playerId, csrf) {
 
 
 function pintarGrafica(data) {
-    console.log(data.attributes);
+    console.log(data);
+
+    let i = 0;
+    let datasetValue = [];
+    let j = 0;
+    let valores = [];
+    let dates = [];
+
+    while(data[0][j] != undefined){
+        dates.push(data[0][j].date);
+        j++;
+    }
+   
+
+    while(data[i] != undefined){
+       // console.log(data[i][0].value);
+        let name = data[i].name
+        valores = [];
+        j = 0;
+        while(data[i][j] != undefined){
+            valores.push(data[i][j].value);
+            j++;
+        }
+        console.log(valores);
+        i++;
+        
+        datasetValue[i] = {
+            label: name,
+            data: valores,
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+        }
+    }
+    
+    datasetValue.shift()
+   // console.log(datasetValue);
 
     var ctx = document.getElementById("lineChart");
-    let datasetValue = [];
-    let i = 0;
-    data.attributes.forEach(element => {
-        console.log(element.name);
-        datasetValue[i] = {
-            label: element.name,
-        }
-        i ++;
-    });
-
-
 
     var lineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: data.attributes.map(item => item.date),
-        datasets: [
-        {
-          label: datasetValue,
-          backgroundColor: "rgba(38, 185, 154, 0.31)",
-          borderColor: "rgba(38, 185, 154, 0.7)",
-          pointBorderColor: "rgba(38, 185, 154, 0.7)",
-          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointBorderWidth: 1,
-          data: [31, 74, 6, 39, 20, 85, 7]
-        },
-    ]
+        labels: dates,
+        datasets: datasetValue
       },
     });
 
-    //$('#attributeName').html(data.attribute.name);
-    //$('#attributeTypeName').html('Aa');
+    
 }
 
 
-$(document).ready(function () {
-
-});
 
 
 

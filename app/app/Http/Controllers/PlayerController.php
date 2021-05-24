@@ -72,16 +72,24 @@ class PlayerController extends Controller
 
         $player = Player::find($request->playerId);
 
-        foreach($player->attributes as $at){
-            $attributes [] = [
-                'id' => $at->id,
-                'name' => $at->name,
-                'value' => $at->pivot->value,
-                'date' => $at->pivot->date
+        $attributes = Attribute::all();
+        $i = 0;
+        foreach($attributes as $attribute){
+            $datos [$i] = [
+                'id' => $attribute->id,
+                'name' => $attribute->name
             ];
+            foreach($attribute->getPlayerValuesOfAttribute($player->id) as $at){
+                $datos [$i][] = [
+                    'value' => $at->pivot->value,
+                    'date' => $at->pivot->date,
+                ];
+            }
+            $i++;
         }
 
-        $data = compact('attributes', 'player');
+        return $datos;
+        $data = compact('datos', 'player');
         return $data;
     }
 
