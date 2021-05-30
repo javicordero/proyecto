@@ -39,7 +39,7 @@ class People extends Model
 
     //Devuelve el equipo actual de la persona
     public function getCurrentTeamAttribute(){
-        return $this->current_contratct ? $this->current_contratct->team : false;
+        return $this->current_contract ? $this->current_contract->team : false;
     }
 
     //Atributo personable_type_name

@@ -145,7 +145,6 @@ $(".move-player-modal").click(function () {
         processData: false,
         contentType: false,
         success: function (response) {
-           // console.log(response);
             $("#divModal").html(response);
             $("#posible-teams-modal").modal("show");
         },
