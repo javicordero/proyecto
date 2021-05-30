@@ -22,13 +22,8 @@ class CoachController extends Controller
         return back()->with('status', 'Entrenador eliminado');
     }
 
-    public static function update(Request $request, $id){
-        $coach = Coach::find($id);
-        $coach->license = $request->license;
-        $coach->save();
-
-        $person = $coach->person;
-        return PeopleController::update($request, $person->id);
+    public function create(){
+        return view('coaches.create');
     }
 
     public function store(Request $request){
@@ -38,6 +33,23 @@ class CoachController extends Controller
 
         return PeopleController::store($request, $coach);
     }
+
+    public function edit(Request $request){
+        $coach = Coach::find($request->attributeId);
+        $data = compact('coach');
+        return view('coaches.edit', compact('data'));
+    }
+
+    public static function update(Request $request, $id){
+        $coach = Coach::find($id);
+        $coach->license = $request->license;
+        $coach->save();
+        $person = $coach->person;
+
+        return PeopleController::update($request, $person->id);
+    }
+
+
 
     public function show($id){
         $coach = Coach::find($id);

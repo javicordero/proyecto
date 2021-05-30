@@ -14,10 +14,6 @@ class Contract extends Model
 
     protected $dates = ['date_start', 'date_end'];
 
-    protected $casts = [
-        'date_start' => 'datetime:d/m/Y', // Change your format
-        'date_end' => 'datetime:d/m/Y',
-    ];
 
     //Relacion 1:N con Tean (1: Team || N: Conctract)
     public function team(){

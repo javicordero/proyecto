@@ -24,7 +24,8 @@ class ContractFactory extends Factory
         return [
             'people_id' => rand(1,15),
             'date_start' => $this->faker->dateTimeThisDecade(),
-            'date_end' =>  $this->faker->dateTimeThisDecade()
+            'date_end' =>  $this->faker->dateTimeThisDecade(),
+            'number' => random_int(0,99),
         ];
     }
 }

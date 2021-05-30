@@ -45,9 +45,6 @@
                                 <li><a href="{{ route('teams.index') }}"><i class="fa fa-bar-chart"></i>
                                         Equipos</a>
                                 </li>
-                                <li><a href="{{ route('categories.index') }}"><i class="fa fa-bar-chart"></i>
-                                        Categorías</a>
-                                </li>
                                 <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="form.html">General Form</a></li>

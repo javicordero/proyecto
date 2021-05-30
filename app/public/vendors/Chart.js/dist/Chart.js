@@ -10112,7 +10112,7 @@
 		};
 		const fillText = function(x, y, legendItem) {
 		  renderText(ctx, legendItem.text, x, y + (itemHeight / 2), labelFont, {
-			strikethrough: legendItem.hidden,
+			//strikethrough: legendItem.hidden,
 			textAlign: legendItem.textAlign
 		  });
 		};

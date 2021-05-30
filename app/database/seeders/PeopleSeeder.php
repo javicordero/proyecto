@@ -40,24 +40,19 @@ class PeopleSeeder extends Seeder
     {
         //Crea 3 contratos para cada persona
         $people = People::all();
-
+/*
         foreach($people as $person){
-        $contract1 = new Contract();
-        $contract1->team_id = rand(1,5);
-        $contract1->people_id = $person->id;
-        $contract1->date_start = $this->faker->dateTimeThisDecade();
-        $contract1->date_end = $this->faker->dateTimeBetween($contract1->date_start, now());
-        $contract1->save();
+       /*
 
         $contract2 = new Contract();
-        $contract2->team_id = rand(1,5);
+        $contract2->team_id = rand(1,4);
         $contract2->people_id = $person->id;
         $contract2->date_start = $contract1->date_end;
         $contract2->date_end = $this->faker->dateTimeBetween($contract2->date_start, now());
         $contract2->save();
 
         $contract3 = new Contract();
-        $contract3->team_id = rand(1,5);
+        $contract3->team_id = rand(1,4);
         $contract3->people_id = $person->id;
         $contract3->date_start = $contract2->date_end;
         //$contract3->date_end = $this->faker->dateTimeBetween($contract3->date_start, now());
@@ -66,6 +61,6 @@ class PeopleSeeder extends Seeder
         //$person->contracts()->associate($contract1);
         //$person->contracts()->associate($contract2);
         //$person->contracts()->associate($contract3);
-        }
+        }*/
     }
 }

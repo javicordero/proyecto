@@ -18,10 +18,11 @@ class CreatePeopleTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('phone');
-
+            $table->date('birth_date')->nullable();
+            $table->enum('gender', ['masculino', 'femenino']);
+            $table->string('image')->nullable();
             $table->string('personable_type')->nullable();
             $table->unsignedBigInteger('personable_id')->nullable();
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

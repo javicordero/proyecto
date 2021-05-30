@@ -14,6 +14,6 @@ class AttributeTypeSeeder extends Seeder
      */
     public function run()
     {
-        AttributeType::factory()->count(2)->hasAttributes(2)->create();
+        AttributeType::factory()->count(3)->hasAttributes(4)->create();
     }
 }

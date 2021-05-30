@@ -1,8 +1,10 @@
 //Muestra modal de editar
-$(".edit-modal").click(function (e) {
+$('#datatable-responsive tbody').on('click', '.edit-modal', function () {
     let clase = $(this).attr("data-class");
     let attributeId = $(this).attr("data-attrId");
     let csrf = $(this).attr("data-csrf");
+    let tableName = $(this).attr("data-tableName");
+    let url = tableName + '/edit';
 
     var formData = new FormData();
     formData.append("attributeId", attributeId);
@@ -11,40 +13,43 @@ $(".edit-modal").click(function (e) {
     //alert(attrId);
     $.ajax({
         type: "post",
-        url: "/table/getDataForEditModal",
+        url: url,
         data: formData,
         processData: false,
         contentType: false,
         success: function (response) {
             console.log(response);
             $("#divModal").html(response);
-            $("#edit").modal("show");
+            $("#modal").modal("show");
         },
     });
 });
 
-//Muestra modal de editar
+//Muestra modal de crear
 $("#create-modal").click(function () {
     let clase = $(this).attr("data-class");
     let csrf = $(this).attr("data-csrf");
+    let tableName = $(this).attr("data-tableName");
+    let url = tableName + '/create';
 
     var formData = new FormData();
     formData.append("clase", clase);
     formData.append("_token", csrf);
-    //alert(attrId);
     $.ajax({
         type: "post",
-        url: "/table/getDataForCreateModal",
+        url: url,
         data: formData,
         processData: false,
         contentType: false,
         success: function (response) {
             //console.log(response);
             $("#divModal").html(response);
-            $("#create").modal("show");
+            $("#modal").modal("show");
         },
     });
 });
+
+
 
 //Muestra modal para elegir que tipo de persona quiere crear
 $("#create-person").click(function (e) {
@@ -71,23 +76,23 @@ $("#create-person").click(function (e) {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                clase = "App\\Models\\Player";
+                tableName = "players"
             } else if (result.isDenied) {
-                clase = "App\\Models\\Coach";
+                tableName = "coaches"
             }
+            let url = tableName + "/create";
             var formData = new FormData();
-            formData.append("clase", clase);
             formData.append("_token", csrf);
             $.ajax({
                 type: "post",
-                url: "/table/getDataForCreateModal",
+                url: url,
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function (response) {
-                    console.log(response);
+                  //  console.log(response);
                     $("#divModal").html(response);
-                    $("#create").modal("show");
+                    $("#modal").modal("show");
                 },
             });
         });
@@ -106,7 +111,7 @@ $("#btn-modal-practices").click(function () {
     //alert(attrId);
     $.ajax({
         type: "post",
-        url: "/team/getViewForPracticesModal",
+        url: "/teams/getViewForPracticesModal",
         data: formData,
         processData: false,
         contentType: false,
@@ -114,6 +119,29 @@ $("#btn-modal-practices").click(function () {
             //console.log(response);
             $("#divModal").html(response);
             $("#practices-modal").modal("show");
+        },
+    });
+});
+
+
+//Modal mover jugador de equipo
+$('#datatable-responsive tbody').on('click', '.move-player-modal ', function () {
+    let csrf = $(this).attr("data-csrf");
+    let personId = $(this).attr("data-personId");
+
+    var formData = new FormData();
+    formData.append("personId", personId);
+    formData.append("_token", csrf);
+    $.ajax({
+        type: "post",
+        url: "/teams/getPosibleTeamsForPlayer",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+           // console.log(response);
+            $("#divModal").html(response);
+            $("#posible-teams-modal").modal("show");
         },
     });
 });

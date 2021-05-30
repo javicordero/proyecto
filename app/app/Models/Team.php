@@ -24,7 +24,6 @@ class Team extends Model
         return $this->belongsTo(Category::class);
     }
 
-
     //Relacion 1:N con Contract (1: Team || N: Conctract)
     public function contracts(){
         return $this->hasMany(Contract::class);
@@ -35,7 +34,12 @@ class Team extends Model
         return $this->hasMany(Practice::class);
     }
 
-    //Atributo attribute_type_name
+    //Relacion 1:N con Game (1: Team || N: Game)
+    public function ganmes(){
+        return $this->hasMany(Team::class);
+    }
+
+    //Atributo category_name
     public function getCategoryNameAttribute(){
         $buscar = $this->category_id;
         $id = Category::find($buscar);
@@ -43,11 +47,31 @@ class Team extends Model
         return $name;
     }
 
+    //Atributo name
+    public function getNameAttribute(){
+        return $this->category->name.' '.$this->gender.' '.$this->nickname;
+    }
+
+
 
     //Devuelve los contratos que estan actualmente en el equipo
     public function getCurrentContracts(){
         $contracts =  $this->contracts()->where('date_end', null)->get();
         return $contracts;
+    }
+
+
+    //Devuelve los jugadores actuales del equipo
+    public function getCurrentPlayers(){
+        $contracts = $this->getCurrentContracts();
+        foreach($contracts as $contract){
+            $person = People::find($contract->people_id);
+            if($person->personable_type == 'App\\Models\\Player'){
+                $players[] = $person;
+            }
+
+        }
+        return $players;
     }
 
 
@@ -65,5 +89,11 @@ class Team extends Model
     //Devuelve un array para crear un select con los distintos valores de la tabla AttributeType
     public static function getSelectOptions(){
         return Category::pluck('name', 'id')->all();
+    }
+
+    //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
+    public static function getColumnsForShow(){
+        $columns = ['id','name'];
+        return $columns;
     }
 }

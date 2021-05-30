@@ -40,5 +40,8 @@
     "attribute_type_name": "Tipo de atributo",
     "license": "Licencia",
     "size": "Altura",
-    "category_name": "Categoría"
+    "category_name": "Categoría",
+    "birth_date": "Fecha de nacimiento",
+    "number": "Número",
+    "gender": "Sexo"
 }

@@ -11,6 +11,7 @@
                 </div>
                 <div class="modal-body">
                     @foreach ($data['columns'] as $column)
+                    {{-- Crea los select --}}
                         @if (is_array($column))
                             @foreach ($column as $columnKey => $columnValue)
                             <div class="form-group">
@@ -18,7 +19,7 @@
                                     <div class="col-12">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">{{ __($columnValue) }}</label>
                                         <div class="col-md-6 col-sm-6 col-xs-1">
-                                          <select class="form-control" name="{{ $columnKey }}">
+                                          <select class="form-control" name="{{ $columnKey }}" required="required">
                                             <option value="" disabled selected>Selecciona una valor</option>
                                             @foreach ($data['selectOptions'] as $selectKey => $selectValue)
                                                 <option value="{{ $selectKey }}"
@@ -33,6 +34,7 @@
                                 </div>
                               </div>
                             @endforeach
+                            {{-- Crea los inputs text --}}
                         @else
                             <div class="form-group">
                                 <div class="row">

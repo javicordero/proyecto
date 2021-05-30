@@ -33,3 +33,19 @@
 .mb-2{
     margin-bottom: 8px;
 }
+
+.ml-2{
+    margin-left: 8px;
+}
+
+.x_title {
+    color: #2A3F54;
+}
+
+.attribute-type{
+   color: black;
+}
+
+.text-center{
+    text-align: center !important;
+}

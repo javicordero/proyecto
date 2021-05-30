@@ -19,11 +19,10 @@ trait GenericTable
         $class = self::class;
         $title = self::getTitle();
         $columns = self::getColumnsForShow();
-        $selectOptions = self::getSelectOptions();
         $all = self::getAll();
         $titleSingular = self::$titleSingular;
         $buttonList = self::getButtonList();
-        return compact('tableName', 'class', 'title', 'columns', 'selectOptions', 'all', 'titleSingular', 'buttonList');
+        return compact('tableName', 'class', 'title', 'columns', 'all', 'titleSingular', 'buttonList');
     }
 
     //Devuelve todos los datos de la tabla
@@ -58,11 +57,6 @@ trait GenericTable
         return self::$title;
     }
 
-    //Se debe sobreescribir en las clases que lo necesiten para obtener un array para crear un select
-    public static function getSelectOptions(){
-        return null;
-    }
-
     //Elimina el campo de la tabla correspondiente
     public static function deleteGeneric($id){
         $data = self::getData();
@@ -72,35 +66,6 @@ trait GenericTable
         return back()->with('status', $data['titleSingular'].' eliminado');
     }
 
-     //Guarda el campo de la tabla correspondiente
-     public static function storeGeneric($request){
-        $data = self::getData();
-        $data['columns'] = self::getColumnsWithoutTimeStamps();
-
-        $table = new $data['class'];
-        foreach ($data['columns'] as $column){
-            $table->$column = $request->$column;
-
-        }
-        $table->save();
-
-        return back()->with('status', $data['titleSingular'].' guardado');
-    }
-
-    //Actualiza el campo de la tabla correspondiente
-    public static function updateGeneric($request, $id){
-        $data = self::getData();
-        $data['id'] = $id;
-        $data['columns'] = self::getColumnsWithoutTimeStamps();
-
-        $table = $data['class']::find($data['id']);
-        foreach ($data['columns'] as $column){
-            $table->$column = $request->$column;
-        }
-        $table->save();
-
-        return back()->with('status', $data['titleSingular'].' actualizado');
-    }
 
     //Devuelve la lista de botones disponible en la vista
     public static function getButtonList(){

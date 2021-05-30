@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\People;
-use App\Models\Player;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PeopleFactory extends Factory
@@ -22,12 +21,13 @@ class PeopleFactory extends Factory
      */
     public function definition()
     {
-        $players = Player::all();
+        $genders = ['masculino', 'femenino'];
         return [
             'name' => $this->faker->name(),
             'surname' => $this->faker->word(),
             'phone' => $this->faker->phoneNumber(),
-            'image' => $this->faker->imageUrl(350, 350) // 'http://lorempixel.com/640/480/'// 'http://lorempixel.com/640/480/'
+            'image' => $this->faker->imageUrl(350, 350),
+            'gender' => rand(0,1) ? 'masculino': 'femenino',
         ];
     }
 }

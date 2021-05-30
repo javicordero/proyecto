@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use DateTime;
 use App\Traits\GenericTable;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class People extends Model
 {
@@ -33,13 +34,40 @@ class People extends Model
 
     //Devuelve el equipo actual de la persona
     public function getCurrentTeamAttribute(){
-        return $this->contracts()->latest('date_start')->first()->team;
+        return $this->current_contract->team;
+    }
+
+    //Devuelve el equipo actual de la persona
+    public function getCurrentContractAttribute(){
+        return $this->contracts()->where('date_end', null)->first();
     }
 
     //Atributo personable_type_name
     public function getPersonableTypeNameAttribute(){
         return $this->personable_type == Player::class ? 'Jugador' : 'Entrenador';
     }
+
+    //Atributo image_path
+    public function getImagePathAttribute(){
+        if($this->image){
+           // return '/images/people/'.$this->image;
+            return $this->image; //De momento para las imagenes del faker
+        }
+        else{
+            return '/images/people/default.jpg';
+        }
+    }
+
+    //Devuelve la edad
+    public function getAgeAttribute(){
+        $birthDate = $this->birth_date;
+        $oDateNow = new DateTime();
+        $birthDate = new DateTime($birthDate);
+        // New interval
+        $diff = $oDateNow->diff($birthDate);
+        return $diff->y;
+    }
+
 
     //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
     public static function getColumnsForShow(){
@@ -62,13 +90,4 @@ class People extends Model
        return $buttonList;
     }
 
-    public function getImagePathAttribute(){
-        if($this->image){
-            //return '/images/people/'.$this->image;
-            return $this->image; //De momento para las imagenes del faker
-        }
-        else{
-            return '/images/people/default.jpg';
-        }
-    }
 }

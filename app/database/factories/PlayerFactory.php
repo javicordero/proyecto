@@ -22,7 +22,7 @@ class PlayerFactory extends Factory
     public function definition()
     {
         return [
-            'size' => $this->faker->word(),
+            'number' => random_int(0,99),
         ];
     }
 }

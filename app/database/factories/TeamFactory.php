@@ -22,8 +22,7 @@ class TeamFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'category_id' => rand(1,5),
+            'nickname' => $this->faker->word(),
         ];
     }
 }

@@ -56,8 +56,9 @@ class Attribute extends Model
     }
 
 
+    //Devuelve los valores de un atributo y un jugador
     public function getPlayerValuesOfAttribute($playerId){
-        $attribute =  $this->players()->wherePivot('player_id', $playerId)->get();
+        $attribute =  $this->players()->wherePivot('player_id', $playerId)->oldest('date')->get();
         return $attribute;
     }
 

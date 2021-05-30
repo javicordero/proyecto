@@ -21,7 +21,7 @@
                                             <label
                                                 class="control-label col-md-3 col-sm-3 col-xs-12">{{ __($columnValue) }}</label>
                                             <div class="col-md-6 col-sm-6 col-xs-1">
-                                                <select class="form-control" name="{{ $columnKey }}">
+                                                <select class="form-control" name="{{ $columnKey }}" required="required">
                                                     @foreach ($data['selectOptions'] as $selectKey => $selectValue)
                                                         <option value="{{ $selectKey }}" @if ($data['attribute']->$columnKey == $selectKey) selected @endif>
                                                             {{ $selectValue }}

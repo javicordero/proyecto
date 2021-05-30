@@ -3,12 +3,14 @@
 namespace Database\Seeders;
 
 use Faker\Factory;
+use App\Models\Team;
 use Faker\Generator;
 use App\Models\People;
 use App\Models\Player;
-use App\Models\Attribute;
 use App\Models\Contract;
+use App\Models\Attribute;
 use Illuminate\Database\Seeder;
+use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Container\Container;
 
 class PlayerSeeder extends Seeder
@@ -40,15 +42,24 @@ class PlayerSeeder extends Seeder
 
     public function run()
     {
-        Player::factory()->count(45)->create();
+        Player::factory()->count(120)->create();
 
         $players = Player::all();
         //Guarda una persona para cada jugador
         foreach($players as $player){
             $person = People::factory()->create();
+            $person->birth_date = DateTime::dateTimeBetween('-17 years', '-6 years');
             $player->person()->save($person);
 
 
+            //Guarda contrato actual para cada jugador
+            $team = Team::where('gender', $player->person->gender)->where('category_id', $player->category)->first();
+            $contract1 = new Contract();
+            $contract1->team_id = $team->id;
+            $contract1->people_id = $person->id;
+            $contract1->date_start = '2020-09-15';
+            $contract1->date_end = null;
+            $contract1->save();
         }
 
         //Asigna valores random a los atributos del jugador en fechas distintas

@@ -18,13 +18,15 @@
                             </div>
                             <div class="index-title-button">
                                 @if ($data['buttonList']['create'])
-                                    <button class="btn btn-success modal_id " @if ($data['tableName'] == 'people') id="create-person"
+                                    <button class="btn btn-success modal_id " @if ($data['tableName'] == 'people') id="create-person" {{-- Para tabla personas --}}
                                     @else
-                                                    id="create-modal" {{-- Para el resto de tablas --}} @endif
-                                        type="button" data-class="{{ $data['class'] }}" data-csrf="{{ csrf_token() }}"
+                                            id="create-modal" {{-- Para el resto de tablas --}} @endif
+                                        type="button" data-class="{{ $data['class'] }}"
+                                        data-tableName="{{ $data['tableName'] }}" data-csrf="{{ csrf_token() }}"
                                         type="button">
                                         Nuevo
                                         <i class="fa fa-plus"></i>
+
                                     </button>
                                 @endif
                             </div>
@@ -80,11 +82,16 @@
                                                             <button
                                                                 class="pull-right modal_id table-btn edit-modal table-btn-warning"
                                                                 @if ($data['class'] == 'App\Models\People') data-class="{{ $attribute->personable_type }}"
-                                                                                        data-attrId="{{ $attribute->personable->id }}"
+                                                                    data-attrId="{{ $attribute->personable->id }}"
                                                                 @else
-                                                                                        data-class="{{ $data['class'] }}"
-                                                                                        data-attrId="{{ $attribute->id }}" @endif
-                                                                data-csrf="{{ csrf_token() }}" type="button">
+                                                                    data-attrId="{{ $attribute->id }}"
+                                                                @endif
+                                                                data-csrf="{{ csrf_token() }}"
+                                                                data-class="{{ $data['class'] }}"
+                                                                data-tableName="{{ $data['tableName'] }}"
+                                                                @if ($data['tableName'] == 'teams')
+                                                                    id="edit-team"
+                                                                @endif type="button">
                                                                 <i class="fa fa-pencil"></i>
                                                             </button>
                                                         </div>
@@ -97,7 +104,7 @@
                                                                     href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
                                                                     @endif
 
-                                                                    class="pull-right modal_id table-btn table-btn-success">
+                                                                    class="pull-right table-btn table-btn-success">
                                                                     <i class="fa fa-eye"></i>
                                                                 </a>
 

@@ -8,58 +8,57 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Perfil de
-                                {{ $data['person']->personable_type_name }}<small>{{ $data['person']->currentTeam->name }}
-                                    (Nombre del equipo)</small></h2>
+                            <h2>
+                                {{ $data['person']->name }}
+                                {{ $data['person']->surname }}<small>{{ $data['person']->personable_type_name }}</small>
+                            </h2>
                             <div class="clearfix"></div>
                         </div>
                     @endsection
 
                     @section('content')
                         <div class="x_content">
-                            <p class="text-muted font-13 m-b-30">
-                            </p>
-                            <div class="col-md-2 col-sm-2 col-xs-12 profile_left">
-                                <div class="profile_img">
+                            <div class="col-lg-2 col-md-12 profile_left ">
+                                <div class="profile_img col-lg-12 col-xs-3 mb-2">
                                     <div id="crop-avatar">
                                         <!-- Current avatar -->
                                         <img class="img-responsive avatar-view" src="{{ $data['person']->image_path }}"
-                                            alt="Avatar" title="Change the avatar" width="300" height="300" />
+                                            alt="Avatar" title="Change the avatar" width="320" height="320" />
                                     </div>
                                 </div>
-                                <h3>{{ $data['person']->name }}</h3>
-                                <ul class="list-unstyled user_data">
+                                <div class="col-lg-12 col-xs-9">
+                                    <h4>{{ $data['person']->name }} {{ $data['person']->surname }}</h4>
+                                        <ul class=" list-unstyled user_data">
                                     <li><i class="fa fa-phone user-profile-icon"></i> {{ $data['person']->phone }}
                                     </li>
                                     <li>
                                         <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
                                     </li>
-                                    <li class="m-top-xs">
+                                    <li>
                                         <i class="fa fa-external-link user-profile-icon"></i>
                                         <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
                                     </li>
-                                </ul>
-                                <button class="btn btn-success" id="image"><i class="fa fa-edit m-right-xs"></i>Cambiar
-                                    Imagen</button>
-                                <br />
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-12">
-                                <div class="profile_title mb-2">
-                                    <div class="col-md-6">
-                                        <h2>User Activity Report</h2>
-                                    </div>
-                                    <div class="col-md-6">
-                                    </div>
+                                    </ul>
+                                    <button class="btn btn-success" id="image"><i class="fa fa-edit m-right-xs"></i>Cambiar
+                                        Imagen</button>
                                 </div>
+                            </div>
+                            {{-- Middle column --}}
+                            <div class="col-lg-6 col-xs-12">
                                 @if ($data['person']->personable_type_name == 'Jugador')
                                     @include('players.skills')
-
-                                @endif
-                                @include('people.historial')
-                                @if ($data['person']->personable_type_name == 'Jugador')
-
+                                    @include('players.skills-graph')
                                 @endif
                             </div>
+                            {{-- Middle column --}}
+                            {{-- Right column --}}
+                            <div class="col-lg-4  col-xs-12">
+                                @include('people.historial')
+                                @if ($data['person']->personable_type_name == 'Jugador')
+                                @include('players.games')
+                                @endif
+                            </div>
+                            {{-- End right column --}}
                         </div>
                     @endsection
 
@@ -75,20 +74,13 @@
 @section('customJs')
 
 
-
     <script>
         $(document).ready(function() {
-            $('.progress-bar').each(function() {
-                if ($(this).attr('data-transitiongoal') <= 30) {
-                    $(this).addClass('bg-red');
-                } else {
-                    if ($(this).attr('data-transitiongoal') <= 60) {
-                        $(this).addClass('bg-blue');
-                    } else {
-                        $(this).addClass('bg-green');
-                    }
-                }
-            });
+            //Pasa los valores del jugador actual para recoger los datos y pintar la gráfica de evolucion
+            let csrf = $('.progress-bar').attr('data-csrf');
+            let playerId = 1;
+            if (csrf != undefined) //Si el csrf no es undefined está mostrando los gráficos
+                recogerValores(playerId, csrf) //Funcion en charts.js
         });
 
     </script>

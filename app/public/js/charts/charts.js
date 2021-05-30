@@ -1,12 +1,17 @@
-$(document).ready(function () {
-
-        //$('#panel-line-chart').show();
-        let csrf = $('.progress-bar').attr('data-csrf');
-        let playerId = 1;
-        console.log(csrf);
-
-            recogerValores(playerId, csrf)
+//Cambia el color de las barras de los atributos en funcion del valor
+$('.progress-bar').each(function() {
+    if ($(this).attr('data-transitiongoal') <= 30) {
+        $(this).addClass('bg-red');
+    } else {
+        if ($(this).attr('data-transitiongoal') <= 60) {
+            $(this).addClass('bg-blue');
+        } else {
+            $(this).addClass('bg-green');
+        }
+    }
 });
+
+
 
 //Realiza una petición ajax que devuelve los valores del atributo y el jugador enviados
 function recogerValores(playerId, csrf) {
@@ -23,37 +28,11 @@ function recogerValores(playerId, csrf) {
         processData: false,
         contentType: false,
         success: function(resp) {
-            //console.log(resp);
             pintarGrafica(resp);
-            //console.log(resp);
 
         },
-        /* error: function() {
-             Swal.fire({
-                 type: 'error',
-                 title: 'Oops...',
-                 text: 'Something went wrong!'
-             })
-         }*/
     })
 }
-
-/*function pintarGrafica(data) {
-    console.log(data);
-    Morris.Line({
-        element: "graph_line",
-        xkey: "date",
-        ykeys: ["value"],
-        labels: ["Value"],
-        hideHover: "auto",
-        lineColors: ["#26B99A", "#34495E", "#ACADAC", "#3498DB"],
-        data: data.values,
-        resize: true,
-    });
-
-    $('#attributeName').html(data.attribute.name);
-    //$('#attributeTypeName').html('Aa');
-}*/
 
 
 function pintarGrafica(data) {
@@ -65,14 +44,15 @@ function pintarGrafica(data) {
     let valores = [];
     let dates = [];
 
+    //Genera un array con las fechas
     while(data[0][j] != undefined){
         dates.push(data[0][j].date);
         j++;
     }
-   
 
+
+    //Genera el dataset para cada atributo
     while(data[i] != undefined){
-       // console.log(data[i][0].value);
         let name = data[i].name
         valores = [];
         j = 0;
@@ -82,23 +62,23 @@ function pintarGrafica(data) {
         }
         console.log(valores);
         i++;
-        
+        var color = random_rgba();
         datasetValue[i] = {
             label: name,
             data: valores,
-            backgroundColor: "rgba(38, 185, 154, 0.31)",
-            borderColor: "rgba(38, 185, 154, 0.7)",
-            pointBorderColor: "rgba(38, 185, 154, 0.7)",
-            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            backgroundColor: color,
+            borderColor: color,
+            pointBorderColor: color,
+            pointBackgroundColor: color,
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointBorderWidth: 1,
+            tension: 0.25,
+            hidden: true,
         }
     }
-    
-    datasetValue.shift()
-   // console.log(datasetValue);
 
+    datasetValue.shift()
     var ctx = document.getElementById("lineChart");
 
     var lineChart = new Chart(ctx, {
@@ -109,10 +89,15 @@ function pintarGrafica(data) {
       },
     });
 
-    
+
 }
 
 
 
 
+//Genera un color aleatorio
+function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
+}
 
