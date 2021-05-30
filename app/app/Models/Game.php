@@ -33,6 +33,7 @@ class Game extends Model
         return $this->opponent_points.' - '.$this->points;
     }
 
+
     //Devuevle una cadena con el resultado del partido
     public function getResultWithNamesAttribute(){
         if($this->home){
@@ -47,5 +48,21 @@ class Game extends Model
             return true;
         }
         return false;
+    }
+
+    //Devuelve True si victoria, False si derrota
+    public function getBeenPlayedAttribute(){
+        if($this->opponent_points != null){
+            return false;
+        }
+        return false;
+    }
+
+    //Devuelve True si victoria, False si derrota
+    public function getPlaceAttribute(){
+        if($this->home){
+            return 'Local';
+        }
+        return 'Visitante';
     }
 }

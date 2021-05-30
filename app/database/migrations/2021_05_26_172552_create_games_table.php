@@ -18,7 +18,7 @@ class CreateGamesTable extends Migration
             $table->date('date');
             $table->boolean('home');
             $table->string('opponent');
-            $table->integer('opponent_points');
+            $table->integer('opponent_points')->nullable();
             $table->foreignId('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

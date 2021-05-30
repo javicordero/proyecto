@@ -125,7 +125,7 @@ $("#btn-modal-practices").click(function () {
 
 
 //Modal mover jugador de equipo
-$('#datatable-responsive tbody').on('click', '.move-player-modal ', function () {
+$(".move-player-modal").click(function () {
     let csrf = $(this).attr("data-csrf");
     let personId = $(this).attr("data-personId");
 

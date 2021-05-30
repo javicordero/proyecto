@@ -10,7 +10,7 @@
                         <div class="x_title">
                             <h2>
                                 {{ $data['person']->name }}
-                                {{ $data['person']->surname }}<small>{{ $data['person']->personable_type_name }}</small>
+                                {{ $data['person']->surname }}<small>{{ $data['person']->current_team->name }}</small>
                             </h2>
                             <div class="clearfix"></div>
                         </div>

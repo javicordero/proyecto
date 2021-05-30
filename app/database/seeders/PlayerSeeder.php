@@ -42,7 +42,7 @@ class PlayerSeeder extends Seeder
 
     public function run()
     {
-        Player::factory()->count(120)->create();
+        Player::factory()->count(60)->create();
 
         $players = Player::all();
         //Guarda una persona para cada jugador

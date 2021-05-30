@@ -35,8 +35,8 @@ class Team extends Model
     }
 
     //Relacion 1:N con Game (1: Team || N: Game)
-    public function ganmes(){
-        return $this->hasMany(Team::class);
+    public function games(){
+        return $this->hasMany(Game::class);
     }
 
     //Atributo category_name
@@ -51,7 +51,6 @@ class Team extends Model
     public function getNameAttribute(){
         return $this->category->name.' '.$this->gender.' '.$this->nickname;
     }
-
 
 
     //Devuelve los contratos que estan actualmente en el equipo

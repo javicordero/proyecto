@@ -2,19 +2,46 @@
 
 namespace Database\Seeders;
 
+
+use Faker\Factory;
 use App\Models\Game;
+use App\Models\Team;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
+use Illuminate\Container\Container;
 
 class GameSeeder extends Seeder
 {
+      /**
+     * The current Faker instance.
+     *
+     * @var \Faker\Generator
+     */
+    protected $faker;
+
     /**
-     * Run the database seeds.
+     * Create a new seeder instance.
      *
      * @return void
      */
+    public function __construct(){
+        $this->faker = $this->withFaker();
+    }
+
+    /**
+     * Get a new Faker instance.
+     *
+     * @return \Faker\Generator
+     */
+    protected function withFaker(){
+        return Container::getInstance()->make(Generator::class);
+    }
+
     public function run()
     {
-        Game::factory()->count(35)->create();
+
+        //Genera partidos ya jugados
+        Game::factory()->count(60)->create();
 
         $games = Game::all();
 
@@ -68,5 +95,21 @@ class GameSeeder extends Seeder
                 }
             }
         }
+
+          //Genera partidos por jugar
+        $teams = Team::all();
+        foreach($teams as $team){
+            for($i = 0; $i < 5; $i ++){
+                $game = new Game();
+                $game->date = $this->faker->dateTimeBetween(now(), '+3 months');
+                $game->home = $this->faker->boolean();
+                $game->opponent = $this->faker->word();
+                $game->team_id = $team->id;
+                $game->save();
+                }
+            }
+
+
+
     }
 }

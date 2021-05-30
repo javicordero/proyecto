@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Player;
-use Illuminate\Database\Seeder;
-use App\Models\People;
+use App\Models\Game;
 use App\Models\Team;
+use App\Models\People;
+use App\Models\Player;
+use App\Models\Category;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             GameSeeder::class
             //TeamSeeder::class
         ]);
+
 
 
 
