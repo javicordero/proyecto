@@ -2,14 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\GenericTable;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\CanGetTableNameStatically;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Game extends Model
 {
     use HasFactory;
 
+    use CanGetTableNameStatically;
+
+    use GenericTable;
+
     protected $dates = ['date'];
+
+    public static $title = 'Partidos';
+
+    public static $titleSingular = 'Equipo';
 
     //Relacion 1:N con Team (1: Team || N: Game)
     public function team(){
@@ -64,5 +74,16 @@ class Game extends Model
             return 'Local';
         }
         return 'Visitante';
+    }
+
+    //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => true,
+            'delete' => false,
+            'edit' => false,
+            'show' => false
+        ];
+       return $buttonList;
     }
 }

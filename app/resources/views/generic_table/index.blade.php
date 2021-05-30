@@ -20,7 +20,7 @@
                                 @if ($data['buttonList']['create'])
                                     <button class="btn btn-success modal_id " @if ($data['tableName'] == 'people') id="create-person" {{-- Para tabla personas --}}
                                     @else
-                                            id="create-modal" {{-- Para el resto de tablas --}} @endif
+                                                id="create-modal" {{-- Para el resto de tablas --}} @endif
                                         type="button" data-class="{{ $data['class'] }}"
                                         data-tableName="{{ $data['tableName'] }}" data-csrf="{{ csrf_token() }}"
                                         type="button">
@@ -65,10 +65,10 @@
                                                 @endif
                                             @endforeach
                                             <td>
-                                                <form class="form-inline mb-2" id="del_event{{ $attribute->id }}"
-                                                    action="{{ route($data['tableName'] . '.destroy', $attribute->id) }}"
-                                                    method="POST">
-                                                    @if ($data['buttonList']['delete'])
+                                                @if ($data['buttonList']['delete'])
+                                                    <form class="form-inline mb-2" id="del_event{{ $attribute->id }}"
+                                                        action="{{ route($data['tableName'] . '.destroy', $attribute->id) }}"
+                                                        method="POST">
                                                         <div class="form-group">
                                                             @csrf
                                                             @method('DELETE')
@@ -76,40 +76,37 @@
                                                                 data-attrId="{{ $attribute->id }}"><i
                                                                     class="fa fa-trash"></i></button>
                                                         </div>
-                                                    @endif
-                                                    @if ($data['buttonList']['edit'])
-                                                        <div class="form-group">
-                                                            <button
-                                                                class="pull-right modal_id table-btn edit-modal table-btn-warning"
-                                                                @if ($data['class'] == 'App\Models\People') data-class="{{ $attribute->personable_type }}"
-                                                                    data-attrId="{{ $attribute->personable->id }}"
+                                                @endif
+                                                @if ($data['buttonList']['edit'])
+                                                    <div class="form-group">
+                                                        <button
+                                                            class="pull-right modal_id table-btn edit-modal table-btn-warning"
+                                                            @if ($data['class'] == 'App\Models\People') data-class="{{ $attribute->personable_type }}"
+                                                                        data-attrId="{{ $attribute->personable->id }}"
                                                                 @else
-                                                                    data-attrId="{{ $attribute->id }}"
+                                                                        data-attrId="{{ $attribute->id }}" @endif data-csrf="{{ csrf_token() }}"
+                                                            data-class="{{ $data['class'] }}"
+                                                            data-tableName="{{ $data['tableName'] }}" @if ($data['tableName'] == 'teams')
+                                                            id="edit-team"
+                                                            @endif type="button">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
+                                                @if ($data['buttonList']['show'])
+                                                    <div class="form-group">
+                                                        @if ($data['tableName'] == 'people')
+                                                            <a href="{{ route($attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}"
+                                                            {{-- Enlace para tabla desde People llegar al tipo de persona correcto --}} @else <a
+                                                                href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
                                                                 @endif
-                                                                data-csrf="{{ csrf_token() }}"
-                                                                data-class="{{ $data['class'] }}"
-                                                                data-tableName="{{ $data['tableName'] }}"
-                                                                @if ($data['tableName'] == 'teams')
-                                                                    id="edit-team"
-                                                                @endif type="button">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>
-                                                        </div>
-                                                    @endif
-                                                    @if ($data['buttonList']['show'])
-                                                        <div class="form-group">
-                                                            @if ($data['tableName'] == 'people')
-                                                                <a href="{{ route($attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}"
-                                                                {{-- Enlace para tabla desde People llegar al tipo de persona correcto --}} @else <a
-                                                                    href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
-                                                                    @endif
 
-                                                                    class="pull-right table-btn table-btn-success">
-                                                                    <i class="fa fa-eye"></i>
-                                                                </a>
+                                                                class="pull-right table-btn table-btn-success">
+                                                                <i class="fa fa-eye"></i>
+                                                            </a>
 
-                                                        </div>
-                                                    @endif
+                                                    </div>
+                                                @endif
                                                 </form>
                                             </td>
                                         </tr>

@@ -30,11 +30,17 @@ $("#create-modal").click(function () {
     let clase = $(this).attr("data-class");
     let csrf = $(this).attr("data-csrf");
     let tableName = $(this).attr("data-tableName");
-    let url = tableName + '/create';
+    let url =  "/" + tableName + '/create';
 
     var formData = new FormData();
     formData.append("clase", clase);
     formData.append("_token", csrf);
+
+    if(tableName == 'games'){
+        let teamId = $(this).attr("data-teamId");
+        formData.append("teamId", teamId);
+    }
+
     $.ajax({
         type: "post",
         url: url,
@@ -42,7 +48,7 @@ $("#create-modal").click(function () {
         processData: false,
         contentType: false,
         success: function (response) {
-            //console.log(response);
+            console.log(response);
             $("#divModal").html(response);
             $("#modal").modal("show");
         },

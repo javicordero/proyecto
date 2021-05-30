@@ -52,7 +52,6 @@ class PlayerController extends Controller
     }
 
     public function show($id){
-        $attribute = Attribute::find(1);
         $player = Player::find($id);
         $person = $player->person;
         $attribute_types = AttributeType::all();

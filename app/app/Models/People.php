@@ -33,13 +33,13 @@ class People extends Model
     }
 
     //Devuelve el equipo actual de la persona
-    public function getCurrentTeamAttribute(){
-        return $this->current_contract->team;
+    public function getCurrentContractAttribute(){
+        return !empty($this->contracts()->where('date_end', null)->first()) ? $this->contracts()->where('date_end', null)->first() : false;
     }
 
     //Devuelve el equipo actual de la persona
-    public function getCurrentContractAttribute(){
-        return $this->contracts()->where('date_end', null)->first();
+    public function getCurrentTeamAttribute(){
+        return $this->current_contratct ? $this->current_contratct->team : false;
     }
 
     //Atributo personable_type_name

@@ -106,4 +106,6 @@ Route::get('categories', [CategoryController::class, 'index'])->name('categories
 
 //GAMES
 Route::get('games/{id}', [GameController::class, 'show'])->name('games.show');
-
+Route::get('games', [GameController::class, 'index'])->name('games.index');
+Route::post('games/store', [GameController::class, 'store'])->name('games.store');
+Route::post('/games/create', [GameController::class, 'create'])->name('games.create');

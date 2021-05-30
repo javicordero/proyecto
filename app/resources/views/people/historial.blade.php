@@ -17,12 +17,11 @@
                     <tbody>
                         @forelse ($data['person']->contracts as $contract)
                             <tr>
-                                <td>{{ $contract->team->name }}</td>
+                                <td><a href="{{ route('teams.show', $contract->team) }}">{{ $contract->team->name }}</a></td>
                                 <td>{{ $contract->date_start->format('d-m-Y') }}</td>
                                 <td>{{ $contract->date_end ? $contract->date_end->format('d-m-Y') : 'Actual' }}</td>
                             </tr>
                             @empty
-                            aa
                         @endforelse
                     </tbody>
                 </table>
