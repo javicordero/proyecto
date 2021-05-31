@@ -15,14 +15,21 @@
 
                     @section('content')
                         <div class="x_content">
-                            <div class="col-lg-4 col-xs-12">
-                                @include('teams.players')
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                @include('teams.last_games')
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                @include('teams.next_games')
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    @include('teams.players')
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    @include('teams.next_game') {{-- Convocatoria próxmimo partido --}}
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    @include('teams.last_games')
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    @include('teams.next_games')
+                                </div>
                             </div>
                         </div>
                         <div id="divModal">

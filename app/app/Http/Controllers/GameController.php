@@ -34,6 +34,11 @@ class GameController extends Controller
         $game->team_id = $request->teamId;
         $game->save();
 
+        $team = Team::find($request->teamId);
+        foreach($team->getCurrentPlayers() as $player){
+            $game->players()->save($player);
+        }
+
         return back()->with('status', 'Partido creado');
     }
 }

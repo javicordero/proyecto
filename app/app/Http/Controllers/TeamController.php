@@ -39,9 +39,10 @@ class TeamController extends Controller
         $team = Team::find($id);
         $contracts = $team->getCurrentContracts();
         $players = $team->getCurrentPlayers();
+        $nextGame = $team->games()->where('played', false)->orderBy('date', 'ASC')->first();
         $lastGames = $team->games()->where('played', true)->orderBy('date', 'DESC')->limit(5)->get();
         $nextGames = $team->games()->where('played', false)->orderBy('date', 'ASC')->limit(5)->get();
-        $data = compact('team', 'contracts', 'players', 'lastGames', 'nextGames');
+        $data = compact('team', 'contracts', 'players', 'nextGame','lastGames', 'nextGames');
 
         return view('teams.show', compact('data'));
     }
