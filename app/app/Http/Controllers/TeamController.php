@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Game;
 use App\Models\People;
 use App\Models\Player;
 use App\Models\Team;
@@ -39,7 +40,7 @@ class TeamController extends Controller
         $team = Team::find($id);
         $contracts = $team->getCurrentContracts();
         $players = $team->getCurrentPlayers();
-        $nextGame = $team->games()->where('played', false)->orderBy('date', 'ASC')->first();
+        $nextGame = $team->next_game;
         $lastGames = $team->games()->where('played', true)->orderBy('date', 'DESC')->limit(5)->get();
         $nextGames = $team->games()->where('played', false)->orderBy('date', 'ASC')->limit(5)->get();
         $data = compact('team', 'contracts', 'players', 'nextGame','lastGames', 'nextGames');
@@ -74,5 +75,31 @@ class TeamController extends Controller
         return view('teams.posible_teams_for_player', compact('data'));
     }
 
+    public function getAllListablePlayers(Request $request){
+        $team = Team::find($request->teamId);
+        $teamPlayers = $team->getCurrentPlayers();
+        $listablePlayers = $team->getListablePlayersFromOtherCategory();
+        $data = compact('team', 'teamPlayers', 'listablePlayers');
+        return view('teams.listable_players', compact('data'));
+    }
+
+    public function listPlayersForGame(){
+
+    }
+
+    public function savePlayersForNextGame(Request $request){
+        $game = Game::find($request->gameId);
+
+        //Quita los jugadores que estaban antes
+        foreach($game->players as $player){
+            $game->players()->detach($player);
+        }
+
+        //Añade los jugadores seleccionados
+        foreach($request->players as $player){
+            $game->players()->save(Player::find($player));
+        }
+        return back()->with('status', 'Convocatoria guardada');
+    }
 
 }

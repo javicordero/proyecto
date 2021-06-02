@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
 use App\Models\Attribute;
-use App\Models\AttributeType;
 use Illuminate\Http\Request;
+use App\Models\AttributeType;
 
 class AttributeController extends Controller
 {
@@ -28,6 +29,11 @@ class AttributeController extends Controller
         $attribute->name = $request->name;
         $attribute->attribute_type_id = $request->attributeType;
         $attribute->save();
+
+        $players = Player::all();
+        foreach($players as $player){
+            $attribute->players()->save($player);
+        }
         return back()->with('status', 'Atributo guardado');
     }
 

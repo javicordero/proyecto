@@ -95,6 +95,8 @@ Route::post('teams/getViewForPracticesModal', [TeamController::class, 'practices
 Route::post('teams/create', [TeamController::class, 'create'])->name('teams.create');
 Route::post('teams/edit', [TeamController::class, 'edit'])->name('teams.edit');
 Route::post('teams/getPosibleTeamsForPlayer', [TeamController::class, 'getPosibleTeamsForPlayer'])->name('teams.getPosibleTeamsForPlayer');
+Route::post('teams/getAllListablePlayers', [TeamController::class, 'getAllListablePlayers'])->name('teams.getAllListablePlayers');
+Route::post('teams/savePlayersForNextGame', [TeamController::class, 'savePlayersForNextGame'])->name('teams.savePlayersForNextGame');
 
 //CATEGORIES
 /*

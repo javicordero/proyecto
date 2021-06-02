@@ -150,3 +150,28 @@ $(".move-player-modal").click(function () {
         },
     });
 });
+
+
+//Modal mover jugador de equipo
+$("#convocatoria-modal").click(function () {
+
+    let csrf = $(this).attr("data-csrf");
+    let teamId = $(this).attr("data-teamId");
+    var formData = new FormData();
+    formData.append("teamId", teamId);
+    formData.append("_token", csrf);
+    $.ajax({
+        type: "post",
+        url: "/teams/getAllListablePlayers",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            //console.log(response);
+            $("#divModal").html(response);
+            $("#modal").modal("show");
+        },
+    });
+});
+
+
