@@ -26,7 +26,7 @@
                                         <div class="form-group">
                                             @csrf
                                             <button class=" del_id table-btn table-btn-danger" type="submit"
-                                                data-attrId="{{ $person->id }}"><i class="fa fa-trash"></i></button>
+                                                data-attrId="{{ $person->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar del equipo"><i class="fa fa-trash"></i></button>
                                         </div>
                                         <div class="form-group">
                                             <a href="{{ route('players.show', $person->personable_id) }}"
@@ -38,7 +38,7 @@
                                             <button
                                                 class="pull-right modal_id table-btn move-player-modal table-btn-warning"
                                                 data-personId={{ $person->id }} data-csrf="{{ csrf_token() }}"
-                                                type="button">
+                                                type="button"  data-toggle="tooltip" data-placement="top" title="Mover a otro equipo">
                                                 <i class="fa fa-send"></i>
                                             </button>
                                         </div>

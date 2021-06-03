@@ -22,7 +22,6 @@ class PlayerFactory extends Factory
     public function definition()
     {
         return [
-            'number' => random_int(0,99),
         ];
     }
 }

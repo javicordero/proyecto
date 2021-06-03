@@ -23,6 +23,7 @@ class CreatePeopleTable extends Migration
             $table->string('image')->nullable();
             $table->string('personable_type')->nullable();
             $table->unsignedBigInteger('personable_id')->nullable();
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

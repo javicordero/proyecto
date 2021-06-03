@@ -40,4 +40,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relacion 1:1 con People
+    public function person(){
+        return $this->hasOne(People::class);
+    }
+
+     //Atributo image_path
+     public function getImagePathAttribute(){
+        if($this->image){
+            return '/images/users/'.$this->image;
+        }
+        else{
+            return '/images/users/default.jpg';
+        }
+    }
 }

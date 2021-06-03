@@ -2,6 +2,7 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenericTableController;
 
 trait GenericTable
@@ -75,6 +76,10 @@ trait GenericTable
             'edit' => true,
             'show' => true
         ];
+        if(Auth::user()->role != 1){
+            $buttonList['delete'] = false;
+            $buttonList['edit'] = false;
+        }
         return $buttonList;
     }
 

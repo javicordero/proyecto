@@ -4,6 +4,7 @@ namespace App\Models;
 
 use DateTime;
 use App\Traits\GenericTable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,6 +31,11 @@ class People extends Model
     //Relacion 1:N con Contract (1: People || N: Conctract)
     public function contracts(){
         return $this->hasMany(Contract::class)->latest('date_start');
+    }
+
+    //Relacion 1:1 con User
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     //Devuelve el equipo actual de la persona
@@ -75,19 +81,23 @@ class People extends Model
         array_pop($columns);
         array_pop($columns);
         array_pop($columns);
+        array_pop($columns);
         array_push($columns, 'personable_type_name');
         return $columns;
     }
 
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
-    public static function getButtonList(){
+    /*public static function getButtonList(){
         $buttonList = [
             'create' => true,
             'delete' => true,
             'edit' => true,
             'show' => true
         ];
+        if(Auth::user()->role != 1){
+            $buttonList['delete'] = false;
+        }
        return $buttonList;
-    }
+    }*/
 
 }

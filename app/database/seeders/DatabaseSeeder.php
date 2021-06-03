@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
             AttributeTypeSeeder::class,
             CategorySeeder::class,
             TeamSeeder::class,
+            UserSeeder::class,
             PlayerSeeder::class,
-            CoachSeeder::class,
-            PeopleSeeder::class,
-            GameSeeder::class
-            //TeamSeeder::class
+            //CoachSeeder::class,
+            //PeopleSeeder::class,
+            GameSeeder::class,
         ]);
 
 

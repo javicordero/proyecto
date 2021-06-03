@@ -42,14 +42,10 @@ class PlayerSeeder extends Seeder
 
     public function run()
     {
-        Player::factory()->count(90)->create();
-
         $players = Player::all();
         //Guarda una persona para cada jugador
         foreach($players as $player){
-            $person = People::factory()->create();
-            $person->birth_date = DateTime::dateTimeBetween('-17 years', '-6 years');
-            $player->person()->save($person);
+            $person = $player->person;
 
 
             //Guarda contrato actual para cada jugador

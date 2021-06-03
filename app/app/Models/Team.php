@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\GenericTable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -97,6 +98,9 @@ class Team extends Model
             'edit' => true,
             'show' => true
         ];
+        if(Auth::user()->role != 1){
+            $buttonList['delete'] = false;
+        }
        return $buttonList;
     }
 
