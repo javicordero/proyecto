@@ -71,7 +71,6 @@ class UserSeeder extends Seeder
             $person->name = $name;
             $person->surname = $this->faker->lastName();
             $person->phone = $this->faker->phoneNumber();
-            $person->image = $this->faker->imageUrl(350,350);
             $person->gender = rand(0,1) ? 'masculino': 'femenino';
             $person->birth_date = DateTime::dateTimeBetween('-17 years', '-6 years');
             $person->user_id = $user->id;
@@ -102,7 +101,6 @@ class UserSeeder extends Seeder
             $person->name = $name;
             $person->surname = $this->faker->lastName();
             $person->phone = $this->faker->phoneNumber();
-            $person->image = $this->faker->imageUrl(350,350);
             $person->gender = rand(0,1) ? 'masculino': 'femenino';
             $person->birth_date = DateTime::dateTimeBetween('-45 years', '-20 years');
             $person->user_id = $user->id;

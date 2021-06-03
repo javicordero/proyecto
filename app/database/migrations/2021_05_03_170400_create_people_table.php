@@ -20,10 +20,9 @@ class CreatePeopleTable extends Migration
             $table->string('phone');
             $table->date('birth_date')->nullable();
             $table->enum('gender', ['masculino', 'femenino']);
-            $table->string('image')->nullable();
             $table->string('personable_type')->nullable();
             $table->unsignedBigInteger('personable_id')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

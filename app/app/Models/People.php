@@ -55,13 +55,8 @@ class People extends Model
 
     //Atributo image_path
     public function getImagePathAttribute(){
-        if($this->image){
-           // return '/images/people/'.$this->image;
-            return $this->image; //De momento para las imagenes del faker
-        }
-        else{
-            return '/images/people/default.jpg';
-        }
+        return $this->user->image_path;
+
     }
 
     //Devuelve la edad

@@ -78,6 +78,19 @@ class Team extends Model
         return $players;
     }
 
+    //Devuelve los jugadores actuales del equipo
+    public function getCurrentCoachAttribute(){
+        $contracts = $this->getCurrentContracts();
+        foreach($contracts as $contract){
+            $person = People::find($contract->people_id);
+            if($person->personable_type == 'App\\Models\\Coach'){
+                $coach = $person;
+            }
+        }
+        return $coach;
+    }
+
+
     //Devuelve los jugadores de una categoría inferior
     public function getListablePlayersFromOtherCategory(){
         $players = Player::all();
@@ -91,18 +104,16 @@ class Team extends Model
     }
 
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
-    public static function getButtonList(){
+    /*public static function getButtonList(){
         $buttonList = [
             'create' => true,
             'delete' => true,
             'edit' => true,
             'show' => true
         ];
-        if(Auth::user()->role != 1){
-            $buttonList['delete'] = false;
-        }
+
        return $buttonList;
-    }
+    }*/
 
     //Devuelve un array para crear un select con los distintos valores de la tabla AttributeType
     public static function getSelectOptions(){

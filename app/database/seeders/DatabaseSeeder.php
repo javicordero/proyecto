@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
             UserSeeder::class,
             PlayerSeeder::class,
-            //CoachSeeder::class,
+            CoachSeeder::class,
             //PeopleSeeder::class,
             GameSeeder::class,
         ]);

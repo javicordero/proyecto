@@ -10,7 +10,10 @@
                         <div class="x_title">
                             <h2>
                                 {{ $data['person']->name }}
+                                @if ($data['person']->personable_type_name == 'Jugador')
                                 {{ $data['person']->surname }}<small>{{ $data['person']->current_team? $data['person']->current_team->name: 'Sin equipo' }}</small>
+
+                                @endif
                             </h2>
                             <div class="clearfix"></div>
                         </div>

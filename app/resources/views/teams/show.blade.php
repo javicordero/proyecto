@@ -8,7 +8,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>{{ $data['team']->name }}</h2>
+                            <h2>{{ $data['team']->name }}<small>{{ $data['team']->current_coach->name.' '.$data['team']->current_coach->surname }}</small></h2>
                             <div class="clearfix"></div>
                         </div>
                     @endsection
