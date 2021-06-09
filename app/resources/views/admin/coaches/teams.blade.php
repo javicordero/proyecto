@@ -17,7 +17,7 @@
                     <tbody>
                         @foreach ($data['person']->personable->current_teams as $team)
                             <tr>
-                                <td><a href="{{ route('teams.show', $team->id) }}"> {{ $team->name }}</a></td>
+                                <td><a href="{{ route('admin.teams.show', $team->id) }}"> {{ $team->name }}</a></td>
                                 <td>
 
                                 </td>

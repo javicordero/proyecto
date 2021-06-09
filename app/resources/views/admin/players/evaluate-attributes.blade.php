@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-    {{ route('players.evaluate.store', $data['player']->id) }}
+    {{ route('admin.players.evaluate.store', $data['player']->id) }}
 @endsection
 
 @section('title')

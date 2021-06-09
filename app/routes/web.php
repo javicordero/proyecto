@@ -34,10 +34,11 @@ Auth::routes();
 
 
 Route::get('/', function(){
-    return view('home');
+    return view('index');
 })->name('index');
 
 Route::middleware(['auth', 'admin'])
+->name('admin.')
 ->prefix('admin')
 ->group(function(){
 /*
@@ -57,6 +58,11 @@ Route::middleware(['auth', 'admin'])
     Route::post('attribute_types/create', [AttributeTypeController::class, 'create'])->name('attribute_types.create');
     Route::post('attribute_types/edit', [AttributeTypeController::class, 'edit'])->name('attribute_types.edit');
 */
+
+
+    Route::get('/', function(){
+        return view('admin.index');
+    })->name('index');
 
     //PEOPLE
     Route::put('people/{id}/update', [PeopleController::class, 'update'])->name('people.update');

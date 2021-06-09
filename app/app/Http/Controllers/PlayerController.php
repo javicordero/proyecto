@@ -66,6 +66,7 @@ class PlayerController extends Controller
         $player = Player::find($request->playerId);
         $attributes = Attribute::all();
         $i = 0;
+
         foreach($attributes as $attribute){
             $datos [$i] = [
                 'id' => $attribute->id,
@@ -87,7 +88,7 @@ class PlayerController extends Controller
 
     public function getDataForPlayersCreateAttributes(){
         $attribute_types = AttributeType::all();
-        return view('players.create-attributes', compact('attribute_types'));
+        return view('admin.players.create-attributes', compact('attribute_types'));
     }
 
     public function removeFromTeam(Request $request){

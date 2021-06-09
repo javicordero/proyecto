@@ -1,7 +1,7 @@
 <div class="modal fade create" id="create">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form  data-parsley-validate class="form-horizontal form-label-left" action="{{ route($data['tableName'].'.store') }}"  method="POST">
+            <form  data-parsley-validate class="form-horizontal form-label-left" action="{{ route('admin.'.$data['tableName'].'.store') }}"  method="POST">
                 @csrf
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">

@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-    {{ route('coaches.store') }}
+    {{ route('admin.coaches.store') }}
 @endsection
 
 @section('title')

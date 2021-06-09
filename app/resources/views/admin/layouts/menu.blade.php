@@ -4,7 +4,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{ route('index') }}" class="site_title"><i class="fas fa-basketball-ball"></i> </a>
+                        <a href="{{ route('admin.index') }}" class="site_title"><i class="fas fa-basketball-ball"></i> </a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -32,15 +32,15 @@
 
                                 <li><a><i class="fa fa-users"></i> Personas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ route('people.index') }}">Todos</a></li>
-                                        <li><a href="{{ route('players.index') }}">Jugadores</a></li>
-                                        <li><a href="{{ route('coaches.index') }}">Entrenadores</a></li>
+                                        <li><a href="{{ route('admin.people.index') }}">Todos</a></li>
+                                        <li><a href="{{ route('admin.players.index') }}">Jugadores</a></li>
+                                        <li><a href="{{ route('admin.coaches.index') }}">Entrenadores</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('teams.index') }}"><i class="fa fa-bar-chart"></i>
+                                <li><a href="{{ route('admin.teams.index') }}"><i class="fa fa-bar-chart"></i>
                                         Equipos</a>
                                 </li>
-                                <li><a href="{{ route('games.index') }}"><i class="fa fa-bar-chart"></i>
+                                <li><a href="{{ route('admin.games.index') }}"><i class="fa fa-bar-chart"></i>
                                         Partidos</a>
                                 </li>
 

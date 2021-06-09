@@ -28,6 +28,7 @@ function recogerValores(playerId, csrf) {
         processData: false,
         contentType: false,
         success: function(resp) {
+            console.log(resp);
             pintarGrafica(resp);
 
         },

@@ -67,7 +67,7 @@
                                             <td>
                                                 @if ($data['buttonList']['delete'])
                                                     <form class="form-inline mb-2" id="del_event{{ $attribute->id }}"
-                                                        action="{{ route($data['tableName'] . '.destroy', $attribute->id) }}"
+                                                        action="{{ route('admin.'.$data['tableName'] . '.destroy', $attribute->id) }}"
                                                         method="POST">
                                                         <div class="form-group">
                                                             @csrf
@@ -96,9 +96,9 @@
                                                 @if ($data['buttonList']['show'])
                                                     <div class="form-group">
                                                         @if ($data['tableName'] == 'people')
-                                                            <a href="{{ route($attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}"
+                                                            <a href="{{ route('admin.'.$attribute->personable_type::TableName() . '.show', $attribute->personable_id) }}"
                                                             {{-- Enlace para tabla desde People llegar al tipo de persona correcto --}} @else <a
-                                                                href="{{ route($data['tableName'] . '.show', $attribute->id) }}"
+                                                                href="{{ route('admin.'.$data['tableName'] . '.show', $attribute->id) }}"
                                                                 @endif
 
                                                                 class="pull-right table-btn table-btn-success">

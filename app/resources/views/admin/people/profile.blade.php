@@ -103,7 +103,7 @@
         $(document).ready(function() {
             //Pasa los valores del jugador actual para recoger los datos y pintar la gráfica de evolucion
             let csrf = $('.progress-bar').attr('data-csrf');
-            let playerId = 1;
+            let playerId = $('.progress-bar').attr('data-playerId');
             if (csrf != undefined) //Si el csrf no es undefined está mostrando los gráficos
                 recogerValores(playerId, csrf) //Funcion en charts.js
         });

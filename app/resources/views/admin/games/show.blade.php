@@ -37,7 +37,7 @@
                                             @foreach ($game->players as $player)
                                                 <tr>
                                                     <td>{{ $player->pivot->number }}</td>
-                                                    <td><a href="{{ route('players.show', $player->person) }}">{{ $player->person->name }}</a></td>
+                                                    <td><a href="{{ route('admin.players.show', $player->person) }}">{{ $player->person->name }}</a></td>
                                                     <td>{{ $player->pivot->minutes }}</td>
                                                     <td>{{ $player->pivot->points }}</td>
                                                 </tr>
