@@ -7,6 +7,7 @@ use App\Models\People;
 use App\Models\Player;
 use Illuminate\Http\Request;
 use App\Models\AttributeType;
+use Illuminate\Support\Facades\Auth;
 
 class CoachController extends Controller
 {
@@ -23,7 +24,7 @@ class CoachController extends Controller
     }
 
     public function create(){
-        return view('coaches.create');
+        return view('admin.coaches.create');
     }
 
     public function store(Request $request){
@@ -37,7 +38,7 @@ class CoachController extends Controller
     public function edit(Request $request){
         $coach = Coach::find($request->attributeId);
         $data = compact('coach');
-        return view('coaches.edit', compact('data'));
+        return view('admin.coaches.edit', compact('data'));
     }
 
     public static function update(Request $request, $id){
@@ -56,6 +57,6 @@ class CoachController extends Controller
         $person = $coach->person;
         $data = compact('person');
 
-        return view('people.profile', compact('data'));
+        return view('admin.people.profile', compact('data'));
     }
 }

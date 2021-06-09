@@ -94,7 +94,7 @@ class UserSeeder extends Seeder
             $user->save();
 
             $coach = new Coach();
-            $coach->license = $this->faker->word();
+            $coach->license = random_int(0,2);
             $coach->save();
 
             $person = new People();

@@ -32,16 +32,14 @@ use App\Http\Controllers\LoginController;
 //AUTH
 Auth::routes();
 
-Route::get('noAdmin', function(){
-    return view('noAdmin');
-})->name('noAdmin');
 
-Route::middleware(['auth', 'admin'])->group(function(){
+Route::get('/', function(){
+    return view('home');
+})->name('index');
 
-    Route::get('/', function(){
-        return view('welcome');
-    })->name('index');
-
+Route::middleware(['auth', 'admin'])
+->prefix('admin')
+->group(function(){
 /*
     //ATTRIBUTE-TYPES
     Route::put('attributes/{id}/update', [AttributeController::class, 'update'])->name('attributes.update');
@@ -80,6 +78,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::post('players/removePlayer/{id}', [PlayerController::class, 'removeFromTeam'])->name('players.removeFromTeam');
     Route::post('players/create', [PlayerController::class, 'create'])->name('players.create');
     Route::post('players/edit', [PlayerController::class, 'edit'])->name('players.edit');
+    Route::post('players/evaluate', [PlayerController::class, 'evaluate'])->name('players.evaluate');
+    Route::post('players/evaluate/store/{id}', [PlayerController::class, 'evaluateStore'])->name('players.evaluate.store');
+
 
     //COACHES
     Route::put('coaches/{id}/update', [CoachController::class, 'update'])->name('coaches.update');

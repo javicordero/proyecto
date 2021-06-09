@@ -26,7 +26,7 @@ class PlayerController extends Controller
     }
 
     public function create(){
-        return view('players.create');
+        return view('admin.players.create');
     }
 
     public function store(Request $request){
@@ -39,7 +39,7 @@ class PlayerController extends Controller
     public function edit(Request $request){
         $player = Player::find($request->attributeId);
         $data = compact('player');
-        return view('players.edit', compact('data'));
+        return view('admin.players.edit', compact('data'));
     }
 
     public function update(Request $request, $id){
@@ -57,7 +57,7 @@ class PlayerController extends Controller
         $attribute_types = AttributeType::all();
         $data = compact('attribute_types', 'person', 'player');
 
-        return view('people.profile', compact('data'));
+        return view('admin.people.profile', compact('data'));
     }
 
 
@@ -74,7 +74,7 @@ class PlayerController extends Controller
             foreach($attribute->getPlayerValuesOfAttribute($player->id) as $at){
                 $datos [$i][] = [
                     'value' => $at->pivot->value,
-                    'date' => $at->pivot->date,
+                    'date' => date('d-m-Y', strtotime($at->pivot->date)),
                 ];
             }
             $i++;
@@ -99,6 +99,23 @@ class PlayerController extends Controller
         return back()->with('status','Jugador eliminado del equipo');
     }
 
+    public function evaluate(Request $request){
+        $player = Player::find($request->playerId);
+        $attribute_types = AttributeType::all();
+        $data = compact('player', 'attribute_types');
+        return view('admin.players.evaluate-attributes', compact('data'));
+    }
+
+    public function evaluateStore(Request $request, $id){
+        $player = Player::find($id);
+        for($i = 1; $i <= 12; $i++){
+            $attribute = Attribute::find($i);
+            $conca = 'at'.$i;
+            $value = $request->$conca;
+            $player->attributes()->attach($attribute, ['value' => $value, 'date' => now()]);
+        }
+        return back()->with('status','Jugador evaluado');
+    }
 
 
 }

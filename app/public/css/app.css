@@ -27,8 +27,12 @@
 .index-title{
     display: flex !important;
     justify-content: space-between !important;
+
 }
 
+.index-title-title{
+    width: 100%;
+}
 
 .mb-2{
     margin-bottom: 8px;

@@ -1,4 +1,4 @@
-@include('layouts.head')
+@include('admin.layouts.head')
 
 <body class="login">
     <div>
@@ -10,7 +10,7 @@
                 <section class="login_content">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <h1>Login Form</h1>
+                        <h1>Iniciar Sesión</h1>
 
                         <div>
                             <input id="name" type="text" class="form-control"
@@ -40,9 +40,8 @@
                             <div class="clearfix"></div>
                             <br />
                             <div>
-                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and
-                                    Terms</p>
+                                <h1><i class="fas fa-basketball-ball"></i> C.B. La Arboleda</h1>
+                                <p>©2021 Desarrollado por Javier Cordero Toscano</p>
                             </div>
                         </div>
                     </form>
@@ -51,3 +50,5 @@
         </div>
     </div>
 </body>
+
+@include('admin.layouts.jsIncludes')

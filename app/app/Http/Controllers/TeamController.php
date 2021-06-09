@@ -45,7 +45,7 @@ class TeamController extends Controller
         $nextGames = $team->games()->where('played', false)->orderBy('date', 'ASC')->limit(5)->get();
         $data = compact('team', 'contracts', 'players', 'nextGame','lastGames', 'nextGames');
 
-        return view('teams.show', compact('data'));
+        return view('admin.teams.show', compact('data'));
     }
 
     public function practicesView(Request $request){
@@ -55,13 +55,13 @@ class TeamController extends Controller
     public function create(){
         $categories = Category::pluck('name', 'id')->all();
         $data = compact('categories');
-        return view('teams.create', compact('data'));
+        return view('admin.teams.create', compact('data'));
     }
 
     public function edit(Request $request){
         $team = Team::find($request->attributeId);
         $data = compact('team');
-        return view('teams.edit', compact('data'));
+        return view('admin.teams.edit', compact('data'));
     }
 
     public function getPosibleTeamsForPlayer(Request $request){
@@ -72,7 +72,7 @@ class TeamController extends Controller
                         ->where('id', '!=', $person->current_team->id)
                         ->get();
         $data = compact('teams', 'person');
-        return view('teams.posible_teams_for_player', compact('data'));
+        return view('admin.teams.posible_teams_for_player', compact('data'));
     }
 
     public function getAllListablePlayers(Request $request){
@@ -80,12 +80,9 @@ class TeamController extends Controller
         $teamPlayers = $team->getCurrentPlayers();
         $listablePlayers = $team->getListablePlayersFromOtherCategory();
         $data = compact('team', 'teamPlayers', 'listablePlayers');
-        return view('teams.listable_players', compact('data'));
+        return view('admin.teams.listable_players', compact('data'));
     }
 
-    public function listPlayersForGame(){
-
-    }
 
     public function savePlayersForNextGame(Request $request){
         $game = Game::find($request->gameId);

@@ -11,7 +11,7 @@ trait GenericTable
     //Devuelve la vista index de la tabla correspondiente
     public static function index(){
         $data = self::getData();
-        return view('generic_table.index', compact('data'));
+        return view('admin.generic_table.index', compact('data'));
     }
 
     //Devuevle todos los datos de la tabla

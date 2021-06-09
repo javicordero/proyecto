@@ -23,7 +23,7 @@ function recogerValores(playerId, csrf) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         method: 'post',
-        url: '/players/getPlayerValuesOfAttribute',
+        url: '/admin/players/getPlayerValuesOfAttribute',
         data: formData,
         processData: false,
         contentType: false,

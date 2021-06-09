@@ -61,9 +61,9 @@ class PlayerSeeder extends Seeder
         //Asigna valores random a los atributos del jugador en fechas distintas
         $attributes = Attribute::all();
         foreach($players as $player){
-            for($i = 0; $i < 8; $i++){
+            for($i = 0; $i < 5; $i++){
                 foreach($attributes as $attribute){
-                    $player->attributes()->attach($attribute, ['value' => rand(1,20), 'date' => $this->faker->date()]);
+                    $player->attributes()->attach($attribute, ['value' => rand(1,20), 'date' => $this->faker->dateTimeThisYear()]);
                 }
             }
         }

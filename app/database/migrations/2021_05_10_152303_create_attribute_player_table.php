@@ -18,7 +18,7 @@ class CreateAttributePlayerTable extends Migration
             $table->foreignId('attribute_id')->constrained()->cascadeOnDelete();
             $table->foreignId('player_id')->constrained()->cascadeOnDelete();
             $table->integer('value')->default(0);
-            $table->date('date')->default(now());
+            $table->dateTime('date')->default(now());
             //$table->timestamps();
         });
     }

@@ -50,7 +50,12 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt(['name' => $name, 'password' => $password])){
-            return redirect()->route('index');
+            if(Auth::user()->role == 1){
+                return redirect()->route('people.index');
+            }
+            else{
+                return redirect(route('coaches.show', Auth::user()->person->personable));
+            }
         }else{
             return back()->withErrors(['password' => 'Contraseña incorrecta']);
         }

@@ -33,6 +33,19 @@ class Coach extends Model
         return DB::table('People')->where('personable_type', Coach::class)->join('coaches', 'coaches.id', 'people.personable_id')->get();
     }
 
+    public function getCurrentContracts(){
+        return $this->person->contracts()->where('date_end', null)->get();
+    }
+
+    //Devuelve el equipo actual de la persona
+    public function getCurrentTeamsAttribute(){
+        $contracts = $this->getCurrentContracts();
+        foreach($contracts as $contract){
+            $teams[] = $contract->team;
+        }
+        return $teams;
+    }
+
     //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
     public static function getColumnsForShow(){
         $columns = self::getColumnsWithoutTimeStamps();
