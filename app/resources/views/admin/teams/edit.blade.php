@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-{{ route('teams.update', $data['team']) }}
+{{ route('admin.teams.update', $data['team']) }}
 @endsection
 
 @section('method')

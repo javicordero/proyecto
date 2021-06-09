@@ -1,7 +1,7 @@
 <div class="modal fade edit" id="posible-teams-modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form data-parsley-validate class="form-horizontal form-label-left" action="{{ route('people.movePerson', $data['person']) }}"
+            <form data-parsley-validate class="form-horizontal form-label-left" action="{{ route('admin.people.movePerson', $data['person']) }}"
                 method="POST">
                 @csrf
                 <div class="modal-header">

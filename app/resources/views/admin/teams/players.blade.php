@@ -22,7 +22,7 @@
                                 <td>{{ $person->name }}</td>
                                 <td>
                                     <form class="form-inline" id="del_event{{ $person->id }}"
-                                        action="{{ route('players.removeFromTeam', $person->id) }}" method="POST">
+                                        action="{{ route('admin.players.removeFromTeam', $person->id) }}" method="POST">
                                          @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
                                         <div class="form-group">
                                             @csrf
@@ -31,7 +31,7 @@
                                         </div>
                                         @endif
                                         <div class="form-group">
-                                            <a href="{{ route('players.show', $person->personable_id) }}"
+                                            <a href="{{ route('admin.players.show', $person->personable_id) }}"
                                                 class="pull-right table-btn table-btn-success">
                                                 <i class="fa fa-eye"></i>
                                             </a>

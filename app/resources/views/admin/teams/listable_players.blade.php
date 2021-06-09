@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-{{ route('teams.savePlayersForNextGame') }}
+{{ route('admin.teams.savePlayersForNextGame') }}
 
 @endsection
 

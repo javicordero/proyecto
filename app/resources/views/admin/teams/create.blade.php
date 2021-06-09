@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-    {{ route('teams.store') }}
+    {{ route('admin.teams.store') }}
 @endsection
 
 @section('title')

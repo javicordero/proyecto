@@ -51,10 +51,10 @@ class LoginController extends Controller
 
         if(Auth::attempt(['name' => $name, 'password' => $password])){
             if(Auth::user()->role == 1){
-                return redirect()->route('people.index');
+                return redirect()->route('admin.people.index');
             }
             else{
-                return redirect(route('coaches.show', Auth::user()->person->personable));
+                return redirect(route('admin.coaches.show', Auth::user()->person->personable));
             }
         }else{
             return back()->withErrors(['password' => 'Contraseña incorrecta']);
