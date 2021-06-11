@@ -8,7 +8,7 @@
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
                 data-scrollax-parent="true">
                 <div class="col-md-6 mt-5 pt-5 ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }">
-                    <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">CLUB BALONCESTO ARBOLEDA
+                    <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">FIELDRUN BASEBALL CLUB
                     </h1>
                     <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">A small river named
                         Duden flows by their place and supplies it with the necessary regelialia.</p>
@@ -23,24 +23,7 @@
 
     @include('index.lastGame')
 
-    <section class="ftco-section ftco-no-pt ftco-highlights">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="img video-wrap ftco-animate d-flex align-items-center justify-content-center py-5"
-                        style="background-image: url(public-template/images/victory.jpg); width: 100%;">
-                        <p class="text-center mb-0 py-5">
-                            <a href="https://vimeo.com/45830194"
-                                class="icon-video-2 popup-vimeo d-flex justify-content-center align-items-center mr-3">
-                                <span class="ion-ios-play"></span>
-                            </a>
-                            <small style="color: rgba(255,255,255,1); font-size: 16px;">Watch Highlights</small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('index.video')
 
     @include('index.nextGames')
 
