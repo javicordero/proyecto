@@ -53,9 +53,27 @@ class Team extends Model
         return $this->category->name.' '.$this->gender.' '.$this->nickname;
     }
 
+    //Attributo nombre corto
+    public function getShortNameAttribute(){
+        return substr($this->category->name, 0, 3).' '.substr($this->gender, 0, 3). ' '.$this->nickname;
+    }
+
+
+    //Próximo partido
     public function getNextGameAttribute(){
         return $this->games()->where('played', false)->orderBy('date', 'ASC')->first();
     }
+
+    //Atributo image_path
+    public function getImagePathAttribute(){
+        //return $this->image;
+       if($this->image){
+           return '/public-template/images'.$this->image;
+       }
+       else{
+        return '/public-template/images/teamLogo.png';
+       }
+   }
 
 
     //Devuelve los contratos que estan actualmente en el equipo

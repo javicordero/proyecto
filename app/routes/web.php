@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\GenericTableController;
 use App\Http\Controllers\AttributeTypeController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -33,9 +34,7 @@ use App\Http\Controllers\LoginController;
 Auth::routes();
 
 
-Route::get('/', function(){
-    return view('index');
-})->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::middleware(['auth', 'admin'])
 ->name('admin.')

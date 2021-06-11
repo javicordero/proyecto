@@ -48,6 +48,7 @@ class User extends Authenticatable
 
      //Atributo image_path
      public function getImagePathAttribute(){
+         return $this->image;
         if($this->image){
             return '/images/users/'.$this->image;
         }

@@ -42,13 +42,25 @@ class TeamSeeder extends Seeder
         $categories = Category::all();
         foreach ($categories as $category) {
             $team = new Team();
-            $team->nickname = $this->faker->word();
+            $team->nickname = 'A';
             $team->gender = 'masculino';
             $team->category_id = $category->id;
             $team->save();
 
             $team = new Team();
-            $team->nickname = $this->faker->word();
+            $team->nickname = 'B';
+            $team->gender = 'masculino';
+            $team->category_id = $category->id;
+            $team->save();
+
+            $team = new Team();
+            $team->nickname = 'A';
+            $team->gender = 'femenino';
+            $team->category_id = $category->id;
+            $team->save();
+
+            $team = new Team();
+            $team->nickname = 'B';
             $team->gender = 'femenino';
             $team->category_id = $category->id;
             $team->save();

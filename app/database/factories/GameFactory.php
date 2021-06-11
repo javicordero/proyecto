@@ -25,7 +25,7 @@ class GameFactory extends Factory
             'date' => $this->faker->dateTimeThisYear(),
             'home' => $this->faker->boolean(),
             'played' => true,
-            'opponent' => $this->faker->word(),
+            'opponent_id' => random_int(1,5),
             'opponent_points' => random_int(60,95),
             'team_id' => random_int(1,10),
         ];

@@ -69,6 +69,11 @@ class People extends Model
         return $diff->y;
     }
 
+    //Nombre completo
+    public function getFullNameAttribute(){
+        return $this->name.' '.$this->surname;
+    }
+
 
     //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
     public static function getColumnsForShow(){

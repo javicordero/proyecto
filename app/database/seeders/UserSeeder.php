@@ -61,6 +61,7 @@ class UserSeeder extends Seeder
             $user->password = bcrypt($userName);
             $user->remember_token = Str::random(10);
             $user->role = 3;
+            $user->image = 'https://randomuser.me/api/portraits/men/'.random_int(0,100).'.jpg';
             $user->save();
 
             $player = new Player();
@@ -91,6 +92,7 @@ class UserSeeder extends Seeder
             $user->password = bcrypt($userName);
             $user->remember_token = Str::random(10);
             $user->role = 2;
+            $user->image = 'https://randomuser.me/api/portraits/men/'.random_int(0,100).'.jpg';
             $user->save();
 
             $coach = new Coach();

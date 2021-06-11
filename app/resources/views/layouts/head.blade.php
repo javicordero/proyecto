@@ -27,5 +27,8 @@
     <link rel="stylesheet" href="{{ asset('public-template/css/icomoon.css') }}" >
     <link rel="stylesheet" href="{{ asset('public-template/css/style.css') }}" >
 
+    <link rel="stylesheet" href="{{ asset('public-template/css/custom.css') }}" >
+
+
 
   </head>

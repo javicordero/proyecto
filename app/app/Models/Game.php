@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\GenericTable;
+use App\Traits\FormatearDate;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,6 +27,11 @@ class Game extends Model
         return $this->belongsTo(Team::class);
     }
 
+    //Relacion 1:N con Oppponent (1: Team || N: Game)
+    public function opponent(){
+        return $this->belongsTo(Opponent::class);
+    }
+
     //Relacion N:M Game-Player
     public function players(){
         return $this->belongsToMany(Player::class)->withPivot('points', 'minutes', 'number')->orderByPivot('number');
@@ -43,6 +49,10 @@ class Game extends Model
         return $this->opponent_points.' - '.$this->points;
     }
 
+    public function getDateFormateadaAttribute(){
+        return FormatearDate::formatDate($this->date);
+
+    }
 
     //Devuevle una cadena con el resultado del partido
     public function getResultWithNamesAttribute(){
@@ -75,6 +85,8 @@ class Game extends Model
         }
         return 'Visitante';
     }
+
+
 
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
     public static function getButtonList(){

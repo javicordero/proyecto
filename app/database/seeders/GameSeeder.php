@@ -104,7 +104,7 @@ class GameSeeder extends Seeder
                 $game->date = $this->faker->dateTimeBetween(now(), '+3 months');
                 $game->home = $this->faker->boolean();
                 $game->played = false;
-                $game->opponent = $this->faker->word();
+                $game->opponent_id = random_int(1,5);
                 $game->team_id = $team->id;
                 $game->save();
                 }
