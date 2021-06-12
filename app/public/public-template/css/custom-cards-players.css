@@ -1,0 +1,29 @@
+
+
+.card-2{
+    width: 170px !important;
+    height: auto !important;
+}
+
+.card__info__players{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 1 !important;
+
+}
+
+.card__img__players--hover{
+}
+
+.card__title__players{
+    font-weight: bold;
+    color: black;
+}
+
+.card:hover .card__img__players--hover {
+    height: 100%;
+}
+
+.card__info__players-hover ul{
+    margin-left: 5px !important;
+}

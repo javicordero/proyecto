@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="{{ asset('public-template/css/style.css') }}" >
 
     <link rel="stylesheet" href="{{ asset('public-template/css/custom.css') }}" >
+    <link rel="stylesheet" href="{{ asset('public-template/css/custom-cards.css') }}" >
+    <link rel="stylesheet" href="{{ asset('public-template/css/custom-cards-players.css') }}" >
 
 
 

@@ -1,10 +1,9 @@
 
 
 
-<div class="col-lg-8 col-xs-12">
     <div class="heading-section ftco-animate">
-        <span class="subheading">Game Report</span>
-      <h2 class="mb-4">Baseball Game Reports 2019</h2>
+        <span class="subheading">Resultados</span>
+      <h2 class="mb-4">Resultados de la temporada</h2>
     </div>
     <div class="row">
         @foreach ($data['games'] as $game)
@@ -18,7 +17,7 @@
                     <div class="d-sm-flex mb-4">
                         <div class="sport-team d-flex align-items-center">
                             <div class="img logo"
-                                style="background-image: url({{ $game->home ? $game->team->image_path : $game->opponent->image_path }});">
+                                style="background-image: url({{ $game->home ? $game->team->logo_image_path : $game->opponent->image_path }});">
                             </div>
                             <div class="text-center px-1 px-md-3 desc">
                                 <h3 class="
@@ -36,7 +35,7 @@
                         </div>
                         <div class="sport-team d-flex align-items-center">
                             <div class="img logo order-sm-last"
-                                style="background-image: url({{ $game->home ? $game->opponent->image_path : $game->team->image_path }});">
+                                style="background-image: url({{ $game->home ? $game->opponent->image_path : $game->team->logo_image_path }});">
                             </div>
                             <div class="text-center px-1 px-md-3 desc">
                                 <h3 class="
@@ -66,4 +65,3 @@
 
 
 
-  </div>

@@ -43,6 +43,8 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/results', [IndexController::class, 'results'])->name('results');
 Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
 Route::get('/teams', [TeamControllerPublic::class, 'index'])->name('teams');
+Route::get('/teams/{id}', [TeamControllerPublic::class, 'show'])->name('teams.show');
+
 
 
 Route::get('/games/{id}', [GameControllerPublic::class, 'show'])->name('games.show');

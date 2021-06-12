@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
             $person->surname = $this->faker->lastName();
             $person->phone = $this->faker->phoneNumber();
             $person->gender = rand(0,1) ? 'masculino': 'femenino';
-            $person->birth_date = DateTime::dateTimeBetween('-17 years', '-6 years');
+            $person->birth_date = DateTime::dateTimeBetween('-18 years', '-6 years');
             $person->user_id = $user->id;
 
             $player->person()->save($person);

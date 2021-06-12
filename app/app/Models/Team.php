@@ -66,14 +66,22 @@ class Team extends Model
 
     //Atributo image_path
     public function getImagePathAttribute(){
+        return '/public-template/images/teams/'.$this->id.'.jpg';
+
         //return $this->image;
        if($this->image){
-           return '/public-template/images'.$this->image;
        }
        else{
-        return '/public-template/images/teamLogo.png';
+        return '/public-template/images/team-5.jpg';
        }
    }
+
+   //Atributo image_path
+   public function getLogoImagePathAttribute(){
+    return '/public-template/images/teamLogo.png';
+
+
+}
 
 
     //Devuelve los contratos que estan actualmente en el equipo

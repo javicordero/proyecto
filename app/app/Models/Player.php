@@ -95,6 +95,11 @@ class Player extends Model
         return round($this->games()->get()->avg('pivot.assists'),2);
     }
 
+    //Media de asistencias
+    public function getAvgMinutesAttribute(){
+        return round($this->games()->get()->avg('pivot.minutes'),2);
+    }
+
 
     //Sobreescribe el método getAll de la Tabla Genérica y devuelve todos los datos para mostrarlos
     public static function getAll(){

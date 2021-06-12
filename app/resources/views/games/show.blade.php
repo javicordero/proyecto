@@ -3,9 +3,9 @@
 @section('content')
 
     @include('games.result')
+    @include('games.video')
 
-
-    <section class="ftco-section pt-3">
+    <section class="ftco-section pt-5">
         <div class="container">
             <div class="row">
                 @include('games.stats')

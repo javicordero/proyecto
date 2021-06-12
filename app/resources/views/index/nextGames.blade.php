@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12 heading-section text-center ftco-animate mb-4">
                     <span class="subheading">Calendario</span>
-                    <h2 class="mb-4">Calendario</h2>
+                    <h2 class="mb-4">Próximos partidos</h2>
                 </div>
             </div>
             <div class="row ftco-animate">
@@ -18,12 +18,12 @@
                             <div class="d-flex sched-wrap">
                                 <span class="vs">vs</span>
                                 <div class="team-logo text-center">
-                                    <div class="img" style="background-image: url({{ $game->home ? $game->team->image_path : $game->opponent->image_path}});">
+                                    <div class="img" style="background-image: url({{ $game->home ? $game->team->logo_image_path : $game->opponent->image_path}});">
                                     </div>
                                     <h3><span>{{ $game->home ? $game->team->short_name : $game->opponent->name }}</span></h3>
                                 </div>
                                 <div class="team-logo text-center">
-                                    <div class="img" style="background-image: url({{ $game->home ? $game->opponent->image_path : $game->team->image_path  }});">
+                                    <div class="img" style="background-image: url({{ $game->home ? $game->opponent->image_path : $game->team->logo_image_path  }});">
                                     </div>
                                     <h3><span>{{ $game->home ? $game->opponent->name : $game->team->short_name}}</span></h3>
                                 </div>

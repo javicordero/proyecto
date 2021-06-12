@@ -17,4 +17,10 @@ class TeamController extends Controller
         return view('teams.index', compact('data'));
     }
 
+    public function show($id){
+        $team = Team::find($id);
+        $players = $team->getCurrentPlayers();
+        $data = compact('team', 'players');
+        return view('teams.show', compact('data'));
+    }
 }

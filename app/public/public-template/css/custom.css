@@ -68,3 +68,25 @@
 
 
 
+
+.hero-wrap.hero-wrap-2{
+    height: 650px !important;
+}
+
+.hero-wrap.hero-wrap-2 .container .ftco-animate{
+    padding-bottom: 8rem !important;
+}
+
+.video-wrap-2{
+    margin-top: -4rem !important;
+}
+
+.ftco-highlights-2{
+    padding-bottom: 0 !important;
+}
+
+@media (max-width: 767.98px){
+    .scoreboard .sport-team-wrap span.vs {
+        display: none;
+    }
+}
