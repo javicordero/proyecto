@@ -8046,10 +8046,10 @@ h1, h2, h3, h4, h5,
     width: 1170px;
     margin: 0 auto;
     padding: 0; }
-    @media (max-width: 1199.98px) {
+    @media (max-width: 992px) {
       .ftco-navbar-light .container {
         background: #00bd56; } }
-    @media (min-width: 1200px) {
+    @media (min-width: 993px) {
       .ftco-navbar-light .container {
         background: rgba(255, 255, 255, 0.1);
         position: relative;
