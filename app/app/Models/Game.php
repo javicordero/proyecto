@@ -34,7 +34,7 @@ class Game extends Model
 
     //Relacion N:M Game-Player
     public function players(){
-        return $this->belongsToMany(Player::class)->withPivot('points', 'minutes', 'number', 'rebounds', 'assists')->orderByPivot('number');
+        return $this->belongsToMany(Player::class)->withPivot('points', 'minutes', 'number', 'rebounds', 'assists');
     }
 
     public function getPointsAttribute(){

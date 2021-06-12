@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="text-center ftco-animate">
-                        <p class="mb-0"><a href="#" class="btn btn-black">Detalles</a></p>
+                        <p class="mb-0"><a href="{{ route('games.show', $data['lastGame']) }}" class="btn btn-black">Detalles</a></p>
                     </div>
                 </div>
             </div>

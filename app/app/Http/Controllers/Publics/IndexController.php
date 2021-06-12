@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Publics;
 
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\Team;
 use App\Models\Coach;
+use App\Models\People;
 use App\Models\Player;
 use App\Models\Category;
-use App\Models\People;
 use Illuminate\Http\Request;
 use App\Traits\FormatearDate;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {

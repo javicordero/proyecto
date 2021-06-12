@@ -51,8 +51,8 @@ class UserSeeder extends Seeder
 
 
 
-        //Crea 90 jugadores
-       for ($i = 0; $i < 150; $i++){
+        //Crea 300 jugadores
+       for ($i = 0; $i < 300; $i++){
             $user = new User();
             $name = $this->faker->firstName();
             $userName = $name.random_int(0,1000);

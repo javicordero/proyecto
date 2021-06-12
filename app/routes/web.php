@@ -14,8 +14,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\GenericTableController;
 use App\Http\Controllers\AttributeTypeController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Publics\IndexController;
+
+
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Publics\GameController as GameControllerPublic;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +39,8 @@ Auth::routes();
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/results', [IndexController::class, 'results'])->name('results');
+Route::get('/games/{id}', [GameControllerPublic::class, 'show'])->name('games.show');
+
 //Route::post('/results', [IndexController::class, 'resultsFiltered'])->name('resultsFiltered');
 
 

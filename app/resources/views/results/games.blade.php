@@ -1,7 +1,7 @@
 
 
 
-<div class="col-md-8">
+<div class="col-lg-8 col-xs-12">
     <div class="heading-section ftco-animate">
         <span class="subheading">Game Report</span>
       <h2 class="mb-4">Baseball Game Reports 2019</h2>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="text-center ftco-animate">
-                    <p class="mb-0"><a href="#" class="btn btn-black">Detalles</a></p>
+                    <p class="mb-0"><a href="{{ route('games.show', $game) }}" class="btn btn-black">Detalles</a></p>
                 </div>
             </div>
         </div>

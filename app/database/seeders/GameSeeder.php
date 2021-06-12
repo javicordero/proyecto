@@ -68,22 +68,22 @@ class GameSeeder extends Seeder
                     elseif($minutes < 10){
                         $points = random_int(0,10);
                         $rebounds = random_int(0,5);
-                        $assists = random_int(0,5);
+                        $assists = random_int(0,4);
                     }
                     elseif($minutes < 20){
                         $points = random_int(0,16);
                         $rebounds = random_int(0,10);
-                        $assists = random_int(0,10);
+                        $assists = random_int(0,8);
                     }
                     elseif($minutes < 30){
                         $points = random_int(0,25);
                         $rebounds = random_int(0,15);
-                        $assists = random_int(0,15);
+                        $assists = random_int(0,12);
                     }
                     else{
                         $points = random_int(0,34);
                         $rebounds = random_int(0,20);
-                        $assists = random_int(0,20);
+                        $assists = random_int(0,15);
                     }
 
 

@@ -16,10 +16,11 @@
     <section class="ftco-section">
         <div class="container">
             <div class="row">
-                @include('results.games')
-                <div class="col-md-4 sidebar">
 
+                @include('results.games')
+                <div class="col-lg-4 sidebar">
                     @include('results.filter')
+
                     @include('results.scorers')
                     @include('results.assisters')
                     @include('results.rebounders')

@@ -21,3 +21,15 @@
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
+
+.scoreboard-3{
+
+    padding-top: 150px;
+    padding-bottom: 60px;
+}
+
+@media (max-width: 991.98px){
+    .ftco-navbar-light.scrolled .nav-item.active > a {
+        color: white !important;
+    }
+}
