@@ -25,6 +25,10 @@ class IndexController extends Controller
         return view('index', compact('data'));
     }
 
+    public function contact(){
+        return view('contact');
+    }
+
     public function results(Request $request){
 
         if($request){

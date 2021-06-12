@@ -19,6 +19,8 @@ use App\Http\Controllers\Publics\IndexController;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Publics\GameController as GameControllerPublic;
+use App\Http\Controllers\Publics\TeamController as TeamControllerPublic;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,10 @@ Auth::routes();
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/results', [IndexController::class, 'results'])->name('results');
+Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
+Route::get('/teams', [TeamControllerPublic::class, 'index'])->name('teams');
+
+
 Route::get('/games/{id}', [GameControllerPublic::class, 'show'])->name('games.show');
 
 //Route::post('/results', [IndexController::class, 'resultsFiltered'])->name('resultsFiltered');

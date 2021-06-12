@@ -33,3 +33,38 @@
         color: white !important;
     }
 }
+
+@media (min-width: 991.98px){
+    .scoreboard-4{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 16px !important;
+        padding-right: 0 !important;
+    }
+
+    .scoreboard-4 .sport-team .score {
+        font-size: 40px !important;
+    }
+
+    .scoreboard-4 .sport-team .logo {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .scoreboard-4 .sport-team .team-name {
+        font-size: 16px !important;
+    }
+
+    .scoreboard-4 .divider span{
+        font-size: 12px !important;
+    }
+
+    .scoreboard-4 .sport-team-wrap span.vs{
+        font-size: 32px !important;
+        margin-left: -25px !important;
+    }
+}
+
+
+
+

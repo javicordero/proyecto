@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                <span class="subheading">Equipo</span>
+                <span class="subheading">El equipo</span>
                 <h2 class="mb-4">Entrenadores</h2>
             </div>
         </div>

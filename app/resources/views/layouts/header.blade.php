@@ -11,9 +11,9 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item {{ Route::currentRouteNamed('index') ? 'active' : '' }}"><a href="{{ route('index') }}" class="nav-link">Inicio</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">El Club</a></li>
-            <li class="nav-item"><a href="games.html" class="nav-link">Equipos</a></li>
+            <li class="nav-item {{ Route::currentRouteNamed('teams') ? 'active' : '' }}"><a href="{{ route('teams') }}" class="nav-link">Equipos</a></li>
             <li class="nav-item {{ Route::currentRouteNamed('results') ? 'active' : '' }}"><a href="{{ route('results') }}" class="nav-link">Resultados</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+            <li class="nav-item {{ Route::currentRouteNamed('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}" class="nav-link">Contacto</a></li>
             <li class="nav-item cta"><a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a></li>
 
           </ul>
