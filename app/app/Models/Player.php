@@ -43,7 +43,7 @@ class Player extends Model
 
     //Relacion N:M Game-Player
     public function games(){
-        return $this->belongsToMany(Game::class)->orderBy('date', 'DESC')->withPivot('points', 'minutes', 'number');
+        return $this->belongsToMany(Game::class)->orderBy('date', 'DESC')->withPivot('points', 'minutes', 'number', 'rebounds', 'assists');
     }
 
 
@@ -73,6 +73,26 @@ class Player extends Model
         $id = Category::find($buscar);
         $name = $id->name;
         return $name;
+    }
+
+    //Numero de partidos jugados
+    public function getGamesPlayedAttribute(){
+        return count($this->games);
+    }
+
+    //Media de puntos
+    public function getAvgPointsAttribute(){
+        return round($this->games()->get()->avg('pivot.points'),2);
+    }
+
+    //Media de rebotes
+    public function getAvgReboundsAttribute(){
+        return round($this->games()->get()->avg('pivot.rebounds'),2);
+    }
+
+    //Media de asistencias
+    public function getAvgAssistsAttribute(){
+        return round($this->games()->get()->avg('pivot.assists'),2);
     }
 
 

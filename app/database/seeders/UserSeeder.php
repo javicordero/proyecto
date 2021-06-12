@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
 
 
         //Crea 90 jugadores
-       for ($i = 0; $i < 90; $i++){
+       for ($i = 0; $i < 150; $i++){
             $user = new User();
             $name = $this->faker->firstName();
             $userName = $name.random_int(0,1000);
@@ -61,7 +61,6 @@ class UserSeeder extends Seeder
             $user->password = bcrypt($userName);
             $user->remember_token = Str::random(10);
             $user->role = 3;
-            $user->image = 'https://randomuser.me/api/portraits/men/'.random_int(0,100).'.jpg';
             $user->save();
 
             $player = new Player();
@@ -78,6 +77,17 @@ class UserSeeder extends Seeder
 
             $player->person()->save($person);
             $person->save();
+
+
+            if($person->gender == 'masculino'){
+                $user->image = 'https://randomuser.me/api/portraits/men/'.random_int(0,100).'.jpg';
+            }
+            else{
+                $user->image = 'https://randomuser.me/api/portraits/women/'.random_int(0,100).'.jpg';
+
+            }
+
+            $user->save();
 
        }
 

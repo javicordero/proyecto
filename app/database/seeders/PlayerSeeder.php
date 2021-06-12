@@ -44,7 +44,8 @@ class PlayerSeeder extends Seeder
     {
         $players = Player::all();
         //Guarda una persona para cada jugador
-        foreach($players as $player){
+        for($i = 1; $i < count($players) / 2; $i++){
+            $player = Player::find($i);
             $person = $player->person;
 
 
@@ -57,6 +58,24 @@ class PlayerSeeder extends Seeder
             $contract1->date_end = null;
             $contract1->save();
         }
+
+
+        for($i = (count($players) / 2) + 1; $i < count($players); $i++){
+            $player = Player::find($i);
+            $person = $player->person;
+
+
+            //Guarda contrato actual para cada jugador
+            $team = Team::where('gender', $player->person->gender)->where('category_id', $player->category)->latest('id')->first();
+            $contract1 = new Contract();
+            $contract1->team_id = $team->id;
+            $contract1->people_id = $person->id;
+            $contract1->date_start = '2020-09-15';
+            $contract1->date_end = null;
+            $contract1->save();
+        }
+
+
 
         //Asigna valores random a los atributos del jugador en fechas distintas
         $attributes = Attribute::all();

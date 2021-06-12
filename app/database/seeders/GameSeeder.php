@@ -62,18 +62,28 @@ class GameSeeder extends Seeder
                         //Guarda puntos coherentes con los minutos
                     if($minutes == 0){
                         $points = 0;
+                        $rebounds = 0;
+                        $assists = 0;
                     }
                     elseif($minutes < 10){
                         $points = random_int(0,10);
+                        $rebounds = random_int(0,5);
+                        $assists = random_int(0,5);
                     }
                     elseif($minutes < 20){
                         $points = random_int(0,16);
+                        $rebounds = random_int(0,10);
+                        $assists = random_int(0,10);
                     }
                     elseif($minutes < 30){
                         $points = random_int(0,25);
+                        $rebounds = random_int(0,15);
+                        $assists = random_int(0,15);
                     }
                     else{
                         $points = random_int(0,34);
+                        $rebounds = random_int(0,20);
+                        $assists = random_int(0,20);
                     }
 
 
@@ -90,7 +100,9 @@ class GameSeeder extends Seeder
                     [
                         'points' => $points,
                         'minutes' => $minutes,
-                        'number' => $number
+                        'number' => $number,
+                        'rebounds' => $rebounds,
+                        'assists' => $assists
                     ]);
                 }
             }

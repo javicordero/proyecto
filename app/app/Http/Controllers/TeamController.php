@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Game;
+use App\Models\Team;
 use App\Models\People;
 use App\Models\Player;
-use App\Models\Team;
+use App\Models\Category;
+use App\Models\Contract;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller

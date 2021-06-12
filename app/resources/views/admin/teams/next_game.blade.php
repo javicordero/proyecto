@@ -32,7 +32,7 @@
                     <tbody>
                             <tr>
                                 <td>{{ $data['nextGame']->date->format('d-m-Y') }}</td>
-                                <td>{{ $data['nextGame']->opponent }}</td>
+                                <td>{{ $data['nextGame']->opponent->name }}</td>
                                 <td>{{ $data['nextGame']->place }}</td>
                             </tr>
                     </tbody>

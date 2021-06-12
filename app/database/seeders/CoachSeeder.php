@@ -120,5 +120,105 @@ class CoachSeeder extends Seeder
         $contract1->date_end = null;
         $contract1->save();
 
+        $coach = Coach::find(1);
+        $team = Team::find(11);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(1);
+        $team = Team::find(12);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(2);
+        $team = Team::find(13);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(2);
+        $team = Team::find(14);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(3);
+        $team = Team::find(15);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(3);
+        $team = Team::find(16);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(4);
+        $team = Team::find(17);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(4);
+        $team = Team::find(18);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(5);
+        $team = Team::find(19);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
+        $coach = Coach::find(5);
+        $team = Team::find(20);
+        $person = $coach->person;
+        $contract1 = new Contract();
+        $contract1->team_id = $team->id;
+        $contract1->people_id = $person->id;
+        $contract1->date_start = '2020-09-15';
+        $contract1->date_end = null;
+        $contract1->save();
+
     }
 }

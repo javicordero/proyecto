@@ -35,6 +35,11 @@ Auth::routes();
 
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/results', [IndexController::class, 'results'])->name('results');
+//Route::post('/results', [IndexController::class, 'resultsFiltered'])->name('resultsFiltered');
+
+
+
 
 Route::middleware(['auth', 'admin'])
 ->name('admin.')

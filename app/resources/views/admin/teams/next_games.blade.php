@@ -30,7 +30,7 @@
                     @forelse ($data['nextGames'] as $game)
                         <tr>
                             <td>{{ $game->date->format('d-m-Y') }}</td>
-                            <td>{{ $game->opponent }}</td>
+                            <td>{{ $game->opponent->name }}</td>
                             <td>{{ $game->place }}</td>
                         </tr>
                     @empty

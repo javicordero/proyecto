@@ -18,6 +18,8 @@ class CreateGamePlayerTable extends Migration
             $table->foreignId('game_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('player_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('points')->nullable();
+            $table->integer('rebounds')->nullable();
+            $table->integer('assists')->nullable();
             $table->integer('minutes')->nullable();
             $table->integer('number')->nullable();
             $table->timestamps();

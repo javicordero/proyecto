@@ -27,7 +27,7 @@ class GameFactory extends Factory
             'played' => true,
             'opponent_id' => random_int(1,5),
             'opponent_points' => random_int(60,95),
-            'team_id' => random_int(1,10),
+            'team_id' => random_int(1,20),
         ];
     }
 }
