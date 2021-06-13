@@ -134,5 +134,20 @@ class Player extends Model
 
 
 
+    //Devuelve los jugadores sin equipo actualmente
+    public static function freePlayers(){
+        $players = Player::all();
+
+        $freePlayers = [];
+        foreach($players as $player){
+            if(!$player->person->current_team){
+                $freePlayers [] = $player;
+            }
+        }
+
+        return $freePlayers;
+    }
+
+
 
 }

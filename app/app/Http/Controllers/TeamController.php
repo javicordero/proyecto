@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Team;
+use App\Models\Coach;
 use App\Models\People;
 use App\Models\Player;
 use App\Models\Category;
 use App\Models\Contract;
 use Illuminate\Http\Request;
+use App\Models\TeamPracticeDay;
 
 class TeamController extends Controller
 {
@@ -34,11 +36,21 @@ class TeamController extends Controller
         $team->category_id = $request->category;
         $team->gender = $request->gender;
         $team->save();
+
+        //Guarda el contrato del entrenador
+        $contract = new Contract();
+        $contract->team_id = $team->id;
+        $contract->people_id = $request->coach;
+        $contract->date_start = now();
+        $contract->date_end = null;
+        $contract->save();
         return back()->with('status', 'Equipo guardado');
     }
 
     public function show($id){
         $team = Team::find($id);
+
+
         $contracts = $team->getCurrentContracts();
         $players = $team->getCurrentPlayers();
         $nextGame = $team->next_game;
@@ -49,13 +61,11 @@ class TeamController extends Controller
         return view('admin.teams.show', compact('data'));
     }
 
-    public function practicesView(Request $request){
-        return view('teams.practices');
-    }
 
     public function create(){
         $categories = Category::pluck('name', 'id')->all();
-        $data = compact('categories');
+        $coaches = Coach::all();
+        $data = compact('categories', 'coaches');
         return view('admin.teams.create', compact('data'));
     }
 
@@ -98,6 +108,62 @@ class TeamController extends Controller
             $game->players()->save(Player::find($player));
         }
         return back()->with('status', 'Convocatoria guardada');
+    }
+
+    public function practicesView(Request $request){
+        $team = Team::find($request->teamId);
+        $data = compact('team');
+        return view('admin.teams.practices', compact('data'));
+    }
+
+    public function savePraticesDays(Request $request, Team $id){
+        for($i = 0; $i < 3; $i++){
+            $practiceDay = new TeamPracticeDay();
+            $practiceDay->day = $request->days[$i];
+            $practiceDay->time = $request->times[$i];
+            $practiceDay->team_id = $id->id;
+            $practiceDay->save();
+        }
+        return back()->with('status', 'Días de entrenamientos guardados');
+
+    }
+
+
+    public function freePlayersForTeam(Request $request){
+        $team = Team::find($request->teamId);
+
+        $freePlayers = Player::freePlayers();
+
+        $players = [];
+        foreach($freePlayers as $player){
+            if($player->category == $team->category->id && $team->gender == $player->person->gender){
+                $players[] = $player;
+            }
+        }
+
+        $hideBtn = false;
+
+        if(empty($players)){
+            $hideBtn = true;
+        }
+
+        $data = compact('team', 'players', 'hideBtn');
+        return view('admin.teams.free_players_for_team', compact('data'));
+    }
+
+    public function savePlayersOnTeam(Request $request, $id){
+        foreach($request->players as $playerId){
+            //Crea uno nuevo
+            $player = Player::find($playerId);
+            $contract = new Contract();
+            $contract->team_id = $id;
+            $contract->people_id = $player->person->id;
+            $contract->date_start = now();
+            $contract->date_end = null;
+            $contract->save();
+        }
+        return back()->with('status', 'Jugadores añadidos al equipo');
+
     }
 
 }

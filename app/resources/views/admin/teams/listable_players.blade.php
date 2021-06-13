@@ -19,7 +19,7 @@
                     @foreach ($data['teamPlayers'] as $player)
                         <div class="col-2">
                             <input type="checkbox" name="players[]" value="{{ $player->id }}" />
-                            {{ $player->name }}
+                            {{ $player->full_name }}
                         </div>
                     @endforeach
                 </div>
@@ -28,7 +28,7 @@
                     <div id="accordion2" style="display: none">
                         @foreach ($data['listablePlayers'] as $player)
                             <input type="checkbox" name="players[]" value="{{ $player->id }}" />
-                            {{ $player->person->name }} <br>
+                            {{ $player->person->full_name }} ({{ $player->person->current_team->name }}) <br>
                         @endforeach
                     </div>
                 @endif

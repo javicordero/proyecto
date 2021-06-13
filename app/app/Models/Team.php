@@ -40,6 +40,11 @@ class Team extends Model
         return $this->hasMany(Game::class);
     }
 
+    //Relacion 1:N con TeampracticeDay (1: Team || N: TeampracticeDay)
+    public function practiceDays(){
+        return $this->hasMany(TeamPracticeDay::class);
+    }
+
     //Atributo category_name
     public function getCategoryNameAttribute(){
         $buscar = $this->category_id;
@@ -106,6 +111,7 @@ class Team extends Model
 
     //Devuelve los jugadores actuales del equipo
     public function getCurrentCoachAttribute(){
+        $coach = null;
         $contracts = $this->getCurrentContracts();
         foreach($contracts as $contract){
             $person = People::find($contract->people_id);
@@ -122,7 +128,7 @@ class Team extends Model
         $players = Player::all();
         $returnPlayers = [];
         foreach($players as $player){
-            if($player->category == $this->category->id - 1){
+            if($player->category == $this->category->id - 1 && $player->person->gender == $this->gender){
                 $returnPlayers[] = $player;
             }
         }

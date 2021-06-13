@@ -13,7 +13,6 @@
                 id="create-modal"
                 type="button">
                     Añadir
-                    <i class="fa fa-plus"></i>
                 </button>
             </div>
         </div>

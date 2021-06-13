@@ -125,7 +125,7 @@ $("#btn-modal-practices").click(function () {
         success: function (response) {
             //console.log(response);
             $("#divModal").html(response);
-            $("#practices-modal").modal("show");
+            $("#modal").modal("show");
         },
     });
 });
@@ -153,7 +153,7 @@ $(".move-player-modal").click(function () {
 });
 
 
-//Modal mover jugador de equipo
+//COnvocatoria modal
 $("#convocatoria-modal").click(function () {
 
     let csrf = $(this).attr("data-csrf");
@@ -169,6 +169,28 @@ $("#convocatoria-modal").click(function () {
         contentType: false,
         success: function (response) {
             //console.log(response);
+            $("#divModal").html(response);
+            $("#modal").modal("show");
+        },
+    });
+});
+
+//Jugadores sin equipo modal
+$("#freePlayers-modal").click(function () {
+
+    let csrf = $(this).attr("data-csrf");
+    let teamId = $(this).attr("data-teamId");
+    var formData = new FormData();
+    formData.append("teamId", teamId);
+    formData.append("_token", csrf);
+    $.ajax({
+        type: "post",
+        url: "/admin/teams/freePlayersForTeam",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log(response);
             $("#divModal").html(response);
             $("#modal").modal("show");
         },

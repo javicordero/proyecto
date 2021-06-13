@@ -1,9 +1,20 @@
 {{-- Start jugadores --}}
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
-        <div class="x_title">
-            <h2>Jugadores<small></small></h2>
-            <div class="clearfix"></div>
+        <div class="x_title index-title">
+            <div class="index-title-title">
+                <h2>Jugadores
+                    <small></small>
+                </h2>
+            </div>
+            <div class="index-title-button">
+                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
+                data-teamId="{{ $data['team']->id }}"
+                type="button"
+                id="freePlayers-modal">
+                    Añadir
+                </button>
+            </div>
         </div>
         <div class="x_content">
             <div class="col-lg-12  col-xs-12">
@@ -19,11 +30,11 @@
                         @foreach ($data['players'] as $person)
                             <tr>
                                 <td>{{ $person->personable->number }}</td>
-                                <td>{{ $person->name }}</td>
+                                <td>{{ $person->full_name }}</td>
                                 <td>
                                     <form class="form-inline" id="del_event{{ $person->id }}"
                                         action="{{ route('admin.players.removeFromTeam', $person->id) }}" method="POST">
-                                         @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
+                                         @if ($data['team']->current_coach && $data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
                                         <div class="form-group">
                                             @csrf
                                             <button class=" del_id table-btn table-btn-danger" type="submit"

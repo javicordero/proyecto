@@ -130,6 +130,9 @@ Route::middleware(['auth', 'admin'])
     Route::post('teams/getPosibleTeamsForPlayer', [TeamController::class, 'getPosibleTeamsForPlayer'])->name('teams.getPosibleTeamsForPlayer');
     Route::post('teams/getAllListablePlayers', [TeamController::class, 'getAllListablePlayers'])->name('teams.getAllListablePlayers');
     Route::post('teams/savePlayersForNextGame', [TeamController::class, 'savePlayersForNextGame'])->name('teams.savePlayersForNextGame');
+    Route::post('teams/{id}/savePraticesDays', [TeamController::class, 'savePraticesDays'])->name('teams.savePraticesDays');
+    Route::post('teams/freePlayersForTeam', [TeamController::class, 'freePlayersForTeam'])->name('teams.freePlayersForTeam');
+    Route::post('teams/{id}/savePlayersOnTeam', [TeamController::class, 'savePlayersOnTeam'])->name('teams.savePlayersOnTeam');
 
     //CATEGORIES
     /*

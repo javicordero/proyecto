@@ -25,9 +25,9 @@
             <div class="card__info-hover">
                 <h5>Entrenamientos</h5>
               <ul>
-                  <li>Lunes 17:00 - 18:30</li>
-                  <li>Jueves 17:00 - 18:30</li>
-                  <li>Miércoles 17:00 - 18:30</li>
+                @foreach ( $team->practiceDays as $practiceDay)
+                <li>{{ $practiceDay->day_name }}: {{ $practiceDay->time_formateada }} -- {{ $practiceDay->time_end }}</li>
+                @endforeach
               </ul>
 
             </div>

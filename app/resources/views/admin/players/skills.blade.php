@@ -8,7 +8,7 @@
                  </h2>
              </div>
              {{-- Solo puede evaluar el propio entrenador --}}
-             @if ($data['person']->current_team->current_coach->user == Auth::user())
+             @if ($data['person']->current_team && $data['person']->current_team->current_coach->user == Auth::user())
                  <div class="index-title-button">
                      <button class="btn btn-success " type="button" data-csrf="{{ csrf_token() }}"
                          data-playerId="{{ $data['player']->id }}" type="button" id="attributes-modal">

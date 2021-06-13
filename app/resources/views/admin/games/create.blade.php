@@ -39,7 +39,14 @@
                         class="required"></span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" name="opponent" required="required" class="form-control col-md-7 col-xs-12">
+                    <select class="form-control" name="opponent" required="required">
+                        <option value="" disabled selected>Selecciona un valor</option>
+                        @foreach ($data['opponents'] as $opponent)
+                        <option value="{{ $opponent->id }}">
+                            {{ $opponent->name }}
+                        </option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
         </div>
