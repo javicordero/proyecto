@@ -63,6 +63,10 @@
         font-size: 32px !important;
         margin-left: -25px !important;
     }
+
+    .scoreboard-5 .sport-team .desc{
+        width: auto !important;
+    }
 }
 
 

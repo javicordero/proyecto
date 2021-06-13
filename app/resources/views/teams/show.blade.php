@@ -15,13 +15,19 @@
     <section class="ftco-section p-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-xs-12">
-
-                @include('teams.players')
+                <div class="col-lg-7 col-md-12">
+                    @include('teams.players')
                 </div>
-                <div class="col-lg-4 sidebar">
-
+                <div class="col-lg-5 col-xs-12">
+                    @include('teams.results')
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                      <!-- Modal -->
+                <div id="divModal"></div>
             </div>
         </div>
     </section>

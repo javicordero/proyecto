@@ -100,6 +100,21 @@ class Player extends Model
         return round($this->games()->get()->avg('pivot.minutes'),2);
     }
 
+    //Obtiene la media por tipo de attributo
+    public function getAvgOfAttributeType($attributeType){
+        $attributes = Attribute::all();
+        foreach($attributes as $attribute){
+            $attributesValue[$attribute->attribute_type_id][] = $attribute->getPlayerCurrentValue($this->id);
+        }
+
+        for($i = 1; $i <= 3; $i++){
+            $avgAttributeType[$i] = array_sum($attributesValue[$i])/count($attributesValue[$i]);
+        }
+
+
+        return $avgAttributeType[$attributeType];
+    }
+
 
     //Sobreescribe el método getAll de la Tabla Genérica y devuelve todos los datos para mostrarlos
     public static function getAll(){

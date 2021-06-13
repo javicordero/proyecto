@@ -20,6 +20,8 @@ use App\Http\Controllers\Publics\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Publics\GameController as GameControllerPublic;
 use App\Http\Controllers\Publics\TeamController as TeamControllerPublic;
+use App\Http\Controllers\Publics\PlayerController as PlayerControllerPublic;
+
 
 
 /*
@@ -50,8 +52,9 @@ Route::get('/teams/{id}', [TeamControllerPublic::class, 'show'])->name('teams.sh
 Route::get('/games/{id}', [GameControllerPublic::class, 'show'])->name('games.show');
 
 //Route::post('/results', [IndexController::class, 'resultsFiltered'])->name('resultsFiltered');
+Route::get('/players/{id}', [PlayerControllerPublic::class, 'show'])->name('players.show');
 
-
+Route::post('/players/getModalCard', [PlayerControllerPublic::class, 'getModalCard'])->name('players.getModalCard');
 
 
 Route::middleware(['auth', 'admin'])

@@ -20,7 +20,8 @@ class TeamController extends Controller
     public function show($id){
         $team = Team::find($id);
         $players = $team->getCurrentPlayers();
-        $data = compact('team', 'players');
+        $lastGames = Game::latest('date')->where('played', '1')->where('team_id', $team->id)->take(4)->get();
+        $data = compact('team', 'players', 'lastGames');
         return view('teams.show', compact('data'));
     }
 }

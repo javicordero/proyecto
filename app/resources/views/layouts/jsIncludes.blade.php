@@ -21,6 +21,9 @@
  <script src="{{ asset('public-template/js/main.js') }}"></script>
  <script src="https://kit.fontawesome.com/4ef78eb583.js" crossorigin="anonymous"></script>
 
+
+ <script src="{{ asset('public-template/js/modal/modal.js') }}"></script>
+
   </body>
 </html>
 

@@ -13,18 +13,15 @@
                     @foreach ($data['coaches'] as $coach)
                         <div class="item">
                             <div class="testimony-wrap text-center">
-                                <div class="user-img mb-4"
+                                <div class="user-img "
                                     style="background-image: url({{ $coach->person->image_path }})">
-                                    <span class="quote d-flex align-items-center justify-content-center">
-                                        <i class="icon-quote-left"></i>
-                                    </span>
+
                                 </div>
                                 <div class="text p-3">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia
-                                        and Consonantia, there live the blind texts.</p>
                                     <p class="name">{{ $coach->person->fullname }}</p>
-                                    <span class="position">Viewer</span>
+                                    @foreach ($coach->current_teams as $team)
+                                    <p class="position m-0">{{ $team->name }}</p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
