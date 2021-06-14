@@ -6,15 +6,17 @@
                 <h2>Próximos partidos
                 </h2>
             </div>
-            <div class="index-title-button">
-                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
-                data-tableName="games"
-                data-teamId="{{ $data['team']->id }}"
-                id="create-modal"
-                type="button">
-                    Añadir
-                </button>
-            </div>
+            @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
+                <div class="index-title-button">
+                    <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
+                    data-tableName="games"
+                    data-teamId="{{ $data['team']->id }}"
+                    id="create-modal"
+                    type="button">
+                        Añadir
+                    </button>
+                </div>
+            @endif
         </div>
         <div class="x_content">
             <table class="table table-bordered text-center">

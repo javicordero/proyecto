@@ -7,6 +7,7 @@
                     <small></small>
                 </h2>
             </div>
+            @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
             <div class="index-title-button">
                 <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
                 data-teamId="{{ $data['team']->id }}"
@@ -15,6 +16,7 @@
                     Cambiar horarios
                 </button>
             </div>
+            @endif
 
         </div>
         <ul>

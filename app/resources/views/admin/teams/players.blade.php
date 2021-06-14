@@ -7,14 +7,16 @@
                     <small></small>
                 </h2>
             </div>
-            <div class="index-title-button">
-                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
-                data-teamId="{{ $data['team']->id }}"
-                type="button"
-                id="freePlayers-modal">
-                    Añadir
-                </button>
-            </div>
+            @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
+                <div class="index-title-button">
+                    <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
+                    data-teamId="{{ $data['team']->id }}"
+                    type="button"
+                    id="freePlayers-modal">
+                        Añadir
+                    </button>
+                </div>
+            @endif
         </div>
         <div class="x_content">
             <div class="col-lg-12  col-xs-12">
@@ -47,14 +49,16 @@
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </div>
-                                        <div class="form-group">
-                                            <button
-                                                class="pull-right modal_id table-btn move-player-modal table-btn-warning"
-                                                data-personId={{ $person->id }} data-csrf="{{ csrf_token() }}"
-                                                type="button"  data-toggle="tooltip" data-placement="top" title="Mover a otro equipo">
-                                                <i class="fa fa-send"></i>
-                                            </button>
-                                        </div>
+                                        @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
+                                            <div class="form-group">
+                                                <button
+                                                    class="pull-right modal_id table-btn move-player-modal table-btn-warning"
+                                                    data-personId={{ $person->id }} data-csrf="{{ csrf_token() }}"
+                                                    type="button"  data-toggle="tooltip" data-placement="top" title="Mover a otro equipo">
+                                                    <i class="fa fa-send"></i>
+                                                </button>
+                                            </div>
+                                        @endif
                                     </form>
                                 </td>
                             </tr>

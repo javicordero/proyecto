@@ -19,7 +19,11 @@
                             <tr>
                                 <td><a href="{{ route('admin.teams.show', $team->id) }}"> {{ $team->name }}</a></td>
                                 <td>
-
+                                    <ul style="padding-left: 0; list-style: none;">
+                                        @foreach ( $team->practiceDays as $practiceDay)
+                                            <li class="p-0">{{ $practiceDay->day_name }}: {{ $practiceDay->time }}</li>
+                                        @endforeach
+                                    </ul>
                                 </td>
                             </tr>
                         @endforeach

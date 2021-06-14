@@ -8,12 +8,14 @@
                 </h2>
             </div>
             <div class="index-title-button">
-                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
-                data-teamId="{{ $data['team']->id }}"
-                type="button"
-                id="convocatoria-modal">
-                    Hacer convocatoria
-                </button>
+                @if ($data['team']->current_coach->user == Auth::user())
+                    <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
+                    data-teamId="{{ $data['team']->id }}"
+                    type="button"
+                    id="convocatoria-modal">
+                        Hacer convocatoria
+                    </button>
+                @endif
             </div>
         </div>
         <div class="x_content">
