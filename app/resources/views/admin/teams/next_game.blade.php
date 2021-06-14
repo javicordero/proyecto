@@ -48,7 +48,7 @@
                         @foreach ($data['nextGame']->players as $player)
                             <tr>
                                 <td>{{ $player->number }}</td>
-                                <td>{{ $player->person->name }}</td>
+                                <td>{{ $player->person->full_name }}</td>
                             </tr>
                         @endforeach
                     </tbody>

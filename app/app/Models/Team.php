@@ -42,7 +42,7 @@ class Team extends Model
 
     //Relacion 1:N con TeampracticeDay (1: Team || N: TeampracticeDay)
     public function practiceDays(){
-        return $this->hasMany(TeamPracticeDay::class);
+        return $this->hasMany(TeamPracticeDay::class)->orderBy('day');
     }
 
     //Atributo category_name

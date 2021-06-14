@@ -105,7 +105,15 @@ class TeamController extends Controller
 
         //Añade los jugadores seleccionados
         foreach($request->players as $player){
-            $game->players()->save(Player::find($player));
+            $player = Player::find($player);
+            //Si el jugador tiene otro partido el mismo día lo quita del otro partido
+            $gamesNotPlayed = $player->games()->where('played', 0)->get();
+            foreach($gamesNotPlayed as $gameNotPlayed){
+                if($game->date == $gameNotPlayed->date){
+                    $gameNotPlayed->players()->detach($player);
+                }
+            }
+            $game->players()->save($player);
         }
         return back()->with('status', 'Convocatoria guardada');
     }
