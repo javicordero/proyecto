@@ -15,7 +15,6 @@ class CreateCoachesTable extends Migration
     {
         Schema::create('coaches', function (Blueprint $table) {
             $table->id();
-            $table->string('license');
             $table->timestamps();
         });
     }

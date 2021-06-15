@@ -22,7 +22,6 @@ class CoachFactory extends Factory
     public function definition()
     {
         return [
-            'license' => $this->faker->word(),
         ];
     }
 }
