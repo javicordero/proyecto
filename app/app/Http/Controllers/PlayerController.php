@@ -54,6 +54,7 @@ class PlayerController extends Controller
     public function show($id){
         $player = Player::find($id);
         $person = $player->person;
+
         $attribute_types = AttributeType::all();
         $data = compact('attribute_types', 'person', 'player');
 

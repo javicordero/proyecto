@@ -21,8 +21,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Publics\GameController as GameControllerPublic;
 use App\Http\Controllers\Publics\TeamController as TeamControllerPublic;
 use App\Http\Controllers\Publics\PlayerController as PlayerControllerPublic;
-
-
+use App\Http\Controllers\SendMessageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +56,21 @@ Route::get('/players/{id}', [PlayerControllerPublic::class, 'show'])->name('play
 
 Route::post('/players/getModalCard', [PlayerControllerPublic::class, 'getModalCard'])->name('players.getModalCard');
 
+
+//MESSAGES
+Route::post('/messages/guest', [SendMessageController::class, 'guestSend'])->name('messages.guest');
+
+
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/messages', [UserController::class, 'index'])->name('messages.index');
+    Route::get('/messages/create', [SendMessageController::class, 'create'])->name('messages.create');
+    Route::post('/messages/show', [SendMessageController::class, 'show'])->name('messages.show');
+    Route::post('/messages/store', [SendMessageController::class, 'store'])->name('messages.store');
+    Route::delete('messages/{id}',[SendMessageController::class, 'destroy'])->name('messages.destroy');
+
+
+});
 
 Route::middleware(['auth', 'admin'])
 ->name('admin.')
@@ -147,6 +162,11 @@ Route::middleware(['auth', 'admin'])
     Route::get('games', [GameController::class, 'index'])->name('games.index');
     Route::post('games/store', [GameController::class, 'store'])->name('games.store');
     Route::post('/games/create', [GameController::class, 'create'])->name('games.create');
+
+
+
+
+
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

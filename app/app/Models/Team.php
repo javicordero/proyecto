@@ -30,10 +30,6 @@ class Team extends Model
         return $this->hasMany(Contract::class);
     }
 
-    //Relacion 1:N con Practice (1: Team || N: Practice)
-    public function practices(){
-        return $this->hasMany(Practice::class);
-    }
 
     //Relacion 1:N con Game (1: Team || N: Game)
     public function games(){

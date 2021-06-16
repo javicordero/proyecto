@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,11 +47,26 @@ class User extends Authenticatable
         return $this->hasOne(People::class);
     }
 
+    //Relacion 1:N con mensajes (1:User || N: Mensajes) (para los mensajes recibidos)
+    public function messagesReceived(){
+        return $this->hasMany(SendMessage::class, 'user_receive_id', 'id')->orderBy('created_at', 'desc');
+    }
+
+
+    //Relacion 1:N con mensajes (1:User || N: Mensajes) (para los mensajes recibidos)
+    public function messagesSended(){
+        return $this->hasMany(SendMessage::class, 'user_send_id', 'id');
+    }
+
      //Atributo image_path
      public function getImagePathAttribute(){
-         return $this->image;
         if($this->image){
-            return '/images/users/'.$this->image;
+            if(substr($this->image, 0, 4) != 'http'){
+                return '/images/users/'.$this->image;
+            }
+            else{
+                return $this->image;
+            }
         }
         else{
             return '/images/users/default.jpg';

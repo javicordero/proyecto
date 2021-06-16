@@ -65,3 +65,43 @@
 }
 
 
+.messageNotOpen{
+    display: flex;
+    background: #2A3F54;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding-left: 5px !important;
+    cursor: pointer;
+}
+
+.messagesNotOpen_resume{
+    align-items: center !important;
+    width: 60% !important;
+
+}
+
+.messagesNotOpen_date{
+}
+
+.messageNotOpen_name{
+    font-size: 1.2rem !important;
+}
+
+.messageNotOpen_title{
+    font-size: 1.1rem !important;
+}
+
+.messageNotOpen h4{
+    margin-top: 25px !important;
+}
+
+.profile_pic_messages{
+    width: 20% !important;
+}
+
+.messageOpen_div{
+    color: black !important;
+}
+.messageOpen_div h2{
+    border-bottom: 1px solid black !important;
+}

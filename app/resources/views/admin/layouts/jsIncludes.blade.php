@@ -68,3 +68,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Alerts -->
 
     <script src="https://kit.fontawesome.com/4ef78eb583.js" crossorigin="anonymous"></script>
+
+
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+

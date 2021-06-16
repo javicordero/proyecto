@@ -21,7 +21,7 @@ class AdminMiddleware
         if(Auth::user()->role == 1 || Auth::user()->role == 2){
             return $next($request);
         }
-        return redirect(route('noAdmin'));
+        return redirect(route('index'));
     }
 
 }

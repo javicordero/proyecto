@@ -14,17 +14,9 @@
                          <span class=" fa fa-angle-down"></span>
                      </a>
                      <ul class="dropdown-menu dropdown-usermenu pull-right">
-                         <li><a href="javascript:;"> Profile</a></li>
-                         <li>
-                             <a href="javascript:;">
-                                 <span class="badge bg-red pull-right">50%</span>
-                                 <span>Settings</span>
-                             </a>
-                         </li>
-                         <li><a href="javascript:;">Help</a></li>
                          <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
-                                 Logout
+                                 Cerrar sesión
                              </a>
 
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -35,34 +27,13 @@
                      </ul>
                  </li>
 
-                 <li role="presentation" class="dropdown">
-                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
-                         aria-expanded="false">
-                         <i class="fa fa-envelope-o"></i>
-                         <span class="badge bg-green">6</span>
-                     </a>
-                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                         <li>
-                             <a>
-                                 <span class="image"><img src="" alt="Profile Image" /></span>
-                                 <span>
-                                     <span>John Smith</span>
-                                     <span class="time">3 mins ago</span>
-                                 </span>
-                                 <span class="message">
-                                     Film festivals used to be do-or-die moments for movie makers. They were where...
-                                 </span>
-                             </a>
-                         </li>
-                         <li>
-                             <div class="text-center">
-                                 <a>
-                                     <strong>See All Alerts</strong>
-                                     <i class="fa fa-angle-right"></i>
-                                 </a>
-                             </div>
-                         </li>
-                     </ul>
+                 <li><a href="{{ route('messages.index') }}" class="dropdown-toggle info-number"
+                    aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    @if ( count(Auth::user()->messagesReceived()->where('read', 0)->get()) > 0)
+                        <span class="badge bg-green">{{ count(Auth::user()->messagesReceived()->where('read', 0)->get()) }}</span>
+                    @endif
+                    </a>
                  </li>
              </ul>
          </nav>

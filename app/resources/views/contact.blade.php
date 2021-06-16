@@ -61,21 +61,27 @@
     <div class="container">
       <div class="row block-9">
         <div class="col-md-6 order-md-last d-flex">
-          <form action="#" class="bg-light p-5 contact-form">
+          <form action="{{ route('messages.guest') }}" class="bg-light p-5 contact-form" method="POST">
+            @if ($message = Session::get('status'))
+            <div class="alert alert-success">
+                {{ $message }}
+            </div>
+            @endif
+            @csrf
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" class="form-control" placeholder="Nombre" required name="name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email">
+              <input type="email" class="form-control" placeholder="Email" required name="email">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
+              <input type="text" class="form-control" placeholder="Título" name="title">
             </div>
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <textarea name="content" id="" cols="30" rows="7" class="form-control" placeholder="Contenido"></textarea>
             </div>
             <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              <input type="submit" value="Enviar mensaje" class="btn btn-primary py-3 px-5">
             </div>
           </form>
 

@@ -48,6 +48,13 @@ class UserSeeder extends Seeder
         $user->role = 1;
         $user->save();
 
+        $user = new User();
+        $user->name = 'invitado';
+        $user->password = 'invitado';
+        $user->email = 'invitado@invitado.com';
+        $user->role = 4;
+        $user->save();
+
 
 
 
@@ -106,7 +113,6 @@ class UserSeeder extends Seeder
             $user->save();
 
             $coach = new Coach();
-            $coach->license = random_int(0,2);
             $coach->save();
 
             $person = new People();

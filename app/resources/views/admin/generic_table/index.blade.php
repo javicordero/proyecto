@@ -25,8 +25,6 @@
                                         data-tableName="{{ $data['tableName'] }}" data-csrf="{{ csrf_token() }}"
                                         type="button">
                                         Nuevo
-                                        <i class="fa fa-plus"></i>
-
                                     </button>
                                 @endif
                             </div>
