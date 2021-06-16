@@ -125,12 +125,23 @@ class Team extends Model
 
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
     public static function getButtonList(){
-        $buttonList = [
-            'create' => true,
-            'delete' => true,
-            'edit' => true,
-            'show' => true
-        ];
+        if(Auth::user()->role == 1){
+            $buttonList = [
+                'create' => true,
+                'delete' => true,
+                'edit' => true,
+                'show' => true
+            ];
+        }
+        else{
+            $buttonList = [
+                'create' => false,
+                'delete' => false,
+                'edit' => false,
+                'show' => true
+            ];
+        }
+
 
        return $buttonList;
     }

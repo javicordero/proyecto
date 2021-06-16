@@ -10,10 +10,8 @@
                 <div class="col-md-6 mt-5 pt-5 ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }">
                     <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">Club baloncesto Arboleda
                     </h1>
-                    <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">A small river named
-                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    <p><a href="#" class="btn btn-secondary py-3 px-4">Watch match</a> <a href="#"
-                            class="btn btn-primary py-3 px-4">Get ticket</a></p>
+
+
                 </div>
             </div>
         </div>
@@ -23,7 +21,6 @@
 
     @include('index.lastGame')
 
-    @include('index.video')
 
     @include('index.nextGames')
 

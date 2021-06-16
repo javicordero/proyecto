@@ -54,6 +54,11 @@
                                                 <i class="fa fa-pencil"></i>
                                             </button>
                                         </div>
+                                        <div class="form-group">
+                                            <a href="{{ route('admin.games.show', $game->id) }}" class="pull-right table-btn table-btn-success">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -10,7 +10,7 @@
                 <div class="x_panel">
                     <div class="x_title index-title">
                         <div class="index-title-title">
-                            <h2>Mensajes recibidos
+                            <h2>Mensajes
                                 <small></small>
                             </h2>
                         </div>

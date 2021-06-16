@@ -3,7 +3,6 @@
 @section('content')
 
     @include('games.result')
-    @include('games.video')
 
     <section class="ftco-section pt-5">
         <div class="container">

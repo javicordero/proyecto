@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         {{-- Middle column --}}
-                        <div class="col-lg-9 col-xs-12">
+                        <div class="col-lg-7 col-xs-12">
                             <div class="col-xs-12">
                                 @if ($data['person']->personable_type_name == 'Jugador')
                                 @include('admin.players.skills')

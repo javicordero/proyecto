@@ -49,9 +49,9 @@ class Game extends Model
     //Devuevle una cadena con el resultado del partido
     public function getResultWithNamesAttribute(){
         if($this->home){
-            return $this->team->name.' '.$this->points.' - '.$this->opponent_points.' '.$this->opponent;
+            return $this->team->name.' '.$this->points.' - '.$this->opponent_points.' '.$this->opponent->name;
         }
-        return $this->opponent.' '.$this->opponent_points.' - '.$this->points.' '.$this->team->name;
+        return $this->opponent->name.' '.$this->opponent_points.' - '.$this->points.' '.$this->team->name;
     }
 
     //Devuelve True si victoria, False si derrota
@@ -76,6 +76,10 @@ class Game extends Model
             return 'Local';
         }
         return 'Visitante';
+    }
+
+    public function getVideoUrlAttribute(){
+        return 'https://www.youtube.com/embed/'.$this->video;
     }
 
 
