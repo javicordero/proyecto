@@ -33,6 +33,21 @@ class TeamController extends Controller
         $team = Team::find($id);
         $team->nickname = $request->nickname;
         $team->update();
+
+        if($request->file('image')){
+            //guarda imagen en base datos
+            $image_name = $team->id;
+            $image_name .= '.jpg';
+            $team->image = $image_name;
+
+            //guarda imagen en disco
+            $path = public_path().'/images/teams/';
+            $image = $request->image;
+            $image->move($path,$image_name);
+
+            $team->save();
+        }
+
         return back()->with('status', 'Equipo actualizado');
     }
 
@@ -42,6 +57,20 @@ class TeamController extends Controller
         $team->category_id = $request->category;
         $team->gender = $request->gender;
         $team->save();
+
+        if($request->file('image')){
+            //guarda imagen en base datos
+            $image_name = $team->id;
+            $image_name .= '.jpg';
+            $team->image = $image_name;
+
+            //guarda imagen en disco
+            $path = public_path().'/images/teams/';
+            $image = $request->image;
+            $image->move($path,$image_name);
+
+            $team->save();
+        }
 
         //Guarda el contrato del entrenador
         $contract = new Contract();

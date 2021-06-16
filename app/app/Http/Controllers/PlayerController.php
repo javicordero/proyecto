@@ -36,6 +36,7 @@ class PlayerController extends Controller
         $player = new Player();
         $player->number = $request->number;
         $player->save();
+
         return PeopleController::store($request, $player);
     }
 

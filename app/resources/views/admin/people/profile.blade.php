@@ -10,7 +10,6 @@
                     <div class="x_title">
                         <h2>
                             {{ $data['person']->full_name}}
-
                         </h2>
                         <div class="clearfix"></div>
                     </div>

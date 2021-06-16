@@ -32,21 +32,12 @@ class Coach extends Model
 
     //Devuelve el equipo actual de la persona
     public function getCurrentTeamsAttribute(){
+        $teams = [];
         $contracts = $this->getCurrentContracts();
         foreach($contracts as $contract){
             $teams[] = $contract->team;
         }
         return $teams;
-    }
-
-    //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
-    public static function getColumnsForShow(){
-        $columns = self::getColumnsWithoutTimeStamps();
-        $peopleColumns = People::getColumnsForShow();
-        array_pop($peopleColumns); //Quita el tipo ded persona
-        array_shift($columns); //Quita el id para no mostrarlo 2 veces
-        $columns = array_merge($peopleColumns, $columns);
-        return $columns;
     }
 
     public static function getButtonList(){

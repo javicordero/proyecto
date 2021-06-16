@@ -39,7 +39,7 @@
                                 <li><a href="{{ route('admin.teams.index') }}"><i class="fa fa-users"></i>
                                         Equipos</a>
                                 </li>
-                                <li><a><i class="fa fa-bar-chart"></i> Partidos <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fas fa-basketball-ball"></i> Partidos <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ route('admin.games.index') }}">Partidos por jugar</a></li>
                                         <li><a href="{{ route('admin.results.index') }}"></i>Resultados</a></li>

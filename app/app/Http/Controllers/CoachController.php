@@ -33,7 +33,7 @@ class CoachController extends Controller
 
     public function store(Request $request){
         $coach = new Coach();
-
+        $coach->save();
         return PeopleController::store($request, $coach);
     }
 

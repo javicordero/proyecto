@@ -48,18 +48,8 @@ class UserSeeder extends Seeder
         $user->role = 1;
         $user->save();
 
-        $user = new User();
-        $user->name = 'invitado';
-        $user->password = 'invitado';
-        $user->email = 'invitado@invitado.com';
-        $user->role = 4;
-        $user->save();
-
-
-
-
         //Crea 300 jugadores
-       for ($i = 0; $i < 300; $i++){
+       for ($i = 0; $i < 50; $i++){
             $user = new User();
             $name = $this->faker->firstName();
             $userName = $name.random_int(0,1000);

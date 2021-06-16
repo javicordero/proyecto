@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Coach;
 use App\Models\People;
 use App\Models\Player;
@@ -25,11 +26,43 @@ class PeopleController extends Controller
 
     public static function store($request, $playerOrCoach){
         $person = new People();
-        $person->name = $request->name;
-        $person->surname = $request->surname;
+        $name = $request->name;
+        $surname = $request->surname;
+        $person->name = $name;
+        $person->surname = $surname;
         $person->phone = $request->phone;
         $person->birth_date = $request->birthDate;
         $person->gender = $request->gender;
+
+        $user = new User();
+        $userName = $name.$surname.random_int(1,99);
+        $user->name = $userName;
+        $user->email = $request->email;
+        $user->password = bcrypt($userName);
+        if($person->personable_type_name == "Jugador"){
+            $user->role = 3;
+        }
+        else{
+            $user->role = 2;
+        }
+
+        $user->save();
+        if($request->file('image')){
+            //guarda imagen en base datos
+            $image_name = $user->id;
+            $image_name .= '.jpg';
+            $user->image = $image_name;
+
+            //guarda imagen en disco
+            $path = public_path().'/images/users/';
+            $image = $request->image;
+            $image->move($path,$image_name);
+
+            $user->save();
+        }
+
+
+        $person->user_id = $user->id;
 
         $playerOrCoach->person()->save($person);
 
@@ -45,6 +78,21 @@ class PeopleController extends Controller
         $person->birth_date = $request->birthDate;
         $person->gender = $request->gender;
         $person->update();
+
+        $user = $person->user;
+        if($request->file('image')){
+            //guarda imagen en base datos
+            $image_name = $user->id;
+            $image_name .= '.jpg';
+            $user->image = $image_name;
+
+            //guarda imagen en disco
+            $path = public_path().'/images/users/';
+            $image = $request->image;
+            $image->move($path,$image_name);
+
+            $user->save();
+        }
 
         $tipoPersona = $person->personable_type_name;
         return back()->with('status', $tipoPersona.' actualizado');
