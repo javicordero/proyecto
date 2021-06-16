@@ -58,15 +58,6 @@ trait GenericTable
         return self::$title;
     }
 
-    //Elimina el campo de la tabla correspondiente
-    public static function deleteGeneric($id){
-        $data = self::getData();
-        $data['id'] = $id;
-        $attribute = $data['class']::find($data['id']);
-        $attribute->delete();
-        return back()->with('status', $data['titleSingular'].' eliminado');
-    }
-
 
     //Devuelve la lista de botones disponible en la vista
     public static function getButtonList(){

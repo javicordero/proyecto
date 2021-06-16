@@ -20,7 +20,9 @@ class TeamController extends Controller
 
 
     public function destroy($id){
-        return Team::deleteGeneric($id);
+        $team = Team::find($id);
+        $team->delete();
+        return back()->with('status', 'Equipo eliminado');
     }
 
     public function update(Request $request, $id){

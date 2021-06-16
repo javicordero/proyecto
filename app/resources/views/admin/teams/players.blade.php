@@ -49,7 +49,7 @@
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </div>
-                                        @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
+                                        @if (Auth::user()->role == 1)
                                             <div class="form-group">
                                                 <button
                                                     class="pull-right modal_id table-btn move-player-modal table-btn-warning"

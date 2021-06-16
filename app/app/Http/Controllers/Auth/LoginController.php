@@ -51,7 +51,7 @@ class LoginController extends Controller
 
         if(Auth::attempt(['name' => $name, 'password' => $password])){
             if(Auth::user()->role == 1){
-                return redirect()->route('admin.people.index');
+                return redirect()->route('admin.players.index');
             }
             else{
                 return redirect(route('admin.coaches.show', Auth::user()->person->personable));

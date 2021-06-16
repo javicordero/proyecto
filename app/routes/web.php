@@ -104,7 +104,6 @@ Route::middleware(['auth', 'admin'])
     Route::delete('people/{id}',[PeopleController::class, 'destroy'])->name('people.destroy');
     Route::post('people/store', [PeopleController::class, 'store'])->name('people.store');
     Route::post('people/update-image', [PeopleController::class, 'updateImage'])->name('people.uptade_image');
-    Route::get('people', [PeopleController::class, 'index'])->name('people.index');
     Route::post('people/movePerson/{id}', [PeopleController::class, 'movePerson'])->name('people.movePerson');
 
 
@@ -158,11 +157,19 @@ Route::middleware(['auth', 'admin'])
     */
 
     //GAMES
+    Route::put('games/{id}/update', [GameController::class, 'update'])->name('games.update');
+
     Route::get('games/{id}', [GameController::class, 'show'])->name('games.show');
     Route::get('games', [GameController::class, 'index'])->name('games.index');
+    Route::get('results', [GameController::class, 'results'])->name('results.index');
+    Route::post('results/addVideo', [GameController::class, 'addVideo'])->name('results.addVideo');
+    Route::put('results/{id}/addVideoStore', [GameController::class, 'addVideoStore'])->name('results.addVideoStore');
+
+    Route::delete('games/{id}',[GameController::class, 'destroy'])->name('games.destroy');
+
     Route::post('games/store', [GameController::class, 'store'])->name('games.store');
     Route::post('/games/create', [GameController::class, 'create'])->name('games.create');
-
+    Route::post('games/edit', [GameController::class, 'edit'])->name('teams.edit');
 
 
 

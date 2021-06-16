@@ -6,6 +6,7 @@ use DateTime;
 use App\Models\People;
 use App\Traits\GenericTable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Response;
 use App\Traits\CanGetTableNameStatically;
@@ -133,6 +134,19 @@ class Player extends Model
     }
 
 
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => true,
+            'delete' => false,
+            'edit' => true,
+            'show' => true
+        ];
+        if(Auth::user()->role != 1){
+            $buttonList['create'] = false;
+            $buttonList['edit'] = false;
+        }
+       return $buttonList;
+    }
 
     //Devuelve los jugadores sin equipo actualmente
     public static function freePlayers(){

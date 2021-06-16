@@ -51,7 +51,6 @@ class Game extends Model
 
     public function getDateFormateadaAttribute(){
         return FormatearDate::formatDate($this->date);
-
     }
 
     //Devuevle una cadena con el resultado del partido

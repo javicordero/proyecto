@@ -222,3 +222,28 @@ $("#freePlayers-modal").click(function () {
     });
 
 
+//Muestra modal de crear
+$(".game-video-modal").click(function () {
+
+    let attrId = $(this).attr("data-attrId");
+    let csrf = $(this).attr("data-csrf");
+    let url =  "/admin/results/addVideo";
+
+    var formData = new FormData();
+    formData.append("attrId", attrId);
+    formData.append("_token", csrf);
+
+
+    $.ajax({
+        type: "post",
+        url: url,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log(response);
+            $("#divModal").html(response);
+            $("#modal").modal("show");
+        },
+    });
+});

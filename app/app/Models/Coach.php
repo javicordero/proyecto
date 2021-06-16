@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\GenericTable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -55,5 +56,20 @@ class Coach extends Model
         $columns = array_merge($peopleColumns, $columns);
         return $columns;
     }
+
+    public static function getButtonList(){
+        $buttonList = [
+            'create' => true,
+            'delete' => false,
+            'edit' => true,
+            'show' => true
+        ];
+        if(Auth::user()->role != 1){
+            $buttonList['create'] = false;
+            $buttonList['edit'] = false;
+        }
+       return $buttonList;
+    }
+
 
 }

@@ -12,7 +12,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{ Auth::user()->image_path }}" alt="..." class="img-circle profile_img">
+                            <img src="{{ Auth::user()->image_path }}" alt="Imagen del usuario" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Bienvenido,</span>
@@ -32,7 +32,6 @@
 
                                 <li><a><i class="fa fa-users"></i> Personas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ route('admin.people.index') }}">Todos</a></li>
                                         <li><a href="{{ route('admin.players.index') }}">Jugadores</a></li>
                                         <li><a href="{{ route('admin.coaches.index') }}">Entrenadores</a></li>
                                     </ul>
@@ -40,9 +39,13 @@
                                 <li><a href="{{ route('admin.teams.index') }}"><i class="fa fa-bar-chart"></i>
                                         Equipos</a>
                                 </li>
-                                <li><a href="{{ route('admin.games.index') }}"><i class="fa fa-bar-chart"></i>
-                                        Partidos</a>
+                                <li><a><i class="fa fa-users"></i> Partidos <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{ route('admin.games.index') }}"><i class="fa fa-bar-chart"></i>Partidos por jugar</a></li>
+                                        <li><a href="{{ route('admin.results.index') }}"><i class="fa fa-bar-chart"></i>Resultados</a></li>
+                                    </ul>
                                 </li>
+
 
                             </ul>
                         </div>
