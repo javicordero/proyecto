@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\GenericTable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
@@ -14,11 +13,6 @@ class Team extends Model
 
     use CanGetTableNameStatically;
 
-    use GenericTable;
-
-    public static $title = 'Equipos';
-
-    public static $titleSingular = 'Equipo';
 
     //Relacion 1:N con Category (1: Category || N: Team)
     public function category(){
@@ -77,12 +71,10 @@ class Team extends Model
        }
    }
 
-   //Atributo image_path
-   public function getLogoImagePathAttribute(){
-    return '/public-template/images/teamLogo.png';
-
-
-}
+    //Atributo image_path
+    public function getLogoImagePathAttribute(){
+        return '/public-template/images/teamLogo.png';
+    }
 
 
     //Devuelve los contratos que estan actualmente en el equipo
@@ -132,7 +124,7 @@ class Team extends Model
     }
 
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
-    /*public static function getButtonList(){
+    public static function getButtonList(){
         $buttonList = [
             'create' => true,
             'delete' => true,
@@ -141,16 +133,6 @@ class Team extends Model
         ];
 
        return $buttonList;
-    }*/
-
-    //Devuelve un array para crear un select con los distintos valores de la tabla AttributeType
-    public static function getSelectOptions(){
-        return Category::pluck('name', 'id')->all();
     }
 
-    //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
-    public static function getColumnsForShow(){
-        $columns = ['id','name'];
-        return $columns;
-    }
 }

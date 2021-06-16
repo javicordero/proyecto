@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use DateTime;
-use App\Traits\GenericTable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
@@ -16,12 +15,6 @@ class People extends Model
 
     use CanGetTableNameStatically;
 
-    use GenericTable;
-
-
-    public static $title = 'Personas';
-
-    public static $titleSingular = 'Persona';
 
     //Relacion polimórfica con Player y Coach
     public function personable(){
@@ -75,29 +68,5 @@ class People extends Model
     }
 
 
-    //Sobreescribe el método getColumnsForShow de la Tabla Genérica y devuelve las columnas para mostrarlas en la vista
-    public static function getColumnsForShow(){
-        $columns = self::getColumnsWithoutTimeStamps();
-        array_pop($columns);
-        array_pop($columns);
-        array_pop($columns);
-        array_pop($columns);
-        array_push($columns, 'personable_type_name');
-        return $columns;
-    }
-
-    //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista
-    /*public static function getButtonList(){
-        $buttonList = [
-            'create' => true,
-            'delete' => true,
-            'edit' => true,
-            'show' => true
-        ];
-        if(Auth::user()->role != 1){
-            $buttonList['delete'] = false;
-        }
-       return $buttonList;
-    }*/
 
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\GenericTable;
 use App\Traits\FormatearDate;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CanGetTableNameStatically;
@@ -14,13 +13,7 @@ class Game extends Model
 
     use CanGetTableNameStatically;
 
-    use GenericTable;
-
     protected $dates = ['date'];
-
-    public static $title = 'Partidos';
-
-    public static $titleSingular = 'Equipo';
 
     //Relacion 1:N con Team (1: Team || N: Game)
     public function team(){
@@ -84,7 +77,6 @@ class Game extends Model
         }
         return 'Visitante';
     }
-
 
 
     //Sobreescribe el método getButtonList de la Tabla Genérica y devuelve la lista de botones disponible en la vista

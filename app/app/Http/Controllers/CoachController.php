@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class CoachController extends Controller
 {
     public function index(){
-        return Coach::index();
+
+        $coaches = Coach::all();
+        $buttonList = Coach::getButtonList();
+        $data = compact('coaches', 'buttonList');
+        return view('admin.coaches.index', compact('data'));
     }
 
     public function destroy($id){
@@ -29,8 +33,6 @@ class CoachController extends Controller
 
     public function store(Request $request){
         $coach = new Coach();
-        $coach->license = $request->license;
-        $coach->save();
 
         return PeopleController::store($request, $coach);
     }
@@ -43,8 +45,6 @@ class CoachController extends Controller
 
     public static function update(Request $request, $id){
         $coach = Coach::find($id);
-        $coach->license = $request->license;
-        $coach->save();
         $person = $coach->person;
 
         return PeopleController::update($request, $person->id);

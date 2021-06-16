@@ -1,4 +1,4 @@
-<body class="nav-md">
+<body class="nav-md ">
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
@@ -30,49 +30,32 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
 
-                                <li><a><i class="fa fa-users"></i> Personas <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fas fa-user"></i> Personas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ route('admin.players.index') }}">Jugadores</a></li>
                                         <li><a href="{{ route('admin.coaches.index') }}">Entrenadores</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('admin.teams.index') }}"><i class="fa fa-bar-chart"></i>
+                                <li><a href="{{ route('admin.teams.index') }}"><i class="fa fa-users"></i>
                                         Equipos</a>
                                 </li>
-                                <li><a><i class="fa fa-users"></i> Partidos <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-bar-chart"></i> Partidos <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ route('admin.games.index') }}"><i class="fa fa-bar-chart"></i>Partidos por jugar</a></li>
-                                        <li><a href="{{ route('admin.results.index') }}"><i class="fa fa-bar-chart"></i>Resultados</a></li>
+                                        <li><a href="{{ route('admin.games.index') }}">Partidos por jugar</a></li>
+                                        <li><a href="{{ route('admin.results.index') }}"></i>Resultados</a></li>
                                     </ul>
                                 </li>
 
 
                             </ul>
                         </div>
-                        <div class="menu_section">
-                            <h3>Live On</h3>
-                            <ul class="nav side-menu">
-
-                            </ul>
-                        </div>
-
                     </div>
                     <!-- /sidebar menu -->
 
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Parte pública">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
+
+
                     </div>
                     <!-- /menu footer buttons -->
                 </div>

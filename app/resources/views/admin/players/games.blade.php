@@ -17,13 +17,13 @@
                 </thead>
                 <tbody>
                     @forelse ($data['person']->personable->games()->where('played', 1)->get() as $game)
-                        <tr class="{{ $game->victory ? 'bg-success' : 'bg-danger'}}">
-                            <td>{{ $game->date->format('d-m-Y') }}</td>
-                            <td><a href="{{ route('admin.games.show', $game) }}">{{ $game->result }}</a></td>
-                            <td>{{ $game->pivot->minutes }}</td>
-                            <td>{{ $game->pivot->points }}</td>
-                        </tr>
-                        @empty
+                    <tr class="{{ $game->victory ? 'bg-success' : 'bg-danger'}}">
+                        <td>{{ $game->date->format('d-m-Y') }}</td>
+                        <td><a href="{{ route('admin.games.show', $game) }}">{{ $game->result }}</a></td>
+                        <td>{{ $game->pivot->minutes }}</td>
+                        <td>{{ $game->pivot->points }}</td>
+                    </tr>
+                    @empty
                     @endforelse
                 </tbody>
             </table>

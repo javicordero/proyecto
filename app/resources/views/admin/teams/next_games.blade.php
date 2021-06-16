@@ -7,15 +7,11 @@
                 </h2>
             </div>
             @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
-                <div class="index-title-button">
-                    <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
-                    data-tableName="games"
-                    data-teamId="{{ $data['team']->id }}"
-                    id="create-modal"
-                    type="button">
-                        Añadir
-                    </button>
-                </div>
+            <div class="index-title-button">
+                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}" data-tableName="games" data-teamId="{{ $data['team']->id }}" id="create-modal" type="button">
+                    Añadir
+                </button>
+            </div>
             @endif
         </div>
         <div class="x_content">
@@ -29,11 +25,11 @@
                 </thead>
                 <tbody>
                     @forelse ($data['nextGames'] as $game)
-                        <tr>
-                            <td>{{ $game->date->format('d-m-Y') }}</td>
-                            <td>{{ $game->opponent->name }}</td>
-                            <td>{{ $game->place }}</td>
-                        </tr>
+                    <tr>
+                        <td>{{ $game->date->format('d-m-Y') }}</td>
+                        <td>{{ $game->opponent->name }}</td>
+                        <td>{{ $game->place }}</td>
+                    </tr>
                     @empty
                     @endforelse
                 </tbody>

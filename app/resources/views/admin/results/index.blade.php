@@ -46,7 +46,7 @@
                                     <td>{{ $game->result }}</td>
                                     <td>@if ($game->video)
                                         <a href="{{ $game->video }}" target="blank">Video</a>
-                                    @endif
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="form-group">

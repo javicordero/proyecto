@@ -15,8 +15,12 @@ use App\Models\TeamPracticeDay;
 class TeamController extends Controller
 {
     public function index(){
-        return Team::index();
+        $teams = Team::all();
+        $buttonList = Team::getButtonList();
+        $data = compact('teams', 'buttonList');
+        return view('admin.teams.index', compact('data'));
     }
+
 
 
     public function destroy($id){

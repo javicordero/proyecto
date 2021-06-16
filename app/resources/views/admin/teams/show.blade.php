@@ -10,7 +10,7 @@
                     <div class="x_title">
                         <h2>{{ $data['team']->name }}
                             @if ($data['team']->current_coach)
-                                <small>{{$data['team']->current_coach->name.' '.$data['team']->current_coach->surname }}</small>
+                            <small>{{$data['team']->current_coach->name.' '.$data['team']->current_coach->surname }}</small>
                             @endif
                         </h2>
                         <div class="clearfix"></div>

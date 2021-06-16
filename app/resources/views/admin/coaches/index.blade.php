@@ -13,12 +13,12 @@
                 <div class="x_panel">
                     <div class="x_title index-title">
                         <div class="index-title-title">
-                            <h2>Próximos partidos
+                            <h2>Entrenadores
                             </h2>
                         </div>
                         <div class="index-title-button">
                             @if ($data['buttonList']['create'])
-                            <button class="btn btn-success modal_id " id="create-modal" type="button" data-tableName="games" data-csrf="{{ csrf_token() }}" type="button">
+                            <button class="btn btn-success modal_id " id="create-modal" {{-- Para el resto de tablas --}} type="button" data-class="App\Models\Coaches" data-tableName="coaches" data-csrf="{{ csrf_token() }}" type="button">
                                 Nuevo
                             </button>
                             @endif
@@ -33,37 +33,37 @@
                             <thead>
                                 <tr>
                                     <td>Id</td>
-                                    <td>Equipo</td>
-                                    <td>Rival</td>
-                                    <td>Fecha</td>
-                                    <td>Lugar</td>
+                                    <td>Nombre</td>
+                                    <td>Apellidos</td>
+                                    <td>Teléfono</td>
+                                    <td>Fecha de nacimiento</td>
                                     <td>Acciones</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data['games'] as $game)
+                                @foreach ($data['coaches'] as $coach)
                                 <tr>
-                                    <td>{{ $game->id }}</td>
-                                    <td>{{ $game->team->name }}</td>
-                                    <td>{{ $game->opponent->name }}</td>
-                                    <td>{{ $game->date_formateada }}</td>
-                                    <td>{{ $game->place }}</td>
+                                    <td>{{ $coach->id }}</td>
+                                    <td>{{ $coach->person->name }}</td>
+                                    <td>{{ $coach->person->surname }}</td>
+                                    <td>{{ $coach->person->phone }}</td>
+                                    <td>{{ $coach->person->birth_date }}</td>
                                     <td>
-                                        @if ($data['buttonList']['delete'])
-                                        <form class="form-inline mb-2" id="del_event{{ $game->id }}" action="{{ route('admin.games.destroy', $game->id) }}" method="POST">
-                                            <div class="form-group">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class=" del_id table-btn table-btn-danger" type="submit" data-attrId="{{ $game->id }}"><i class="fa fa-trash"></i></button>
-                                            </div>
-                                            @endif
-                                            @if ($data['buttonList']['edit'])
-                                            <div class="form-group">
-                                                <button class="pull-right modal_id table-btn edit-modal table-btn-warning" data-attrId="{{ $game->id }}" data-csrf="{{ csrf_token() }}" data-tableName="games" id="edit-game" type="button">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </div>
-                                            @endif
+                                        @if ($data['buttonList']['edit'])
+                                        <div class="form-group">
+                                            <button class="pull-right modal_id table-btn edit-modal table-btn-warning" data-attrId="{{ $coach->id }}" data-csrf="{{ csrf_token() }}" {{-- data-class="{{ $data['class'] }}" --}} data-tableName="coaches" type="button">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                        </div>
+                                        @endif
+                                        @if ($data['buttonList']['show'])
+                                        <div class="form-group">
+                                            <a href="{{ route('admin.coaches.show', $coach->id) }}" class="pull-right table-btn table-btn-success">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </div>
+                                        @endif
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -106,6 +106,8 @@
 
 </script>
 @endif
+
+
 
 
 

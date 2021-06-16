@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-    {{ route('admin.teams.savePraticesDays', $data['team']) }}
+{{ route('admin.teams.savePraticesDays', $data['team']) }}
 @endsection
 
 @section('method')

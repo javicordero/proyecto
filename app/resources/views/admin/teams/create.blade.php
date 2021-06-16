@@ -1,11 +1,11 @@
 @extends('admin.layouts.modal')
 
 @section('action')
-    {{ route('admin.teams.store') }}
+{{ route('admin.teams.store') }}
 @endsection
 
 @section('title')
-    Crear equipo
+Crear equipo
 @endsection
 
 @section('body')
@@ -15,8 +15,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Apodo<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="nickname" required="required" class="form-control col-md-7 col-xs-12"
-                >
+                <input type="text" name="nickname" required="required" class="form-control col-md-7 col-xs-12">
             </div>
         </div>
     </div>
@@ -24,15 +23,14 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label
-                class="control-label col-md-3 col-sm-3 col-xs-12">Categoría</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Categoría</label>
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <select class="form-control" name="category" required="required">
                     <option value="" disabled selected>Selecciona un valor</option>
                     @foreach ($data['categories'] as $selectKey => $selectValue)
-                        <option value="{{ $selectKey }}">
-                            {{ $selectValue }}
-                        </option>
+                    <option value="{{ $selectKey }}">
+                        {{ $selectValue }}
+                    </option>
                     @endforeach
                 </select>
             </div>
@@ -42,8 +40,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label
-                class="control-label col-md-3 col-sm-3 col-xs-12">Sexo</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexo</label>
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <select class="form-control" name="gender" required="required">
                     <option value="" disabled selected>Selecciona un valor</option>
@@ -57,15 +54,14 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label
-                class="control-label col-md-3 col-sm-3 col-xs-12">Entrenador</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Entrenador</label>
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <select class="form-control" name="coach" required="required">
                     <option value="" disabled selected>Selecciona un entrenador</option>
                     @foreach ($data['coaches'] as $coach)
-                        <option value="{{ $coach->person->id }}">
-                            {{ $coach->person->full_name }}
-                        </option>
+                    <option value="{{ $coach->person->id }}">
+                        {{ $coach->person->full_name }}
+                    </option>
                     @endforeach
                 </select>
             </div>

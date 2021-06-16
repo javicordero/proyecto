@@ -8,14 +8,11 @@
                 </h2>
             </div>
             @if ($data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
-                <div class="index-title-button">
-                    <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
-                    data-teamId="{{ $data['team']->id }}"
-                    type="button"
-                    id="freePlayers-modal">
-                        Añadir
-                    </button>
-                </div>
+            <div class="index-title-button">
+                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}" data-teamId="{{ $data['team']->id }}" type="button" id="freePlayers-modal">
+                    Añadir
+                </button>
+            </div>
             @endif
         </div>
         <div class="x_content">
@@ -30,38 +27,32 @@
                     </thead>
                     <tbody>
                         @foreach ($data['players'] as $person)
-                            <tr>
-                                <td>{{ $person->personable->number }}</td>
-                                <td>{{ $person->full_name }}</td>
-                                <td>
-                                    <form class="form-inline" id="del_event{{ $person->id }}"
-                                        action="{{ route('admin.players.removeFromTeam', $person->id) }}" method="POST">
-                                         @if ($data['team']->current_coach && $data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
-                                        <div class="form-group">
-                                            @csrf
-                                            <button class=" del_id table-btn table-btn-danger" type="submit"
-                                                data-attrId="{{ $person->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar del equipo"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                        @endif
-                                        <div class="form-group">
-                                            <a href="{{ route('admin.players.show', $person->personable_id) }}"
-                                                class="pull-right table-btn table-btn-success">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </div>
-                                        @if (Auth::user()->role == 1)
-                                            <div class="form-group">
-                                                <button
-                                                    class="pull-right modal_id table-btn move-player-modal table-btn-warning"
-                                                    data-personId={{ $person->id }} data-csrf="{{ csrf_token() }}"
-                                                    type="button"  data-toggle="tooltip" data-placement="top" title="Mover a otro equipo">
-                                                    <i class="fa fa-send"></i>
-                                                </button>
-                                            </div>
-                                        @endif
-                                    </form>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{ $person->personable->number }}</td>
+                            <td>{{ $person->full_name }}</td>
+                            <td>
+                                <form class="form-inline" id="del_event{{ $person->id }}" action="{{ route('admin.players.removeFromTeam', $person->id) }}" method="POST">
+                                    @if ($data['team']->current_coach && $data['team']->current_coach->user == Auth::user() || Auth::user()->role == 1)
+                                    <div class="form-group">
+                                        @csrf
+                                        <button class=" del_id table-btn table-btn-danger" type="submit" data-attrId="{{ $person->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar del equipo"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    @endif
+                                    <div class="form-group">
+                                        <a href="{{ route('admin.players.show', $person->personable_id) }}" class="pull-right table-btn table-btn-success">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                    @if (Auth::user()->role == 1)
+                                    <div class="form-group">
+                                        <button class="pull-right modal_id table-btn move-player-modal table-btn-warning" data-personId={{ $person->id }} data-csrf="{{ csrf_token() }}" type="button" data-toggle="tooltip" data-placement="top" title="Mover a otro equipo">
+                                            <i class="fa fa-send"></i>
+                                        </button>
+                                    </div>
+                                    @endif
+                                </form>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -16,11 +16,11 @@
                 </thead>
                 <tbody>
                     @forelse ($data['lastGames'] as $game)
-                            <tr class="{{ $game->victory ? 'bg-success' : 'bg-danger' }}">
-                                <td>{{ $game->date->format('d-m-Y') }}</td>
-                                <td>{{ $game->opponent->name }}</td>
-                                <td><a href="{{ route('admin.games.show', $game) }}">{{ $game->result }}</a></td>
-                            </tr>
+                    <tr class="{{ $game->victory ? 'bg-success' : 'bg-danger' }}">
+                        <td>{{ $game->date->format('d-m-Y') }}</td>
+                        <td>{{ $game->opponent->name }}</td>
+                        <td><a href="{{ route('admin.games.show', $game) }}">{{ $game->result }}</a></td>
+                    </tr>
                     @empty
                     @endforelse
                 </tbody>

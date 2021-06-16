@@ -9,12 +9,9 @@
             </div>
             <div class="index-title-button">
                 @if ($data['team']->current_coach->user == Auth::user())
-                    <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}"
-                    data-teamId="{{ $data['team']->id }}"
-                    type="button"
-                    id="convocatoria-modal">
-                        Hacer convocatoria
-                    </button>
+                <button class="btn btn-success modal_id " type="button" data-csrf="{{ csrf_token() }}" data-teamId="{{ $data['team']->id }}" type="button" id="convocatoria-modal">
+                    Hacer convocatoria
+                </button>
                 @endif
             </div>
         </div>
@@ -32,11 +29,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr>
-                                <td>{{ $data['nextGame']->date->format('d-m-Y') }}</td>
-                                <td>{{ $data['nextGame']->opponent->name }}</td>
-                                <td>{{ $data['nextGame']->place }}</td>
-                            </tr>
+                        <tr>
+                            <td>{{ $data['nextGame']->date->format('d-m-Y') }}</td>
+                            <td>{{ $data['nextGame']->opponent->name }}</td>
+                            <td>{{ $data['nextGame']->place }}</td>
+                        </tr>
                     </tbody>
                 </table>
                 <table class="table table-striped table-bordered" id="team-players-table">
@@ -48,10 +45,10 @@
                     </thead>
                     <tbody>
                         @foreach ($data['nextGame']->players as $player)
-                            <tr>
-                                <td>{{ $player->number }}</td>
-                                <td>{{ $player->person->full_name }}</td>
-                            </tr>
+                        <tr>
+                            <td>{{ $player->number }}</td>
+                            <td>{{ $player->person->full_name }}</td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

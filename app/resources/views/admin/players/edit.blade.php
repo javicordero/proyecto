@@ -5,11 +5,11 @@
 @endsection
 
 @section('method')
-    @method('PUT')
+@method('PUT')
 @endsection
 
 @section('title')
-    Editar jugador
+Editar jugador
 @endsection
 
 
@@ -17,12 +17,10 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre<span
-                    class="required"></span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" name="name" required="required"
-                    class="form-control col-md-7 col-xs-12" value="{{ $data['player']->person->name }}">
+                <input type="text" name="name" required="required" class="form-control col-md-7 col-xs-12" value="{{ $data['player']->person->name }}">
             </div>
         </div>
     </div>
@@ -30,8 +28,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Apellidos<span
-                    class="required"></span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Apellidos<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" name="surname" required="required" class="form-control col-md-7 col-xs-12" value="{{ $data['player']->person->surname }}">
@@ -42,8 +39,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Teléfono<span
-                    class="required"></span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Teléfono<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" name="phone" required="required" class="form-control col-md-7 col-xs-12" value="{{ $data['player']->person->phone }}">
@@ -54,8 +50,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Fecha nacimiento<span
-                    class="required"></span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Fecha nacimiento<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="date" name="birthDate" required="required" class="form-control col-md-7 col-xs-12" value="{{ $data['player']->person->birth_date }}">
@@ -80,8 +75,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-12">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Número favorito<span
-                    class="required"></span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Número favorito<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="number" name="number" required="required" class="form-control col-md-7 col-xs-12" value="{{ $data['player']->number }}">

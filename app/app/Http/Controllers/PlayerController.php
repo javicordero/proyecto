@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\DB;
 class PlayerController extends Controller
 {
     public function index(){
-        return Player::index();
+        $players = Player::all();
+        $buttonList = Player::getButtonList();
+        $data = compact('players', 'buttonList');
+        return view('admin.players.index', compact('data'));
     }
 
     public function destroy($id){

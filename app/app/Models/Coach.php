@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\GenericTable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -16,13 +15,6 @@ class Coach extends Model
 
     use CanGetTableNameStatically;
 
-    use GenericTable;
-
-
-
-    public static $title = 'Entrenadores';
-
-    public static $titleSingular = 'Entrenador';
 
     //Relacion polimórfica con People
     public function person(){

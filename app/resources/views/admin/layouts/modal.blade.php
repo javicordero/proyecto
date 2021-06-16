@@ -1,8 +1,7 @@
 <div class="modal fade" id="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form data-parsley-validate class="form-horizontal form-label-left" action="@yield('action')"
-                method="POST">
+            <form data-parsley-validate class="form-horizontal form-label-left" action="@yield('action')" method="POST">
                 @csrf
                 @yield('method')
                 <div class="modal-header">

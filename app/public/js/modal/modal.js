@@ -7,6 +7,7 @@ $('#datatable-responsive tbody').on('click', '.edit-modal', function () {
     let tableName = $(this).attr("data-tableName");
     let url = '/admin/' + tableName + '/edit';
 
+    console.log(clase);
     var formData = new FormData();
     formData.append("attributeId", attributeId);
     formData.append("clase", clase);
