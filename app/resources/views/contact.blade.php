@@ -7,16 +7,18 @@
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
           <h1 class="mb-3 bread">Contacto</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contacto <i class="ion-ios-arrow-forward"></i></span></p>
         </div>
       </div>
     </div>
   </section>
 
 
-
       <section class="ftco-section contact-section">
     <div class="container">
+        <div class="heading-section ftco-animate">
+            <span class="subheading">Contacto</span>
+            <h2 class="mb-4">Contacta con nosotros</h2>
+        </div>
       <div class="row block-9">
         <div class="col-md-12 order-md-last d-flex">
           <form action="{{ route('messages.guest') }}" class="bg-light p-5 contact-form" method="POST">

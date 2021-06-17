@@ -23,6 +23,9 @@
 
 
  <script src="{{ asset('public-template/js/modal/modal.js') }}"></script>
+ <script src="{{ asset('js/messages/messages.js') }}"></script>
+
+
 
   </body>
 </html>

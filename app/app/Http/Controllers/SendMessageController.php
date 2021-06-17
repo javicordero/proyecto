@@ -36,6 +36,12 @@ class SendMessageController extends Controller
         return view('messages.create' , compact('data'));
     }
 
+    public function createPublic(){
+        $users = User::all();
+        $data = compact('users');
+        return view('messages.createNoAdmin' , compact('data'));
+    }
+
     public function store(Request $request){
         foreach($request->user_receive_id as $user_receive_id){
             $message = new SendMessage();

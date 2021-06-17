@@ -25,7 +25,7 @@ $(".messageNotOpen").click(function () {
 
 
 
-//Modal mover jugador de equipo
+//Modal nuevo mensaje admin
 $("#newMessage-modal").click(function() {
 
     $.ajax({
@@ -38,6 +38,24 @@ $("#newMessage-modal").click(function() {
             //console.log(response);
             $("#divModal").html(response);
             $("#modal").modal("show");
+        },
+    });
+});
+
+
+
+//Modal nuevo mensaje parte pública
+$("#newMessage").click(function() {
+
+    $.ajax({
+        type: "get",
+        url: "/messages/create/public",
+        data: "",
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            console.log(response);
+            $("#messageOpen").html(response);
         },
     });
 });

@@ -65,6 +65,7 @@ Route::post('/messages/guest', [SendMessageController::class, 'guestSend'])->nam
 Route::middleware(['auth'])->group(function(){
     Route::get('/messages', [UserController::class, 'index'])->name('messages.index');
     Route::get('/messages/create', [SendMessageController::class, 'create'])->name('messages.create');
+    Route::get('/messages/create/public', [SendMessageController::class, 'createPublic'])->name('messages.createPublic');
     Route::post('/messages/show', [SendMessageController::class, 'show'])->name('messages.show');
     Route::post('/messages/store', [SendMessageController::class, 'store'])->name('messages.store');
     Route::delete('messages/{id}',[SendMessageController::class, 'destroy'])->name('messages.destroy');
