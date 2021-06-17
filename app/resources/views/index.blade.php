@@ -10,9 +10,7 @@
                 <div class="col-md-6 mt-5 pt-5 ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }">
                     <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">Club baloncesto Arboleda
                     </h1>
-                    <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }">A small river named
-                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-
+                    <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.2 }" style="font-style: italic"><span style="font-style: italic">"El talento gana partidos, pero el trabajo en equipo y la inteligencia ganan campeonatos" </span>&nbsp; - Michael Jordan </p>
                 </div>
             </div>
         </div>
@@ -35,11 +33,9 @@
                     <div class="row justify-content-start py-md-5">
                         <div class="col-md-12 heading-section heading-section-white ftco-animate">
                             <h2 class="mb-4">Sobre el club</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia Even
-                                the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic life One day however a small line of blind text by the name of Lorem Ipsum
-                                decided to leave for the far World of Grammar.</p>
-                            <p><a href="#" class="btn btn-secondary py-3 px-4">Ver más</a></p>
+                            <p>El Club Baloncesto La Arboleda fue fundado en 1987 por un grupo de amigos apasionados del deporte.
+                                Desde su creación, se fueron incorporando jugadores de todas las categorías hasta llegar a los más de 300
+                                 con los que contamos actualmente.</p>
                         </div>
                     </div>
                 </div>
