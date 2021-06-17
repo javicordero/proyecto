@@ -36,6 +36,8 @@
                         </tr>
                     </tbody>
                 </table>
+                @if (!$data['nextGame']->players->isEmpty())
+
                 <table class="table table-striped table-bordered" id="team-players-table">
                     <thead>
                         <tr>
@@ -53,6 +55,8 @@
                     </tbody>
                 </table>
                 @endif
+                @endif
+
             </div>
         </div>
     </div>
