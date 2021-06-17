@@ -73,6 +73,4 @@
 
 @endsection
 
-@section('customJs')
 
-@endsection

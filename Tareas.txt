@@ -1,3 +1,0 @@
-Proximo entrenamiento --> asistencia de jugadores parecido a la convocatoria pero un select para cada jugador con X,F,J
-Pagina de ver entrenamiento --> listado de todos los jugadores con su asistencia al lado
-En la página de equipos --> Numero de entrenamientos realizados, asistencia media

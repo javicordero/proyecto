@@ -9,6 +9,10 @@
 
 @endsection
 
+@section('title')
+    Hacer convocatoria
+@endsection
+
 @section('body')
 <input type="hidden" name="gameId" value="{{ $data['team']->next_game->id }}">
 <div class="form-group">

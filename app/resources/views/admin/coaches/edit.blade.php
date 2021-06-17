@@ -9,7 +9,7 @@
 @endsection
 
 @section('title')
-Editar jugador
+Editar entrenador
 @endsection
 
 

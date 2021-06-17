@@ -80,7 +80,7 @@ class Game extends Model
 
     public function getVideoUrlAttribute(){
         if($this->video){
-            return 'https://www.youtube.com/embed/'.$this->video;
+            return 'https://www.youtube.com/embed/'.substr($this->video, 17);
         }
         return 'https://www.youtube.com/embed/Wy_2AThkR8k';
     }

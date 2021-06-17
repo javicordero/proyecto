@@ -9,7 +9,7 @@
 @endsection
 
 @section('title')
-Cambiar los días de entrenamiento
+Modificar días y horarios de entrenamiento
 @endsection
 
 @section('body')

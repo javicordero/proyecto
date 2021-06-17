@@ -4,7 +4,7 @@
 
     @include('games.result')
 
-    <section class="ftco-section pt-5">
+    <section class="ftco-section pt-0">
         <div class="container">
             <div class="row">
                 @include('games.stats')

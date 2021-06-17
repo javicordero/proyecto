@@ -13,6 +13,8 @@
                         <th class="text-center">Resultado</th>
                         <th class="text-center">Minutos</th>
                         <th class="text-center">Puntos</th>
+                        <th class="text-center">Asistencias</th>
+                        <th class="text-center">Rebotes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +24,8 @@
                         <td><a href="{{ route('admin.games.show', $game) }}">{{ $game->result }}</a></td>
                         <td>{{ $game->pivot->minutes }}</td>
                         <td>{{ $game->pivot->points }}</td>
+                        <td>{{ $game->pivot->assists }}</td>
+                        <td>{{ $game->pivot->rebounds }}</td>
                     </tr>
                     @empty
                     @endforelse

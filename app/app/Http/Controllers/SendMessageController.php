@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class SendMessageController extends Controller
 {
+
+    public function index(){
+        $user = Auth::user();
+        $messagesReceived = $user->messagesReceived;
+        $message = SendMessage::find(1);
+        $data = compact('messagesReceived', 'message');
+        return view('messages.index', compact('data'));
+    }
+
     public function guestSend(Request $request){
 
         $message = new SendMessage();

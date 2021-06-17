@@ -17,6 +17,6 @@
     <p>
         Contraseña: {{ $data['userName'] }}
     </p>
-    <p>Un saludo</p>
+    <p>Le recomendamos que cambie su contraseña en la pestaña de configuración, un saludo.</p>
 </body>
 </html>

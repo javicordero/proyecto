@@ -23,6 +23,7 @@ use App\Http\Controllers\Publics\TeamController as TeamControllerPublic;
 use App\Http\Controllers\Publics\PlayerController as PlayerControllerPublic;
 use App\Http\Controllers\SendMessageController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,12 +64,14 @@ Route::post('/messages/guest', [SendMessageController::class, 'guestSend'])->nam
 
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/messages', [UserController::class, 'index'])->name('messages.index');
+    Route::get('/messages', [SendMessageController::class, 'index'])->name('messages.index');
     Route::get('/messages/create', [SendMessageController::class, 'create'])->name('messages.create');
     Route::get('/messages/create/public', [SendMessageController::class, 'createPublic'])->name('messages.createPublic');
     Route::post('/messages/show', [SendMessageController::class, 'show'])->name('messages.show');
     Route::post('/messages/store', [SendMessageController::class, 'store'])->name('messages.store');
     Route::delete('messages/{id}',[SendMessageController::class, 'destroy'])->name('messages.destroy');
+    Route::get('/config', [UserController::class , 'config'])->name('users.config');
+    Route::put('/users/updatePassword', [UserController::class, 'updatePassword'])->name('users.UpdatePassword');
 });
 
 Route::middleware(['auth', 'admin'])

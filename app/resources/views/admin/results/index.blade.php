@@ -49,13 +49,15 @@
                                         @endif
                                     </td>
                                     <td>
+                                        @if (Auth::user()->role == 1)
                                         <div class="form-group">
                                             <button class="pull-right modal_id table-btn table-btn-warning game-video-modal" data-attrId="{{ $game->id }}" data-csrf="{{ csrf_token() }}" id="" type="button" data-toggle="tooltip" data-placement="top" title="Añadir video">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
+                                        @endif
                                         <div class="form-group">
-                                            <a href="{{ route('admin.games.show', $game->id) }}" class="pull-right table-btn table-btn-success" >
+                                            <a href="{{ route('admin.games.show', $game->id) }}" class="pull-right table-btn table-btn-success">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </div>
