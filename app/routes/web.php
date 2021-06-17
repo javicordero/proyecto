@@ -68,8 +68,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/messages/show', [SendMessageController::class, 'show'])->name('messages.show');
     Route::post('/messages/store', [SendMessageController::class, 'store'])->name('messages.store');
     Route::delete('messages/{id}',[SendMessageController::class, 'destroy'])->name('messages.destroy');
-
-
 });
 
 Route::middleware(['auth', 'admin'])

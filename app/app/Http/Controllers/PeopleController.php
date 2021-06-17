@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserCreatedMailable;
 use App\Models\User;
 use App\Models\Coach;
 use App\Models\People;
 use App\Models\Player;
 use App\Models\Contract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PeopleController extends Controller
 {
@@ -67,6 +69,12 @@ class PeopleController extends Controller
         $playerOrCoach->person()->save($person);
 
         $tipoPersona = $person->personable_type_name;
+
+        //Envia un email al usuario
+        $mail = new UserCreatedMailable($name, $userName);
+        Mail::to($user->email)->send($mail);
+
+
         return back()->with('status', $tipoPersona.' guardado');
     }
 
