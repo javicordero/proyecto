@@ -1,9 +1,7 @@
-
 //Jugadores sin equipo modal
 $(".messageNotOpen").click(function () {
-
-    $(this).css('color', '#979797');
-    $(this).css('font-weight', 'normal');
+    $(this).css("color", "#979797");
+    $(this).css("font-weight", "normal");
 
     let csrf = $(this).attr("data-csrf");
     let messageId = $(this).attr("data-messageId");
@@ -23,18 +21,15 @@ $(".messageNotOpen").click(function () {
     });
 });
 
-
-
 //Modal nuevo mensaje admin
-$("#newMessage-modal").click(function() {
-
+$("#newMessage-modal").click(function () {
     $.ajax({
         type: "get",
         url: "/messages/create",
         data: "",
         processData: false,
         contentType: false,
-        success: function(response) {
+        success: function (response) {
             //console.log(response);
             $("#divModal").html(response);
             $("#modal").modal("show");
@@ -42,18 +37,15 @@ $("#newMessage-modal").click(function() {
     });
 });
 
-
-
 //Modal nuevo mensaje parte pública
-$("#newMessage").click(function() {
-
+$("#newMessage").click(function () {
     $.ajax({
         type: "get",
         url: "/messages/create/public",
         data: "",
         processData: false,
         contentType: false,
-        success: function(response) {
+        success: function (response) {
             console.log(response);
             $("#messageOpen").html(response);
         },

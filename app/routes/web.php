@@ -41,28 +41,27 @@ use App\Models\User;
 //AUTH
 Auth::routes();
 
-
-Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/results', [IndexController::class, 'results'])->name('results');
-Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
-Route::get('/teams', [TeamControllerPublic::class, 'index'])->name('teams');
-Route::get('/teams/{id}', [TeamControllerPublic::class, 'show'])->name('teams.show');
-
-
-
-Route::get('/games/{id}', [GameControllerPublic::class, 'show'])->name('games.show');
-
-//Route::post('/results', [IndexController::class, 'resultsFiltered'])->name('resultsFiltered');
-Route::get('/players/{id}', [PlayerControllerPublic::class, 'show'])->name('players.show');
-
-Route::post('/players/getModalCard', [PlayerControllerPublic::class, 'getModalCard'])->name('players.getModalCard');
+//Rutas públicas
+Route::middleware(['guest'])->group(function(){
+    Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('/results', [IndexController::class, 'results'])->name('results');
+    Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
+    Route::get('/teams', [TeamControllerPublic::class, 'index'])->name('teams');
+    Route::get('/teams/{id}', [TeamControllerPublic::class, 'show'])->name('teams.show');
 
 
-//MESSAGES
-Route::post('/messages/guest', [SendMessageController::class, 'guestSend'])->name('messages.guest');
+    Route::get('/games/{id}', [GameControllerPublic::class, 'show'])->name('games.show');
+
+    Route::get('/players/{id}', [PlayerControllerPublic::class, 'show'])->name('players.show');
+
+    Route::post('/players/getModalCard', [PlayerControllerPublic::class, 'getModalCard'])->name('players.getModalCard');
+
+    //MESSAGES
+    Route::post('/messages/guest', [SendMessageController::class, 'guestSend'])->name('messages.guest');
+});
 
 
-
+//Rutas para usuarios
 Route::middleware(['auth'])->group(function(){
     Route::get('/messages', [SendMessageController::class, 'index'])->name('messages.index');
     Route::get('/messages/create', [SendMessageController::class, 'create'])->name('messages.create');
@@ -74,31 +73,13 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/users/updatePassword', [UserController::class, 'updatePassword'])->name('users.UpdatePassword');
 });
 
+//Rutas para usuarios con rol Aministrador o Entrenador
 Route::middleware(['auth', 'admin'])
 ->name('admin.')
 ->prefix('admin')
 ->group(function(){
-/*
-    //ATTRIBUTE-TYPES
-    Route::put('attributes/{id}/update', [AttributeController::class, 'update'])->name('attributes.update');
-    Route::delete('attributes/{id}',[AttributeController::class, 'destroy'])->name('attributes.destroy');
-    Route::post('attributes/store', [AttributeController::class, 'store'])->name('attributes.store');
-    Route::get('attributes', [AttributeController::class, 'index'])->name('attributes.index');
-    Route::post('attributes/create', [AttributeController::class, 'create'])->name('attributes.create');
-    Route::post('attributes/edit', [AttributeController::class, 'edit'])->name('attributes.edit');
-
-    //ATTRIBUTES
-    Route::put('attribute_types/{id}/update', [AttributeTypeController::class, 'update'])->name('attribute_types.update');
-    Route::delete('attribute_types/{id}',[AttributeTypeController::class, 'destroy'])->name('attribute_types.destroy');
-    Route::post('attribute_types/store', [AttributeTypeController::class, 'store'])->name('attribute_types.store');
-    Route::get('attribute_types', [AttributeTypeController::class, 'index'])->name('attribute_types.index');
-    Route::post('attribute_types/create', [AttributeTypeController::class, 'create'])->name('attribute_types.create');
-    Route::post('attribute_types/edit', [AttributeTypeController::class, 'edit'])->name('attribute_types.edit');
-*/
-
 
     Route::get('/', function(){
-        return view('admin.index');
     })->name('index');
 
     //PEOPLE
@@ -150,31 +131,18 @@ Route::middleware(['auth', 'admin'])
     Route::post('teams/freePlayersForTeam', [TeamController::class, 'freePlayersForTeam'])->name('teams.freePlayersForTeam');
     Route::post('teams/{id}/savePlayersOnTeam', [TeamController::class, 'savePlayersOnTeam'])->name('teams.savePlayersOnTeam');
 
-    //CATEGORIES
-    /*
-    Route::put('categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('categories/{id}',[CategoryController::class, 'destroy'])->name('categories.destroy');
-    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
-    */
 
     //GAMES
     Route::put('games/{id}/update', [GameController::class, 'update'])->name('games.update');
-
     Route::get('games/{id}', [GameController::class, 'show'])->name('games.show');
     Route::get('games', [GameController::class, 'index'])->name('games.index');
     Route::get('results', [GameController::class, 'results'])->name('results.index');
     Route::post('results/addVideo', [GameController::class, 'addVideo'])->name('results.addVideo');
     Route::put('results/{id}/addVideoStore', [GameController::class, 'addVideoStore'])->name('results.addVideoStore');
-
     Route::delete('games/{id}',[GameController::class, 'destroy'])->name('games.destroy');
-
     Route::post('games/store', [GameController::class, 'store'])->name('games.store');
     Route::post('/games/create', [GameController::class, 'create'])->name('games.create');
     Route::post('games/edit', [GameController::class, 'edit'])->name('teams.edit');
-
-
-
 
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

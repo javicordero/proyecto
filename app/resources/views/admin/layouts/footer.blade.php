@@ -1,7 +1,7 @@
   <!-- footer content -->
   <footer>
       <div class="pull-right">
-          C.B. La Arboleda - Desarrollado por Javier Cordero Toscano
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Javier Cordero Toscano | Proyecto fin de ciclo | Desarrollo de Aplicaciones Web | IES La Arboleda
       </div>
       <div class="clearfix"></div>
   </footer>
