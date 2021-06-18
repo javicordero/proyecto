@@ -224,7 +224,8 @@ $("#freePlayers-modal").click(function () {
 
 
 //Muestra modal de crear
-$(".game-video-modal").click(function () {
+$('#datatable-responsive tbody').on('click', '.game-video-modal', function () {
+
 
     let attrId = $(this).attr("data-attrId");
     let csrf = $(this).attr("data-csrf");
